@@ -8,9 +8,10 @@ import { CharacterCardComponent } from './character-card/character-card.componen
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ChooseViewComponent } from './choose-view/choose-view.component';
+import { ViewAllCharactersPageComponent } from './view-all-characters-page/view-all-characters-page.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, CharacterCardComponent, ChooseViewComponent],
+  declarations: [AppComponent, HomePageComponent, CharacterCardComponent, ChooseViewComponent, ViewAllCharactersPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
