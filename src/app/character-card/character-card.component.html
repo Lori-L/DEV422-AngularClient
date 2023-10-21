@@ -1,17 +1,21 @@
 <div class="char-card-container">
   <div class="char-details">
     <div class="favorite-indicator">
-      <div class="name">Gabriel Blake</div>
-      <mat-icon class="star-icon">star</mat-icon>
+      <div class="name">{{ character.name }}</div>
+      <span *ngIf="showStartIcon">
+        <mat-icon class="star-icon">star</mat-icon>
+      </span>
     </div>
 
-    <div class="race">Orc</div>
-    <div class="class">Wizard</div>
-    <div class="level">27</div>
+    <div class="race">{{ character.race }}</div>
+    <div class="class">{{ character.class }}</div>
+    <div class="level">{{ character.level }}</div>
   </div>
   <div class="char-controls-container">
     <Button class="button-styles view-button">View</Button>
     <Button class="button-styles">Edit</Button>
-    <Button class="button-styles favorite-button">Favorite</Button>
+    <Button class="button-styles favorite-button" (click)="toggleStartIcon()">{{
+      showStartIcon ? "Unfavorite" : "Favorite"
+    }}</Button>
   </div>
 </div>

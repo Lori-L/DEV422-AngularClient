@@ -2,10 +2,13 @@
   <!-- use the character card componenet here -->
 
   <h1>Your Characters</h1>
+  <a routerLink="/">Home</a>
 
-  <div class="character-list">
-    <app-character-card></app-character-card>
-    <app-character-card></app-character-card>
-    <app-character-card></app-character-card>
+  <div class="character-list-container">
+    <div class="character-list">
+      <div *ngFor="let character of characterArray">
+        <app-character-card [character]="character"></app-character-card>
+      </div>
+    </div>
   </div>
 </div>

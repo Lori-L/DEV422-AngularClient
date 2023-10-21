@@ -9,11 +9,19 @@ export class CharacterCardComponent implements OnInit {
   constructor() {
     this.character = {} as Character;
   }
+
   @Input() character: Character;
+
   ngOnInit(): void {}
+
+  showStartIcon: boolean = false;
+
+  toggleStartIcon(): void {
+    this.showStartIcon = !this.showStartIcon;
+  }
 }
 
-type Character = {
+export type Character = {
   name: string;
   race: string;
   class: string;
