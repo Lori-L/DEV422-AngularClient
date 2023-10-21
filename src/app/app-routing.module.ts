@@ -5,6 +5,7 @@ import { CharacterCardComponent } from './character-card/character-card.componen
 import { ChooseViewComponent } from './choose-view/choose-view.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   {
     path: 'chars',
