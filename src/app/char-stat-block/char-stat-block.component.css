@@ -1,0 +1,15 @@
+div {
+    border-style: outset;
+    text-align: center;
+}
+
+#modifier {
+    font-size: 2em;
+}
+
+#block {
+    border-style: inset;
+    border-width: 3px;
+    width: 90%;
+    margin: auto;
+}

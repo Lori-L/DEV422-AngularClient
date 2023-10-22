@@ -1,0 +1,21 @@
+#name {
+    display: flex;
+    border-style: outset;
+    border-width: 3px;
+    float: left;
+    width: calc(40% - 6px);
+    height: 100%;
+    font-size: 2em;
+    padding-top: calc(5.20% - 1em);
+    padding-bottom: calc(5.20% - 1em);
+}
+
+#additional-stats div {
+    display: flex;
+    border-style: outset;
+    border-width: 3px;
+    float: right;
+    width: calc(60% - 6px);
+    margin: auto;
+    font-size: 1em;
+}
