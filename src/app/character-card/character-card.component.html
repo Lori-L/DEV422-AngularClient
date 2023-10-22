@@ -12,7 +12,7 @@
     <div class="level">{{ character.level }}</div>
   </div>
   <div class="char-controls-container">
-    <Button class="button-styles view-button">View</Button>
+    <Button routerLink="/sheet-view" class="button-styles view-button">View</Button>
     <Button class="button-styles">Edit</Button>
     <Button class="button-styles favorite-button" (click)="toggleStartIcon()">{{
       showStartIcon ? "Unfavorite" : "Favorite"
