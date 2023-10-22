@@ -36,10 +36,11 @@ import { NumBoxComponent } from './num-box/num-box.component';
 import { CheckNumBoxComponent } from './check-num-box/check-num-box.component';
 import { SavingThrowsComponent } from './saving-throws/saving-throws.component';
 import { TextboxComponent } from './textbox/textbox.component';
+import { HpContainerComponent } from './hp-container/hp-container.component';
+import { DeathSavesComponent } from './death-saves/death-saves.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, CharacterCardComponent, ChooseViewComponent, ViewAllCharactersPageComponent, ViewCharacterSheetPageComponent, SingleSheetPage0Component, CharSummaryComponent, CharStatsSkillsAttacksTraitsComponent, CharProficienciesEquipmentFeaturesComponent, CharStatsComponent, CharSkillsComponent, CharAttacksComponent, CharTraitsComponent, CharStatBlockComponent, NumBoxComponent, CheckNumBoxComponent, SavingThrowsComponent, TextboxComponent, CreateEditPageComponent, CharCreationNrbTabComponent, CharCreationClassTabComponent, CharCreationStatsTabComponent, CharCreationSpellsTabComponent, CharCreationEquipmentTabComponent, CharCreationPersonalityTabComponent, CharCreationAppearanceTabComponent, CharCreationBackstoryTabComponent, CharCreationClassInfoComponent],
-
+  declarations: [AppComponent, HomePageComponent, CharacterCardComponent, ChooseViewComponent, ViewAllCharactersPageComponent, ViewCharacterSheetPageComponent, SingleSheetPage0Component, CharSummaryComponent, CharStatsSkillsAttacksTraitsComponent, CharProficienciesEquipmentFeaturesComponent, CharStatsComponent, CharSkillsComponent, CharAttacksComponent, CharTraitsComponent, CharStatBlockComponent, NumBoxComponent, CheckNumBoxComponent, SavingThrowsComponent, TextboxComponent, HpContainerComponent, DeathSavesComponent, CreateEditPageComponent, CharCreationNrbTabComponent, CharCreationClassTabComponent, CharCreationStatsTabComponent, CharCreationSpellsTabComponent, CharCreationEquipmentTabComponent, CharCreationPersonalityTabComponent, CharCreationAppearanceTabComponent, CharCreationBackstoryTabComponent, CharCreationClassInfoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

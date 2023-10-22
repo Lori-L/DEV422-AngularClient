@@ -1,0 +1,9 @@
+div {
+    border-style: outset;
+    border-width: 3px;
+}
+
+#whole {
+    width: 95%;
+    margin: auto;
+}

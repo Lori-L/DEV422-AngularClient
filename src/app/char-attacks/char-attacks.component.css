@@ -2,5 +2,19 @@
     display: block;
     float: left;
     width: calc(30% - 6px);
-    border-style: outset 3px;
+    border-style: outset;
+    border-width: 3px;
+}
+
+app-char-stat-block {
+    width: 33.3%;
+    float: left;
+}
+
+#ac-and-stuff {
+    margin: auto;
+}
+
+p {
+    color: white;
 }

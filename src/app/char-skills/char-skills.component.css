@@ -4,4 +4,6 @@
     width: calc(30% - 6px);
     display: block;
     float: left;
+    overflow: scroll;
+    height: 755px;
 }
