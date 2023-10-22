@@ -1,0 +1,7 @@
+div {
+    border-style: outset;
+    border-width: 3px;
+    width: calc(10% - 6px);
+    display: block;
+    float: left;
+}

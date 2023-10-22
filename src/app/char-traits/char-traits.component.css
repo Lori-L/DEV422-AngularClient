@@ -1,0 +1,6 @@
+div {
+    display: block;
+    float: left;
+    width: calc(30% - 6px);
+    border-style: outset 3px;
+}
