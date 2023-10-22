@@ -1,0 +1,26 @@
+ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px 0px 10px 0px;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+
+    border: 2px solid green;
+}
+
+button {
+    text-align: center;
+    height: 3em;
+    width: 15em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.topBar {
+    display:flex;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    width: 100%;
+}

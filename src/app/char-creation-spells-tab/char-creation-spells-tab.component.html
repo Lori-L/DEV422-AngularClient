@@ -1,0 +1,18 @@
+<h2>{{charClass}} Spells</h2>
+
+<div *ngFor="let level of charSpells">
+    <h4>Level {{level[0]}} Spells:</h4>
+    <p>Spell Slots: {{level[1]}}</p> <br>
+
+
+    <input type="checkbox" id="sampleSpell1">  <!--will pull spell lists from API-->
+    <label for="sampleSpell1">Sample Spell 1</label><br>
+
+    <input type="checkbox" id="sampleSpell2">
+    <label for="sampleSpell2">Sample Spell 2</label><br>
+
+    <input type="checkbox" id="sampleSpell3">
+    <label for="sampleSpell3">Sample Spell 3</label>
+
+    <br><br>
+</div>
