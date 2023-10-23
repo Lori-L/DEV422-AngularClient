@@ -14,6 +14,7 @@
   <div class="char-controls-container">
     <Button routerLink="/sheet-view" class="button-styles view-button">View</Button>
     <Button routerLink="/create-edit" class="button-styles">Edit</Button>
+    <Button onclick="window.confirm('Delete this character?')" class="button-styles">Delete</Button>
     <Button class="button-styles favorite-button" (click)="toggleStartIcon()">{{
       showStartIcon ? "Unfavorite" : "Favorite"
     }}</Button>
