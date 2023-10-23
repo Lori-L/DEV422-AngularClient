@@ -1,0 +1,31 @@
+div {
+    border-style: outset;
+    border-width: 3px;
+    display: block;
+}
+
+#dice {
+    width: 49%;
+    margin:auto;
+}
+
+#saves {
+    width: 49%;
+    margin:auto;
+}
+
+input {
+    width: 90%;
+}
+
+
+
+#dice, #saves {
+    width: 47%;
+    float: left;
+}
+
+#s0, #s1, #s2, #f0, #f1, #f2 {
+    width: 20px;
+    display: inline-block;
+}
