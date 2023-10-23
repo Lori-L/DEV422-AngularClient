@@ -7,7 +7,7 @@ ul {
     list-style: none;
     text-align: center;
 
-    border: 2px solid green;
+    border: 2px solid black;
 }
 
 button {
@@ -21,6 +21,5 @@ button {
 .topBar {
     display:flex;
     flex-wrap: wrap;
-    border: 2px solid black;
     width: 100%;
 }

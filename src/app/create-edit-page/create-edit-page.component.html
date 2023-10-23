@@ -36,3 +36,6 @@
 <app-char-creation-appearance-tab *ngIf="tabOrder[6]"></app-char-creation-appearance-tab>
 
 <app-char-creation-backstory-tab *ngIf="tabOrder[7]"></app-char-creation-backstory-tab>
+
+<br><br>
+<button type="button" routerLink="/sheet-view" *ngIf="previousTab >= 5">Finish & View Character</button>

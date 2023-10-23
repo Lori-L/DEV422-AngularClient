@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharCreationEquipmentTabComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    let charItems: string[];
+  }
+
+  charItems = [
+    "item1", "item2", "item3"
+  ];
 
   ngOnInit(): void {
   }
