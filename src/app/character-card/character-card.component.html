@@ -13,7 +13,7 @@
   </div>
   <div class="char-controls-container">
     <Button routerLink="/sheet-view" class="button-styles view-button">View</Button>
-    <Button class="button-styles">Edit</Button>
+    <Button routerLink="/create-edit" class="button-styles">Edit</Button>
     <Button class="button-styles favorite-button" (click)="toggleStartIcon()">{{
       showStartIcon ? "Unfavorite" : "Favorite"
     }}</Button>
