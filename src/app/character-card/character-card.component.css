@@ -1,0 +1,71 @@
+.char-card-container {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 35vw;
+  border: 1px solid #ccc;
+  padding: 20px 0 0 20px;
+}
+
+.char-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 5px;
+}
+
+.name {
+  font: 1.5em sans-serif;
+}
+.race {
+  font: 1.3em sans-serif;
+}
+.class {
+  font: 1.1em sans-serif;
+}
+.level {
+  font: 1em sans-serif;
+}
+
+.char-controls-container {
+  display: flex;
+  align-self: end;
+  border: thin solid #ccc;
+  border-right: none;
+  border-bottom: none;
+}
+
+.button-styles {
+  height: 25px;
+  cursor: pointer;
+  border: none;
+}
+
+.button-styles:hover {
+  transform: scale(1.03);
+}
+
+.button-styles:active {
+  background-color: #b2b2b2;
+}
+
+.view-button {
+  border-right: thin solid #ccc;
+}
+
+.favorite-button {
+  border-left: thin solid #ccc;
+}
+
+.favorite-indicator {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20px 0 0;
+}
+
+.star-icon {
+  color: gold;
+}

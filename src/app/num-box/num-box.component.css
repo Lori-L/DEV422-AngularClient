@@ -1,0 +1,21 @@
+#number p, #text p {
+    border-style: inset;
+    border-width: 3px;
+}
+
+#number {
+    width: calc(18% - 6px);
+    float: left;
+    text-align: center;
+}
+
+#text {
+    width: calc(77% - 6px);
+    float: left;
+}
+
+#center {
+    margin: auto;
+    display: block;
+    width: 95%;
+}

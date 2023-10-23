@@ -1,0 +1,53 @@
+<h2>Equipment</h2>
+
+<h4>Select Starting Equipment:</h4>
+
+<p>Choose between...</p>
+
+<div>
+    <input type="radio" id="1a" name="classEquipment1" value="1a">
+    <label for="1a">(a) A martial weapon and a shield</label><br>
+
+    <input type="radio" id="1b" name="classEquipment1" value="1b">
+    <label for="1b">(b) Two martial weapons</label><br>
+</div>
+
+<div>
+    <input type="radio" id="2a" name="classEquipment2" value="2a">
+    <label for="2a">(a) Five javelins</label><br>
+
+    <input type="radio" id="2b" name="classEquipment2" value="2b">
+    <label for="2b">(b) Any simple melee weapon</label><br>
+</div>
+
+<div>
+    <input type="radio" id="3a" name="classEquipment3" value="3a">
+    <label for="3a">(a) A priest's pack</label><br>
+
+    <input type="radio" id="3b" name="classEquipment3" value="3b">
+    <label for="3b">(b) An explorer's pack</label><br>
+</div>
+
+<p>Equipment from background:</p>
+<ul>
+    <li>A holy symbol (a gift to you when you entered the priesthood</li>
+    <li>A prayer book or prayer wheel</li>
+    <li>5 sticks of incense</li>
+    <li>A set of common clothes</li>
+    <li>A pouch containing 15 gp</li>
+</ul>
+
+<br><br>
+
+<h4>Manage Inventory</h4>
+<div class="grid" *ngFor="let item of charItems">
+    <p>{{item}}</p>
+    <button type="button">Remove</button>
+</div>
+
+<h4>Add Items</h4>
+<label for="search">Item Search: </label>
+<input type="text" id="search" name="search">
+<div>
+    <p>Results: </p>
+</div>

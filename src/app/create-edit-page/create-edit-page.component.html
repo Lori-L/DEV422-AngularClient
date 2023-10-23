@@ -1,0 +1,41 @@
+<div class="topBar">
+    <button type="button" (click)="navTab(previousTab - 1)" *ngIf="previousTab != 0">Previous Step</button>
+    <button type="button" *ngIf="previousTab == 0"></button>
+
+    <h1 style="text-align: center; flex-grow: 3;">Character Creator</h1>
+
+    <button type="button" (click)="navTab(previousTab + 1)" *ngIf="previousTab != 7" style="float:right">Next Step</button>
+    <button type="button" *ngIf="previousTab == 7" style="float:right"></button>
+</div>
+
+<br>
+
+<ul>
+    <li><button type="button" (click)="navTab(0)">Name, Race, Background</button></li>
+    <li><button type="button" (click)="navTab(1)">Class / Classes</button></li>
+    <li><button type="button" (click)="navTab(2)">Stats</button></li>
+    <li><button type="button" (click)="navTab(3)">Spells</button></li>
+    <li><button type="button" (click)="navTab(4)">Equipment</button></li>
+    <li><button type="button" (click)="navTab(5)">Personality</button></li>
+    <li><button type="button" (click)="navTab(6)">Appearance</button></li>
+    <li><button type="button" (click)="navTab(7)">Backstory</button></li>
+</ul>
+
+<app-char-creation-nrb-tab *ngIf="tabOrder[0]"></app-char-creation-nrb-tab>
+
+<app-char-creation-class-tab *ngIf="tabOrder[1]"></app-char-creation-class-tab>
+
+<app-char-creation-stats-tab *ngIf="tabOrder[2]"></app-char-creation-stats-tab>
+
+<app-char-creation-spells-tab *ngIf="tabOrder[3]"></app-char-creation-spells-tab>
+
+<app-char-creation-equipment-tab *ngIf="tabOrder[4]"></app-char-creation-equipment-tab>
+
+<app-char-creation-personality-tab *ngIf="tabOrder[5]"></app-char-creation-personality-tab>
+
+<app-char-creation-appearance-tab *ngIf="tabOrder[6]"></app-char-creation-appearance-tab>
+
+<app-char-creation-backstory-tab *ngIf="tabOrder[7]"></app-char-creation-backstory-tab>
+
+<br><br>
+<button type="button" routerLink="/sheet-view" *ngIf="previousTab >= 5">Finish & View Character</button>

@@ -1,0 +1,9 @@
+#skills {
+    border-style: outset;
+    border-width: 3px;
+    width: calc(30% - 6px);
+    display: block;
+    float: left;
+    overflow: scroll;
+    height: 755px;
+}

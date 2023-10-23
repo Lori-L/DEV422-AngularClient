@@ -1,0 +1,14 @@
+div {
+    border: solid black 2px;
+    padding: 10px;
+    width: 30%;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.grid button {
+    height: 3em;
+}

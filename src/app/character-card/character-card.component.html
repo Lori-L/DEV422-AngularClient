@@ -1,0 +1,22 @@
+<div class="char-card-container">
+  <div class="char-details">
+    <div class="favorite-indicator">
+      <div class="name">{{ character.name }}</div>
+      <span *ngIf="showStartIcon">
+        <mat-icon class="star-icon">star</mat-icon>
+      </span>
+    </div>
+
+    <div class="race">{{ character.race }}</div>
+    <div class="class">{{ character.class }}</div>
+    <div class="level">{{ character.level }}</div>
+  </div>
+  <div class="char-controls-container">
+    <Button routerLink="/sheet-view" class="button-styles view-button">View</Button>
+    <Button routerLink="/create-edit" class="button-styles">Edit</Button>
+    <Button onclick="window.confirm('Delete this character?')" class="button-styles">Delete</Button>
+    <Button class="button-styles favorite-button" (click)="toggleStartIcon()">{{
+      showStartIcon ? "Unfavorite" : "Favorite"
+    }}</Button>
+  </div>
+</div>

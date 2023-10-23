@@ -1,0 +1,13 @@
+<h2>Class / Classes</h2>
+
+<p>Total Character Level: {{totalLevel}}</p>
+
+<app-char-creation-class-info></app-char-creation-class-info>
+
+<br><br>
+
+<label for="newClass">Add New Class: </label>
+<select name="newClass" id="newClass">
+    <option selected>Select</option>
+    <option *ngFor="let oneClass of classes">{{oneClass.charClass}}</option>
+</select>
