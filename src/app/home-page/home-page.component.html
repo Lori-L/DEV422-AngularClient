@@ -1,17 +1,48 @@
 <div class="home-page-container">
   <h2>GLJ D&D App</h2>
   <h4>Login or Signup to view your D&D characters</h4>
-  <div class="login-container">
+
+  <mat-card class="login-container">
     <div class="login-inputs">
       <label for="username">Username</label>
-      <input type="text" class="user-pass-textbox" id="username" />
+      <input
+        type="text"
+        [(ngModel)]="username"
+        class="user-pass-textbox"
+        id="username"
+      />
 
       <label for="password">Password</label>
-      <input type="text" class="user-pass-textbox" id="password" />
+      <input
+        type="password"
+        [(ngModel)]="password"
+        autocomplete="off"
+        class="user-pass-textbox"
+        id="password"
+      />
     </div>
-    <div class="divider"></div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="home-button-styles"
+      (click)="Login()"
+    >
+      Login
+    </button>
+    <div class="divider-container">
+      <div class="divider"></div>
+      <div class="divider-text">or</div>
+      <div class="divider"></div>
+    </div>
     <div class="signup-button-container">
-      <button routerLink="/choose-view" class="signup-button">Sign Up</button>
+      <button
+        routerLink="/signup"
+        mat-raised-button
+        color="primary"
+        class="home-button-styles"
+      >
+        Sign Up
+      </button>
     </div>
-  </div>
+  </mat-card>
 </div>

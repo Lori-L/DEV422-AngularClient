@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ViewAllCharactersPageComponent } from './view-all-characters-page.component';
 
 describe('ViewAllCharactersPageComponent', () => {

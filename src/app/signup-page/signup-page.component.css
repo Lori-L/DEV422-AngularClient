@@ -49,21 +49,6 @@
   width: 100%;
 }
 
-.or-div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.divider-container {
-  width: 75%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
-}
-
 .home-button-styles {
   width: 75%;
   color: white;
@@ -76,9 +61,6 @@
   transform: scale(1.03); /* Slightly grow on hover */
 }
 
-.divider {
-  width: 75%;
-  height: 1px;
-  background-color: #ccc;
-  margin-top: 10px;
+.back-button {
+  margin: 10px;
 }
