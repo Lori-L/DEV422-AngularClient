@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserApiService } from '../user-api.service';
 
 @Component({
   selector: 'app-signup-page',
@@ -10,7 +11,7 @@ export class SignupPageComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor() {}
+  constructor(private userApiService: UserApiService) {}
 
   ngOnInit(): void {}
 
@@ -19,6 +20,10 @@ export class SignupPageComponent implements OnInit {
       return console.log('empty inputs');
     }
 
-    return console.log('signup successful');
+    this.userApiService
+      .SignUp(this.username, this.password)
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
 }

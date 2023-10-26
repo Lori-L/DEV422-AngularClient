@@ -8,9 +8,24 @@ import { Observable } from 'rxjs';
 export class UserApiService {
   constructor(private http: HttpClient) {}
 
+  // login
+  Login(username: string, password: string): Observable<any> {
+    return this.http.post('http://localhost:3000/user/login/', {
+      username,
+      password,
+    });
+  }
+
+  SignUp(username: string, password: string): Observable<any> {
+    return this.http.post('http://localhost:3000/user/signup/', {
+      username,
+      password,
+    });
+  }
+
   // get user data
-  getUserData(username: string): Observable<any> {
-    return this.http.get(`http://localhost:3000/user/`);
+  getUserData(id: string): Observable<any> {
+    return this.http.get(`http://localhost:3000/user/${id}`);
   }
 
   // create a user

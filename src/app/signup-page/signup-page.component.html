@@ -12,13 +12,19 @@
   <mat-card class="login-container">
     <div class="login-inputs">
       <label for="username">Username</label>
-      <input type="text" class="user-pass-textbox" id="username" />
+      <input
+        type="text"
+        [(ngModel)]="username"
+        class="user-pass-textbox"
+        id="username"
+      />
       <label for="username">Email (optional)</label>
       <input type="text" class="user-pass-textbox" id="username" />
 
       <label for="password">Password</label>
       <input
         type="password"
+        [(ngModel)]="password"
         autocomplete="off"
         class="user-pass-textbox"
         id="password"
