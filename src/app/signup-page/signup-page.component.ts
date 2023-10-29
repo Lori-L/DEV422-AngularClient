@@ -25,8 +25,11 @@ export class SignupPageComponent implements OnInit {
     this.userApiService
       .SignUp(this.username, this.password, this.email)
       .subscribe((data) => {
-        console.log(data);
-        this.router.navigate(['/choose-view']);
+        if (data.message == 'true') {
+          this.router.navigate(['/choose-view']);
+        } else {
+          console.log(data.message);
+        }
       });
   }
 }
