@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserApiService } from '../user-api.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class HomePageComponent implements OnInit {
   @ViewChild('loginForm') loginForm: NgForm | undefined;
-  constructor(private userApiService: UserApiService) {}
+  constructor(private userApiService: UserApiService, private router: Router) {}
 
   username: string = '';
   password: string = '';
@@ -32,6 +33,7 @@ export class HomePageComponent implements OnInit {
       .Login(this.username, this.password)
       .subscribe((data) => {
         console.log(data);
+        this.router.navigate(['/choose-view']);
       });
   }
 

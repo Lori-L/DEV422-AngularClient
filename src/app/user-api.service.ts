@@ -10,16 +10,16 @@ export class UserApiService {
 
   // login
   Login(username: string, password: string): Observable<any> {
-    return this.http.post('http://localhost:3000/user/login/', {
-      username,
-      password,
-    });
+    return this.http.get(
+      `http://localhost:3000/user/password?username=${username}&password=${password}`
+    );
   }
 
-  SignUp(username: string, password: string): Observable<any> {
+  SignUp(username: string, password: string, email: string): Observable<any> {
     return this.http.post('http://localhost:3000/user/signup/', {
       username,
       password,
+      email,
     });
   }
 
