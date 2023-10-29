@@ -26,6 +26,8 @@ export class HomePageComponent implements OnInit {
 
   Login() {
     if (!this.username || !this.password) {
+      this.username = '';
+      this.password = '';
       return console.log('empty inputs');
     }
 
@@ -33,9 +35,13 @@ export class HomePageComponent implements OnInit {
       .Login(this.username, this.password)
       .subscribe((data) => {
         if (data.message == 'true') {
+          localStorage.setItem('userId', JSON.stringify(data._id));
+          localStorage.setItem('username', JSON.stringify(this.username));
           this.router.navigate(['/choose-view']);
         } else {
           console.log(data.message);
+          this.username = '';
+          this.password = '';
         }
       });
   }
