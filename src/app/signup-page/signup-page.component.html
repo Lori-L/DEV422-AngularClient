@@ -1,7 +1,14 @@
 <div class="home-page-container">
   <h2>GLJ D&D App</h2>
   <h4>Login or Signup to view your D&D characters</h4>
-
+  <button
+    routerLink="/home"
+    mat-raised-button
+    color="primary"
+    class="back-button"
+  >
+    Back to Login
+  </button>
   <mat-card class="login-container">
     <div class="login-inputs">
       <label for="username">Username</label>
@@ -11,6 +18,8 @@
         class="user-pass-textbox"
         id="username"
       />
+      <label for="username">Email (optional)</label>
+      <input type="text" class="user-pass-textbox" id="username" />
 
       <label for="password">Password</label>
       <input
@@ -22,27 +31,13 @@
       />
     </div>
     <button
+      choose-view
       mat-raised-button
       color="primary"
       class="home-button-styles"
-      (click)="Login()"
+      (click)="Signup()"
     >
-      Login
+      Sign up
     </button>
-    <div class="divider-container">
-      <div class="divider"></div>
-      <div class="divider-text">or</div>
-      <div class="divider"></div>
-    </div>
-    <div class="signup-button-container">
-      <button
-        routerLink="/signup"
-        mat-raised-button
-        color="primary"
-        class="home-button-styles"
-      >
-        Sign Up
-      </button>
-    </div>
   </mat-card>
 </div>

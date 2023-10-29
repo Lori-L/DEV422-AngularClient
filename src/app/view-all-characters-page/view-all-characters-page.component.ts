@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../character-card/character-card.component';
+import { CreateUserPaylaod, User, UserApiService } from '../user-api.service';
 
 @Component({
   selector: 'app-view-all-characters-page',
@@ -7,6 +8,8 @@ import { Character } from '../character-card/character-card.component';
   styleUrls: ['./view-all-characters-page.component.css'],
 })
 export class ViewAllCharactersPageComponent implements OnInit {
+  data: CreateUserPaylaod = {} as CreateUserPaylaod;
+
   characterArray: Character[] = [
     {
       name: 'Jacob Solvang',
@@ -29,7 +32,7 @@ export class ViewAllCharactersPageComponent implements OnInit {
     // Add more characters as needed
   ];
 
-  constructor() {}
+  constructor(private userApiService: UserApiService) {}
 
   ngOnInit(): void {}
 }
