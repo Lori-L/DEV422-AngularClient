@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +18,6 @@ import { CharCreationPersonalityTabComponent } from './char-creation-personality
 import { CharCreationAppearanceTabComponent } from './char-creation-appearance-tab/char-creation-appearance-tab.component';
 import { CharCreationBackstoryTabComponent } from './char-creation-backstory-tab/char-creation-backstory-tab.component';
 import { CharCreationClassInfoComponent } from './char-creation-class-info/char-creation-class-info.component';
-
-
 import { ViewAllCharactersPageComponent } from './view-all-characters-page/view-all-characters-page.component';
 import { ViewCharacterSheetPageComponent } from './view-character-sheet-page/view-character-sheet-page.component';
 import { SingleSheetPage0Component } from './single-sheet-page0/single-sheet-page0.component';
@@ -39,15 +36,65 @@ import { TextboxComponent } from './textbox/textbox.component';
 import { HpContainerComponent } from './hp-container/hp-container.component';
 import { DeathSavesComponent } from './death-saves/death-saves.component';
 import { CharAttackSpellcastingComponent } from './char-attack-spellcasting/char-attack-spellcasting.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, CharacterCardComponent, ChooseViewComponent, ViewAllCharactersPageComponent, ViewCharacterSheetPageComponent, SingleSheetPage0Component, CharSummaryComponent, CharStatsSkillsAttacksTraitsComponent, CharProficienciesEquipmentFeaturesComponent, CharStatsComponent, CharSkillsComponent, CharAttacksComponent, CharTraitsComponent, CharStatBlockComponent, NumBoxComponent, CheckNumBoxComponent, SavingThrowsComponent, TextboxComponent, HpContainerComponent, DeathSavesComponent, CreateEditPageComponent, CharCreationNrbTabComponent, CharCreationClassTabComponent, CharCreationStatsTabComponent, CharCreationSpellsTabComponent, CharCreationEquipmentTabComponent, CharCreationPersonalityTabComponent, CharCreationAppearanceTabComponent, CharCreationBackstoryTabComponent, CharCreationClassInfoComponent, CharAttackSpellcastingComponent],
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    CharacterCardComponent,
+    ChooseViewComponent,
+    ViewAllCharactersPageComponent,
+    ViewCharacterSheetPageComponent,
+    SingleSheetPage0Component,
+    CharSummaryComponent,
+    CharStatsSkillsAttacksTraitsComponent,
+    CharProficienciesEquipmentFeaturesComponent,
+    CharStatsComponent,
+    CharSkillsComponent,
+    CharAttacksComponent,
+    CharTraitsComponent,
+    CharStatBlockComponent,
+    NumBoxComponent,
+    CheckNumBoxComponent,
+    SavingThrowsComponent,
+    TextboxComponent,
+    HpContainerComponent,
+    DeathSavesComponent,
+    CreateEditPageComponent,
+    CharCreationNrbTabComponent,
+    CharCreationClassTabComponent,
+    CharCreationStatsTabComponent,
+    CharCreationSpellsTabComponent,
+    CharCreationEquipmentTabComponent,
+    CharCreationPersonalityTabComponent,
+    CharCreationAppearanceTabComponent,
+    CharCreationBackstoryTabComponent,
+    CharCreationClassInfoComponent,
+    CharAttackSpellcastingComponent,
+    SignupPageComponent,
+    NavBarComponent,
+    LogoutDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatIconModule,
     FormsModule,
+    HttpClientModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
