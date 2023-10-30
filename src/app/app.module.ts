@@ -41,6 +41,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { SignupPageComponent } from './signup-page/signup-page.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +80,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
     CharCreationClassInfoComponent,
     CharAttackSpellcastingComponent,
     SignupPageComponent,
+    NavBarComponent,
+    LogoutDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +93,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
+    MatToolbarModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

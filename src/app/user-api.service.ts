@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private dialog: MatDialog) {}
 
   // login
   Login(username: string, password: string): Observable<any> {
@@ -21,6 +23,10 @@ export class UserApiService {
       password,
       email,
     });
+  }
+
+  openLogoutDialog(): void {
+    this.dialog.open(LogoutDialogComponent);
   }
 
   // get user data
