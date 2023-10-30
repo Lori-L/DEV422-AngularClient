@@ -1,4 +1,9 @@
 <mat-toolbar color="primary" class="nav-container">
   <span>GLJ-Technologies</span>
+  <span>
+    <button (click)="GoHome()" mat-raised-button>Home</button>
+    <button (click)="GoCreate()" mat-raised-button>Create Character</button>
+    <button (click)="GoList()" mat-raised-button>View Characters</button>
+  </span>
   <button (click)="Logout()" mat-raised-button>Logout</button>
 </mat-toolbar>
