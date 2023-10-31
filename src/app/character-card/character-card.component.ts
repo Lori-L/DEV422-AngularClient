@@ -16,14 +16,17 @@ export class CharacterCardComponent implements OnInit {
 
   showStartIcon: boolean = false;
 
-  toggleStartIcon(): void {
-    this.showStartIcon = !this.showStartIcon;
+  toggleFavorite(): void {
+    this.character.favorite = !this.character.favorite;
+    // send an update request to the server to update the favorite attribute
   }
 }
 
 export type Character = {
+  id: string;
   name: string;
   race: string;
   class: string;
   level: string;
+  favorite: boolean;
 };

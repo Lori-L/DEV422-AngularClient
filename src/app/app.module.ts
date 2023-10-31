@@ -45,6 +45,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,6 +97,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatToolbarModule,
     MatDialogModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
