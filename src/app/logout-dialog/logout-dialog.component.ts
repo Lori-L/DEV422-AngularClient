@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserApiService } from '../user-api.service';
+import { SharedVariablesService } from '../shared-variables.service';
 
 @Component({
   selector: 'app-logout-dialog',
@@ -7,7 +8,7 @@ import { UserApiService } from '../user-api.service';
   styleUrls: ['./logout-dialog.component.css'],
 })
 export class LogoutDialogComponent implements OnInit {
-  constructor(private userApiService: UserApiService) {}
+  constructor(private sharedVariablesService: SharedVariablesService) {}
 
   ngOnInit(): void {}
 
@@ -15,5 +16,6 @@ export class LogoutDialogComponent implements OnInit {
     // which is better to use in our case ?
     localStorage.clear();
     sessionStorage.clear();
+    this.sharedVariablesService.setSharedData(false, null);
   }
 }

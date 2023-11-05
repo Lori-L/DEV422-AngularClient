@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserApiService } from '../user-api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutDialogComponent } from '../logout-dialog/logout-dialog.component';
 import { Router } from '@angular/router';
+import { SharedVariablesService } from '../shared-variables.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,9 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    public sharedVariablesService: SharedVariablesService
+  ) {}
 
-  ngOnInit(): void {}
+  showMenu: boolean = true;
+  ngOnInit(): void {
+    this.localVals();
+  }
 
   Logout() {
     this.dialog.open(LogoutDialogComponent);
@@ -21,8 +28,7 @@ export class NavBarComponent implements OnInit {
   GoHome() {
     if (localStorage.getItem('userId') != null) {
       this.router.navigate(['/choose-view']);
-    }
-    else {
+    } else {
       this.router.navigate(['/']);
     }
   }
@@ -36,6 +42,16 @@ export class NavBarComponent implements OnInit {
   GoCreate() {
     if (localStorage.getItem('userId') != null) {
       this.router.navigate(['/create-edit']);
+    }
+  }
+
+  localVals() {
+    if (localStorage.getItem('userId') != null) {
+      this.sharedVariablesService.showMenu = true;
+      this.sharedVariablesService.username = localStorage.getItem('username');
+    } else {
+      this.sharedVariablesService.showMenu = false;
+      this.sharedVariablesService.username = null;
     }
   }
 }
