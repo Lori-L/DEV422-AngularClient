@@ -27,7 +27,6 @@ export class ViewAllCharactersPageComponent implements OnInit {
     this.characterApiService
       .getCharacters(userId ?? '')
       .subscribe((data: any) => {
-        console.log(data);
         this.characters = data.result;
         console.log(this.characters);
       });
@@ -48,7 +47,7 @@ export class ViewAllCharactersPageComponent implements OnInit {
 
   createTestChars() {
     this.characterApiService.createTestChars().subscribe((data: any) => {
-      console.log(data);
+      window.location.reload();
     });
   }
 }
