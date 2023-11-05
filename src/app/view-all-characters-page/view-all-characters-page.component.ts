@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../character-card/character-card.component';
-import { CreateUserPaylaod, User, UserApiService } from '../user-api.service';
+import { UserApiService } from '../user-api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CharacterApiService } from '../character-api.service';
 
 @Component({
   selector: 'app-view-all-characters-page',
@@ -8,31 +9,54 @@ import { CreateUserPaylaod, User, UserApiService } from '../user-api.service';
   styleUrls: ['./view-all-characters-page.component.css'],
 })
 export class ViewAllCharactersPageComponent implements OnInit {
-  data: CreateUserPaylaod = {} as CreateUserPaylaod;
+  characters: any[] = [];
 
-  characterArray: Character[] = [
-    {
-      name: 'Jacob Solvang',
-      race: 'Dragonborn',
-      class: 'Paladin',
-      level: 'Level 22',
-    },
-    {
-      name: 'Lori Latchinian',
-      race: 'Elf',
-      class: 'Druid',
-      level: 'Level 38',
-    },
-    {
-      name: 'Gabriel Blake',
-      race: 'Tiefling',
-      class: 'Rogue',
-      level: 'Level 7',
-    },
-    // Add more characters as needed
-  ];
+  constructor(
+    private userApiService: UserApiService,
+    private dialog: MatDialog,
+    private characterApiService: CharacterApiService
+  ) {}
 
-  constructor(private userApiService: UserApiService) {}
+  SortCharacters(chars: any[]): any[] {
+    return chars.sort((a, b) => {
+      // First, compare by the "favorite" attribute
+      if (a.favorite === b.favorite) {
+        // If they have the same "favorite" status, compare by name
+        return a.name.localeCompare(b.name);
+      } else {
+        // Sort by "favorite" with favorites first
+        return a.favorite ? -1 : 1;
+      }
+    });
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // get user data
+
+    let userId = localStorage.getItem('userId') ?? '';
+
+    userId = userId.replace(/['"]+/g, '');
+
+    this.characterApiService
+      .getCharacters(userId ?? '')
+      .subscribe((data: any) => {
+        this.characters = data.result.sort((a: any, b: any) => {
+          // First, compare by the "favorite" attribute
+          if (a.favorite === b.favorite) {
+            // If they have the same "favorite" status, compare by name
+            return a.name.localeCompare(b.name);
+          } else {
+            // Sort by "favorite" with favorites first
+            return a.favorite ? -1 : 1;
+          }
+        });
+        console.log(this.characters);
+      });
+  }
+
+  async createTestChars() {
+    await this.characterApiService.createTestChars().subscribe((data: any) => {
+      window.location.reload();
+    });
+  }
 }

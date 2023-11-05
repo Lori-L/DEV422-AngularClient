@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DeleteCharDialogComponent } from '../delete-char-dialog/delete-char-dialog.component';
 
 @Component({
   selector: 'app-character-card',
@@ -6,24 +8,33 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./character-card.component.css'],
 })
 export class CharacterCardComponent implements OnInit {
-  constructor() {
-    this.character = {} as Character;
+  constructor(private dialog: MatDialog) {
+    this.character = {} as any;
   }
 
-  @Input() character: Character;
+  @Input() character: any;
+
+  openDelete(id: string) {
+    this.dialog.open(DeleteCharDialogComponent, {
+      data: id,
+    });
+  }
 
   ngOnInit(): void {}
 
   showStartIcon: boolean = false;
 
-  toggleStartIcon(): void {
-    this.showStartIcon = !this.showStartIcon;
+  toggleFavorite(): void {
+    this.character.favorite = !this.character.favorite;
+    // send an update request to the server to update the favorite attribute
   }
 }
 
 export type Character = {
+  id: string;
   name: string;
   race: string;
   class: string;
   level: string;
+  favorite: boolean;
 };
