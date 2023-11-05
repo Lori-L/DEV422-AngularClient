@@ -14,4 +14,12 @@ export class CharacterApiService {
   deleteCharacter(id: string): any {
     return this.http.delete(`http://localhost:3000/char/one?_id=${id}`);
   }
+
+  createTestChars(): any {
+    const userId = localStorage.getItem('userId')?.replace(/['"]+/g, '');
+
+    return this.http.post(`http://localhost:3000/char/testFill`, {
+      userId: userId,
+    });
+  }
 }

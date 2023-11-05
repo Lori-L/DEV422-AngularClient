@@ -45,6 +45,12 @@ export class ViewAllCharactersPageComponent implements OnInit {
       }
     });
   }
+
+  createTestChars() {
+    this.characterApiService.createTestChars().subscribe((data: any) => {
+      console.log(data);
+    });
+  }
 }
 
 // sort character array by favorite attribute
