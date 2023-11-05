@@ -54,8 +54,8 @@ export class ViewAllCharactersPageComponent implements OnInit {
       });
   }
 
-  createTestChars() {
-    this.characterApiService.createTestChars().subscribe((data: any) => {
+  async createTestChars() {
+    await this.characterApiService.createTestChars().subscribe((data: any) => {
       window.location.reload();
     });
   }
