@@ -1,24 +1,22 @@
 <div class="char-card-container">
   <div class="char-details">
     <div class="favorite-indicator">
-      <div class="name">{{ character.name }}</div>
+      <div class="name">Name: {{ character.name }}</div>
       <span *ngIf="character.favorite">
         <mat-icon class="star-icon">star</mat-icon>
       </span>
     </div>
 
-    <div class="race">{{ character.race }}</div>
-    <div class="class">{{ character.class }}</div>
-    <div class="level">{{ character.level }}</div>
+    <div class="race">Race: {{ character.race }}</div>
+    <div class="class">Class: {{ character.charClass }}</div>
+    <div class="level">Level: {{ character.overallLevel }}</div>
   </div>
   <div class="char-controls-container">
     <Button routerLink="/sheet-view" class="button-styles view-button"
       >View</Button
     >
     <Button routerLink="/create-edit" class="button-styles">Edit</Button>
-    <Button
-      onclick="window.confirm('Delete this character?')"
-      class="button-styles"
+    <Button (click)="openDelete(character._id)" class="button-styles"
       >Delete</Button
     >
     <Button class="button-styles favorite-button" (click)="toggleFavorite()">{{

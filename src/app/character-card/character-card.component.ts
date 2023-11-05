@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DeleteCharDialogComponent } from '../delete-char-dialog/delete-char-dialog.component';
 
 @Component({
   selector: 'app-character-card',
@@ -6,11 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./character-card.component.css'],
 })
 export class CharacterCardComponent implements OnInit {
-  constructor() {
-    this.character = {} as Character;
+  constructor(private dialog: MatDialog) {
+    this.character = {} as any;
   }
 
-  @Input() character: Character;
+  @Input() character: any;
+
+  openDelete(id: string) {
+    this.dialog.open(DeleteCharDialogComponent, {
+      data: id,
+    });
+  }
 
   ngOnInit(): void {}
 

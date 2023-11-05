@@ -8,10 +8,7 @@ import { SharedVariablesService } from '../shared-variables.service';
   styleUrls: ['./logout-dialog.component.css'],
 })
 export class LogoutDialogComponent implements OnInit {
-  constructor(
-    private userApiService: UserApiService,
-    private sharedVariablesService: SharedVariablesService
-  ) {}
+  constructor(private sharedVariablesService: SharedVariablesService) {}
 
   ngOnInit(): void {}
 

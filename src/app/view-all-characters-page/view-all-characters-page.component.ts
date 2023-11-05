@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../character-card/character-card.component';
-import { CreateUserPaylaod, User, UserApiService } from '../user-api.service';
+import { UserApiService } from '../user-api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CharacterApiService } from '../character-api.service';
 
 @Component({
   selector: 'app-view-all-characters-page',
@@ -8,41 +9,27 @@ import { CreateUserPaylaod, User, UserApiService } from '../user-api.service';
   styleUrls: ['./view-all-characters-page.component.css'],
 })
 export class ViewAllCharactersPageComponent implements OnInit {
-  data: CreateUserPaylaod = {} as CreateUserPaylaod;
+  characters: any[] = [];
 
-  characterArray: Character[] = [
-    {
-      id: '123',
-      name: 'Jacob Solvang',
-      race: 'Dragonborn',
-      class: 'Paladin',
-      level: 'Level 22',
-      favorite: false,
-    },
-    {
-      id: '456',
-      name: 'Lori Latchinian',
-      race: 'Elf',
-      class: 'Druid',
-      level: 'Level 38',
-      favorite: false,
-    },
-    {
-      id: '789',
-      name: 'Gabriel Blake',
-      race: 'Tiefling',
-      class: 'Rogue',
-      level: 'Level 7',
-      favorite: true,
-    },
-    // Add more characters as needed
-  ];
-
-  constructor(private userApiService: UserApiService) {}
+  constructor(
+    private userApiService: UserApiService,
+    private dialog: MatDialog,
+    private characterApiService: CharacterApiService
+  ) {}
 
   ngOnInit(): void {
-    // sort character array by favorite attribute
-    this.characterArray.sort((a, b) => {
+    // get user data
+    this.characterApiService
+      .getCharacters('654081ca1048e2c45e43ecec')
+      .subscribe((data: any) => {
+        console.log(data);
+        this.characters = data.result;
+        console.log(this.characters);
+      });
+  }
+
+  SortCharacters(chars: any[]): any[] {
+    return chars.sort((a, b) => {
       // First, compare by the "favorite" attribute
       if (a.favorite === b.favorite) {
         // If they have the same "favorite" status, compare by name
@@ -54,3 +41,15 @@ export class ViewAllCharactersPageComponent implements OnInit {
     });
   }
 }
+
+// sort character array by favorite attribute
+// this.characterArray.sort((a, b) => {
+//   // First, compare by the "favorite" attribute
+//   if (a.favorite === b.favorite) {
+//     // If they have the same "favorite" status, compare by name
+//     return a.name.localeCompare(b.name);
+//   } else {
+//     // Sort by "favorite" with favorites first
+//     return a.favorite ? -1 : 1;
+//   }
+// });

@@ -46,6 +46,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { DeleteCharDialogComponent } from './delete-char-dialog/delete-char-dialog.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { MatMenuModule } from '@angular/material/menu';
     SignupPageComponent,
     NavBarComponent,
     LogoutDialogComponent,
+    DeleteCharDialogComponent,
   ],
   imports: [
     BrowserModule,
