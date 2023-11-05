@@ -24,17 +24,9 @@ export class DeleteCharDialogComponent implements OnInit {
   ngOnInit(): void {}
 
   async Delete() {
-    console.log(this.data);
     await this.characterApiService
       .deleteCharacter(this.data)
       .subscribe((data: any) => {
-        console.log(data);
-      });
-
-    this.characterApiService
-      .getCharacters(localStorage.getItem('userId') as string)
-      .subscribe((data: any) => {
-        console.log(data);
         window.location.reload();
       });
   }

@@ -19,8 +19,13 @@ export class ViewAllCharactersPageComponent implements OnInit {
 
   ngOnInit(): void {
     // get user data
+
+    let userId = localStorage.getItem('userId') ?? '';
+
+    userId = userId.replace(/['"]+/g, '');
+
     this.characterApiService
-      .getCharacters('654081ca1048e2c45e43ecec')
+      .getCharacters(userId ?? '')
       .subscribe((data: any) => {
         console.log(data);
         this.characters = data.result;
