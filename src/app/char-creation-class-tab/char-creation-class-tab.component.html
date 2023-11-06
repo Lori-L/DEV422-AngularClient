@@ -9,5 +9,5 @@
 <label for="newClass">Add New Class: </label>
 <select name="newClass" id="newClass">
     <option selected>Select</option>
-    <option *ngFor="let oneClass of classes">{{oneClass.charClass}}</option>
+    <option *ngFor="let oneClass of classList" [value]="oneClass.index">{{oneClass.name}}</option>
 </select>

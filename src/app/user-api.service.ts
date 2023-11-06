@@ -28,21 +28,6 @@ export class UserApiService {
   openLogoutDialog(): void {
     this.dialog.open(LogoutDialogComponent);
   }
-
-  // get user data
-  getUserData(id: string): Observable<any> {
-    return this.http.get(`http://localhost:3000/user/${id}`);
-  }
-
-  // create a user
-  createUser(data: CreateUserPaylaod): Observable<any> {
-    return this.http.post('http://localhost:3000/api/user/', data);
-  }
-
-  // delete a user
-  deleteUser(id: string): Observable<any> {
-    return this.http.delete(`http://localhost:3000/api/user/${id}`);
-  }
 }
 
 export interface User extends CreateUserPaylaod {

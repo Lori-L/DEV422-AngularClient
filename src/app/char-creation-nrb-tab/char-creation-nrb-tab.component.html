@@ -8,9 +8,7 @@
 <label for="charRace">Character Race: </label>
 <select name="charRace" id="charRace">
     <option selected>Select</option>
-    <option value="example1">Race Example 1</option>
-    <option value="example2">Race Example 2</option>
-    <option value="example3">Race Example 3</option>
+    <option *ngFor="let race of raceList" [value]="race.index">{{race.name}}</option>
 </select>
 
 <br><br>
@@ -18,7 +16,5 @@
 <label for="charBackground">Character Background: </label>
 <select name="charBackground" id="charBackground">
     <option selected>Select</option>
-    <option value="example1">Background Example 1</option>
-    <option value="example2">Background Example 2</option>
-    <option value="example3">Background Example 3</option>
+    <option *ngFor="let background of backgroundList" [value]="background.index">{{background.name}}</option>
 </select>

@@ -24,6 +24,8 @@ export class CreateEditPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    sessionStorage.setItem("classList", JSON.stringify([["Bard", 3], ["Barbarian", 1]]));
+    sessionStorage.setItem("startingClass", "bard");
   }
 
 }
