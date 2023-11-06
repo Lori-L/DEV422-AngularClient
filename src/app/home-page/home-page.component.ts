@@ -18,12 +18,6 @@ export class HomePageComponent implements OnInit {
   hasEmail: boolean = false;
   hasPassword: boolean = false;
 
-  TestApi() {
-    this.userApiService.getUserData('123').subscribe((data) => {
-      console.log(data);
-    });
-  }
-
   Login() {
     if (!this.username || !this.password) {
       this.username = '';

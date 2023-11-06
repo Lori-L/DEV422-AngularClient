@@ -1,6 +1,6 @@
-div {
+.box {
     border: solid black 2px;
-    width: 30%;
+    
     margin: 10px;
     padding: 5px;
 }

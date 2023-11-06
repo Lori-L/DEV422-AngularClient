@@ -1,18 +1,27 @@
-<h2>{{charClass}} Spells</h2>
+<div class="box" style="width: 30%" *ngFor="let cast of spellcastingClasses">
+    <h2>{{cast.classIndex}} Spells</h2>
+    <h3 *ngIf="cast.spellsKnownCount">Max Leveled Spells Known: {{cast.spellsKnownCount}}</h3>
+    <h3 *ngIf="cast.maxPreparedSpells">Max Leveled Spells Prepared: {{cast.maxPreparedSpells}}</h3>
 
-<div *ngFor="let level of charSpells">
-    <h4>Level {{level[0]}} Spells:</h4>
-    <p>Spell Slots: {{level[1]}}</p> <br>
+    <div class="box" *ngIf="cast.cantripsKnownCount">
+        <h4>Cantrips</h4>
+        <p>Max Learned Cantrips: {{cast.cantripsKnownCount}}</p> <br>
 
+        <div *ngFor="let cantrip of cast.cantripsList">
+            <input type="checkbox" id={{cantrip[0]}}>
+            <label for={{cantrip[0]}}>{{cantrip[1]}}</label><br>
+        </div>
+    </div>
 
-    <input type="checkbox" id="sampleSpell1">  <!--will pull spell lists from API-->
-    <label for="sampleSpell1">Sample Spell 1</label><br>
+    <div *ngFor="let level of cast.spellSlotsArray; let i=index;">
+        <div class="box" *ngIf="level > 0">
+            <h4>Level {{i + 1}} Spells:</h4>
+            <p>Spell Slots: {{level}}</p> <br>
 
-    <input type="checkbox" id="sampleSpell2">
-    <label for="sampleSpell2">Sample Spell 2</label><br>
-
-    <input type="checkbox" id="sampleSpell3">
-    <label for="sampleSpell3">Sample Spell 3</label>
-
-    <br><br>
+            <div *ngFor="let spell of cast.spellsByLevel[i]">
+                <input type="checkbox" id={{spell[0]}}>
+                <label for={{spell[0]}}>{{spell[1]}}</label><br>
+            </div>
+        </div>
+    </div>
 </div>

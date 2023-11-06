@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CharClasses } from './charClasses';
+import { DndApiServiceService } from '../dnd-api-service.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-char-creation-class-tab',
@@ -8,23 +10,44 @@ import { CharClasses } from './charClasses';
 })
 export class CharCreationClassTabComponent implements OnInit {
 
-  constructor() {
-
-    //class(es) tab
-    let totalLevel: number;
-    let classes: CharClasses[] [];
+  constructor(private dndApiService: DndApiServiceService) {
   }
   
-  classes = [
-    {charClass: "rogue", level: 1, spellcaster: false},
-    {charClass: "sorcerer", level: 1, spellcaster: true},
-    {charClass: "bard", level: 1, spellcaster: true},
-    {charClass: "wizard", level: 1, spellcaster: true},
-    {charClass: "barbarian", level: 1, spellcaster: false},
-  ];
+  charClasses: any[] = [];
 
-  totalLevel = 1;
+  classList: any[] = [];
+
+  totalLevel = 0;
+
   ngOnInit(): void {
+    this.charClasses = JSON.parse(String(sessionStorage.getItem('classList')));
+    console.log(this.charClasses);
+
+    this.charClasses.forEach((element: any) => {
+      this.totalLevel += element[1];
+    })
+
+    //Gets a list of classes from dnd api. Puts into classList.
+    //Does not add to classList if the character already has that class (charClasses).
+    this.dndApiService.ClassList().subscribe((data) => {
+      let results = data.results;
+      let validClass: boolean = false;
+
+      results.forEach((apiClass: any) => {
+        validClass = true;
+
+        this.charClasses.forEach((charClass: any) => {
+          if(apiClass.name == charClass[0]) {
+            validClass = false;
+          }
+        });
+        if(validClass) {
+          this.classList.push(apiClass);
+        }
+      });
+
+      console.log(this.classList);
+    });
   }
 
 }

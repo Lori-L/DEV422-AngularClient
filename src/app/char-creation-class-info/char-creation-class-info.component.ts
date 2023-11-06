@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DndApiServiceService } from '../dnd-api-service.service';
 
 @Component({
   selector: 'app-char-creation-class-info',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharCreationClassInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dndApiService: DndApiServiceService) { }
+
+  
 
   ngOnInit(): void {
+    
   }
 
 }
