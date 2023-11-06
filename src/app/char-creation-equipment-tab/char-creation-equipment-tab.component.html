@@ -1,5 +1,434 @@
 <h2>Equipment</h2>
 
+<div *ngIf="startingClass == 'barbarian'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>Explorer's pack</li>
+        <li>4 javelins</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A greataxe</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) Any martial melee weapon</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) Two handaxes</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) Any simple weapon</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'bard'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>Leather armor</li>
+        <li>1 dagger</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A rapier</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) A longsword</label><br>
+
+        <input type="radio" id="1c" name="classEquipment1" value="1c">
+        <label for="1c">(c) Any simple weapon</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) A diplomat's pack</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) An entertainer's pack</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">(a) A lute</label><br>
+
+        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <label for="3b">(b) Any other musical instrument</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'cleric'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>1 shield</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A mace</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) A warhammer</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) Scale mail</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) Leather armor</label><br>
+
+        <input type="radio" id="2c" name="classEquipment2" value="2c">
+        <label for="2c">(c) Chain mail</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">(a) A light crossbow and 20 bolts</label><br>
+
+        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <label for="3b">(b) Any simple weapon</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="4a" name="classEquipment4" value="4a">
+        <label for="4a">(a) A priest's pack</label><br>
+
+        <input type="radio" id="4b" name="classEquipment4" value="4b">
+        <label for="4b">(b) An explorer's pack</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'druid'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>Leather armor</li>
+        <li>Explorer's pack</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A wooden shield</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) Any simple weapon</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) A scimitar</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) Any simple melee weapon</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">A druidic focus</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'fighter'">
+    <h4>Starting Equipment:</h4>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) Chain mail</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) Leather armor, a longbow, and 20 arrows</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) A martial weapon and a shield</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) Two martial weapons</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">(a) A light crossbow and 20 bolts</label><br>
+
+        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <label for="3b">(b) Two handaxes</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="4a" name="classEquipment4" value="4a">
+        <label for="4a">(a) A dungeoneer's pack</label><br>
+
+        <input type="radio" id="4b" name="classEquipment4" value="4b">
+        <label for="4b">(b) An explorer's pack</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'monk'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>10 darts</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A shortsword</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) Any simple weapon</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) A dungeoneer's pack</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) An explorer's pack</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'paladin'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>Chain mail</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A martial weapon and a shield</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) Two martial weapons</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) 5 javelins</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) Any simple melee weapon</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">(a) A priest's pack</label><br>
+
+        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <label for="3b">(b) An explorer's pack</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="4a" name="classEquipment4" value="4a">
+        <label for="4a">A holy symbol</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'ranger'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>1 longbow</li>
+        <li>20 arrows</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) Scale mail</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) Leather armor</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) 2 shortswords</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) 2 simple melee weapons</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">(a) A dungeoneer's pack</label><br>
+
+        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <label for="3b">(b) An explorer's pack</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'rogue'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>Leather armor</li>
+        <li>2 daggers</li>
+        <li>Thieves' tools</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A rapier</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) A shortsword</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) A shortbow and quiver of 20 arrows</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) A shortsword</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">(a) A burglar's pack</label><br>
+
+        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <label for="3b">(b) A dungeoneer's pack</label><br>
+
+        <input type="radio" id="3c" name="classEquipment3" value="3c">
+        <label for="3c">(c) An explorer's pack</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'sorcerer'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>2 daggers</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A light crossbow and 20 bolts</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) Any simple weapon</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) A component pouch</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) An arcane focus</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">(a) A dungeoneer's pack</label><br>
+
+        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <label for="3b">(b) An explorer's pack</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'warlock'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>2 daggers</li>
+        <li>Leather armor</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A light crossbow and 20 bolts</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) Any simple weapon</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) A component pouch</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) An arcane focus</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">(a) A scholar's pack</label><br>
+
+        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <label for="3b">(b) A dungeoneer's pack</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="4a" name="classEquipment4" value="4a">
+        <label for="4a">Any simple weapon</label><br>
+    </div>
+</div>
+
+<div *ngIf="startingClass == 'wizard'">
+    <h4>Starting Equipment:</h4>
+
+    <ul>
+        <li>1 spellbook</li>
+    </ul>
+
+    <p>Choose between...</p>
+
+    <div>
+        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <label for="1a">(a) A quarterstaff</label><br>
+
+        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <label for="1b">(b) A dagger</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <label for="2a">(a) A component pouch</label><br>
+
+        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <label for="2b">(b) An arcane focus</label><br>
+    </div>
+
+    <div>
+        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <label for="3a">(a) A scholar's pack</label><br>
+
+        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <label for="3b">(b) An explorer's pack</label><br>
+    </div>
+</div>
+
+
+
 <h4>Select Starting Equipment:</h4>
 
 <p>Choose between...</p>
