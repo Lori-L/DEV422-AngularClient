@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserApiService } from '../user-api.service';
 import { Router } from '@angular/router';
+import { SharedVariablesService } from '../shared-variables.service';
 
 @Component({
   selector: 'app-signup-page',
@@ -13,9 +14,19 @@ export class SignupPageComponent implements OnInit {
   password: string = '';
   userIs: string = '';
 
-  constructor(private userApiService: UserApiService, private router: Router) {}
+  constructor(
+    private userApiService: UserApiService,
+    private router: Router,
+    private sharedVariablesService: SharedVariablesService
+  ) {}
 
   ngOnInit(): void {}
+
+  clearInputs() {
+    this.username = '';
+    this.password = '';
+    this.email = '';
+  }
 
   Signup() {
     if (!this.username || !this.password) {
@@ -31,10 +42,10 @@ export class SignupPageComponent implements OnInit {
           localStorage.setItem('userId', JSON.stringify(data.id));
           localStorage.setItem('username', JSON.stringify(this.username));
           this.router.navigate(['/choose-view']);
+          this.sharedVariablesService.setSharedData(true, this.username);
         } else {
           console.log(data.message);
-          this.username = '';
-          this.password = '';
+          this.clearInputs();
         }
       });
   }

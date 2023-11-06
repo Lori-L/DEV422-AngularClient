@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserApiService } from '../user-api.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedVariablesService } from '../shared-variables.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,12 +12,21 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
   @ViewChild('loginForm') loginForm: NgForm | undefined;
-  constructor(private userApiService: UserApiService, private router: Router) {}
+  constructor(
+    private userApiService: UserApiService,
+    private router: Router,
+    private sharedVariablesService: SharedVariablesService
+  ) {}
 
   username: string = '';
   password: string = '';
   hasEmail: boolean = false;
   hasPassword: boolean = false;
+
+  clearInputs() {
+    this.username = '';
+    this.password = '';
+  }
 
   Login() {
     if (!this.username || !this.password) {
@@ -31,11 +41,11 @@ export class HomePageComponent implements OnInit {
         if (data.message == 'true') {
           localStorage.setItem('userId', JSON.stringify(data._id));
           localStorage.setItem('username', JSON.stringify(this.username));
+          this.sharedVariablesService.setSharedData(true, this.username);
           this.router.navigate(['/choose-view']);
         } else {
           console.log(data.message);
-          this.username = '';
-          this.password = '';
+          this.clearInputs();
         }
       });
   }

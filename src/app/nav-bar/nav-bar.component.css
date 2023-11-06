@@ -3,3 +3,16 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.nav-btn-spacing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
