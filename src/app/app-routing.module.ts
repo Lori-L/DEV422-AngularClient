@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'signup', component: SignupPageComponent },
   {
-    path: 'chars',
+    path: 'characters',
     component: ViewAllCharactersPageComponent,
   },
   { path: 'choose-view', component: ChooseViewComponent },
@@ -21,6 +21,10 @@ const routes: Routes = [
 
   {
     path: 'sheet-view',
+    component: ViewCharacterSheetPageComponent,
+  },
+  {
+    path: 'character/:id',
     component: ViewCharacterSheetPageComponent,
   },
 ];

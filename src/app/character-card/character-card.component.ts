@@ -15,6 +15,7 @@ export class CharacterCardComponent implements OnInit {
   @Input() character: any;
 
   openDelete(id: string) {
+    console.log(id);
     this.dialog.open(DeleteCharDialogComponent, {
       data: id,
     });

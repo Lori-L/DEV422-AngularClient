@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserApiService } from '../user-api.service';
-import { MatDialog } from '@angular/material/dialog';
 import { CharacterApiService } from '../character-api.service';
 
 @Component({
@@ -11,11 +9,7 @@ import { CharacterApiService } from '../character-api.service';
 export class ViewAllCharactersPageComponent implements OnInit {
   characters: any[] = [];
 
-  constructor(
-    private userApiService: UserApiService,
-    private dialog: MatDialog,
-    private characterApiService: CharacterApiService
-  ) {}
+  constructor(private characterApiService: CharacterApiService) {}
 
   SortCharacters(chars: any[]): any[] {
     return chars.sort((a, b) => {

@@ -12,7 +12,9 @@
     <div class="level">Level: {{ character.overallLevel }}</div>
   </div>
   <div class="char-controls-container">
-    <Button routerLink="/sheet-view" class="button-styles view-button"
+    <Button
+      [routerLink]="['/character', character._id]"
+      class="button-styles view-button"
       >View</Button
     >
     <Button routerLink="/create-edit" class="button-styles">Edit</Button>

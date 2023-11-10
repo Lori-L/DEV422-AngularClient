@@ -35,7 +35,7 @@ export class NavBarComponent implements OnInit {
 
   GoList() {
     if (localStorage.getItem('userId') != null) {
-      this.router.navigate(['/chars']);
+      this.router.navigate(['/characters']);
     }
   }
 
