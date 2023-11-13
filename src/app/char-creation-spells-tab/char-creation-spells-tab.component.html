@@ -8,8 +8,8 @@
         <p>Max Learned Cantrips: {{cast.cantripsKnownCount}}</p> <br>
 
         <div *ngFor="let cantrip of cast.cantripsList">
-            <input type="checkbox" id={{cantrip[0]}}>
-            <label for={{cantrip[0]}}>{{cantrip[1]}}</label><br>
+            <input type="checkbox" value={{cantrip[0]}} id="cantrips" (click)="updateCantrips(cast.classIndex, cantrip[0], cantrip[1])">
+            <label for="cantrips">{{cantrip[1]}}</label><br>
         </div>
     </div>
 
@@ -19,8 +19,8 @@
             <p>Spell Slots: {{level}}</p> <br>
 
             <div *ngFor="let spell of cast.spellsByLevel[i]">
-                <input type="checkbox" id={{spell[0]}}>
-                <label for={{spell[0]}}>{{spell[1]}}</label><br>
+                <input type="checkbox" value={{spell[0]}} id="leveledSpells" (click)="updateLeveledSpells(cast.classIndex, spell[0], spell[1])">
+                <label for="leveledSpells">{{spell[1]}}</label><br>
             </div>
         </div>
     </div>

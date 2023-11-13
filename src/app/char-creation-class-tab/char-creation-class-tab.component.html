@@ -2,12 +2,48 @@
 
 <p>Total Character Level: {{totalLevel}}</p>
 
-<app-char-creation-class-info></app-char-creation-class-info>
+<div class="container" *ngFor="let charClass of charClasses, index as i">
+    <h3>{{charClass.classIndex}}</h3>
+
+    <label for="{{i}}classLevel">Level: </label>
+    <select name="{{i}}classLevel" id="{{i}}classLevel">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="etc">etc</option>
+    </select>
+
+    <h4>Proficiencies (placeholders):</h4>
+    <ul>
+        <li>proficiency1</li>
+        <li>proficiency2</li>
+    </ul>
+
+    <h4>Features (placeholders):</h4>
+    <ul>
+        <li>feature1</li>
+        <li>feature2</li>
+    </ul>
+
+    <h4>Skills (Choose Two) (placeholders):</h4>
+    <input type="checkbox" id="athletics" name="athletics" value="athletics">
+    <label for="athletics"> Athletics</label><br>
+    <input type="checkbox" id="insight" name="insight" value="insight">
+    <label for="insight"> Insight</label><br>
+    <input type="checkbox" id="intimidation" name="intimidation" value="intimidation">
+    <label for="intimidation"> Intimidation</label><br>
+    <input type="checkbox" id="medicine" name="medicine" value="medicine">
+    <label for="medicine"> Medicine</label><br>
+    <input type="checkbox" id="persuation" name="persuation" value="persuation">
+    <label for="persuation"> Persuasion</label><br>
+    <input type="checkbox" id="religion" name="religion" value="religion">
+    <label for="religion"> Religion</label><br>
+</div>
 
 <br><br>
 
 <label for="newClass">Add New Class: </label>
-<select name="newClass" id="newClass">
+<select name="newClass" id="newClass" (change)="newClassSelected()">
     <option selected>Select</option>
     <option *ngFor="let oneClass of classList" [value]="oneClass.index">{{oneClass.name}}</option>
 </select>
