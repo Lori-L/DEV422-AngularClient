@@ -1,20 +1,12 @@
 <div id="whole">
-    <div id="max-top">
-        Max HP
-    </div>
-    <div id="max-bottom">
-        ##
-    </div>
-    <div id="current-top">
-        Current HP
-    </div>
-    <div id="current-bottom">
-        <input type="text" id="current">
-    </div>
-    <div id="temp-top">
-        Temp HP
-    </div>
-    <div id="temp-bottom">
-        <input type="text" id="temp">
-    </div>
+  <div id="max-top">Max HP</div>
+  <div id="max-bottom">{{ characterData.hp.maxHP }}</div>
+  <div id="current-top">Current HP - {{ characterData.hp.currentHP }}</div>
+  <div id="current-bottom">
+    <input type="text" id="current" value="" />
+  </div>
+  <div id="temp-top">Temp HP - {{ characterData.hp.tempHP }}</div>
+  <div id="temp-bottom">
+    <input type="text" id="temp" />
+  </div>
 </div>

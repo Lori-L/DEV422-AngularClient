@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-char-proficiencies-equipment-features',
   templateUrl: './char-proficiencies-equipment-features.component.html',
-  styleUrls: ['./char-proficiencies-equipment-features.component.css']
+  styleUrls: ['./char-proficiencies-equipment-features.component.css'],
 })
 export class CharProficienciesEquipmentFeaturesComponent implements OnInit {
+  @Input() character: any;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

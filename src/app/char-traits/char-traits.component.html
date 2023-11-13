@@ -1,6 +1,3 @@
-<div>
-    <app-textbox></app-textbox>
-    <app-textbox></app-textbox>
-    <app-textbox></app-textbox>
-    <app-textbox></app-textbox>
+<div *ngFor="let trait of character.apiInfo.race.traits">
+  <app-textbox [trait]="trait[0]" [traitText]="trait[1]"></app-textbox>
 </div>

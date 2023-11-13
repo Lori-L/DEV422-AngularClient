@@ -1,14 +1,33 @@
 <div>
-    <p>Str:</p>
-    <app-char-stat-block></app-char-stat-block>
-    <p>Dex:</p>
-    <app-char-stat-block></app-char-stat-block>
-    <p>Con:</p>
-    <app-char-stat-block></app-char-stat-block>
-    <p>Int:</p>
-    <app-char-stat-block></app-char-stat-block>
-    <p>Wis:</p>
-    <app-char-stat-block></app-char-stat-block>
-    <p>Cha:</p>
-    <app-char-stat-block></app-char-stat-block>
+  <p>Str:</p>
+  <!-- TODO: get from api (character.apiInfo) -->
+  <app-char-stat-block
+    [modifier]="character.apiInfo.abilityScoreModifiers[0]"
+    [total]="characterData.abilityScores[0]"
+  ></app-char-stat-block>
+  <p>Dex:</p>
+  <app-char-stat-block
+    [modifier]="character.apiInfo.abilityScoreModifiers[1]"
+    [total]="characterData.abilityScores[1]"
+  ></app-char-stat-block>
+  <p>Con:</p>
+  <app-char-stat-block
+    [modifier]="character.apiInfo.abilityScoreModifiers[2]"
+    [total]="characterData.abilityScores[2]"
+  ></app-char-stat-block>
+  <p>Int:</p>
+  <app-char-stat-block
+    [modifier]="character.apiInfo.abilityScoreModifiers[3]"
+    [total]="characterData.abilityScores[3]"
+  ></app-char-stat-block>
+  <p>Wis:</p>
+  <app-char-stat-block
+    [modifier]="character.apiInfo.abilityScoreModifiers[4]"
+    [total]="characterData.abilityScores[4]"
+  ></app-char-stat-block>
+  <p>Cha:</p>
+  <app-char-stat-block
+    [modifier]="character.apiInfo.abilityScoreModifiers[5]"
+    [total]="characterData.abilityScores[5]"
+  ></app-char-stat-block>
 </div>
