@@ -7,8 +7,8 @@
       </span>
     </div>
 
-    <div class="race">Race: {{ character.race }}</div>
-    <div class="class">Class: {{ character.charClass }}</div>
+    <div class="race">Race: {{ character.race.raceIndex }}</div>
+    <div class="class">Class: {{ character.classes[0].classIndex }}</div>
     <div class="level">Level: {{ character.overallLevel }}</div>
   </div>
   <div class="char-controls-container">

@@ -34,7 +34,7 @@ export type Character = {
   id: string;
   name: string;
   race: string;
-  class: string;
+  class: Array<any>;
   level: string;
   favorite: boolean;
 };
