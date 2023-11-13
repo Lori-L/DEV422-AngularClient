@@ -10,6 +10,9 @@ export class CharacterApiService {
   getCharacters(userId: string): any {
     return this.http.get(`http://localhost:3000/char/all?userId=${userId}`);
   }
+  getCharacter(characterId: string): any {
+    return this.http.get(`http://localhost:3000/char/one?_id=${characterId}`);
+  }
 
   favoriteCharacter(_id: string): any {
     return this.http.post(`http://localhost:3000/char/favorite`, {

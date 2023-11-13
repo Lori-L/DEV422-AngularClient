@@ -1,8 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { CharacterApiService } from '../character-api.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-char-dialog',
@@ -12,14 +10,8 @@ import { Router } from '@angular/router';
 export class DeleteCharDialogComponent implements OnInit {
   constructor(
     private characterApiService: CharacterApiService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private router: Router,
-    private location: Location
-  ) {
-    this.characterId = '';
-  }
-
-  @Input() characterId: any;
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
   ngOnInit(): void {}
 

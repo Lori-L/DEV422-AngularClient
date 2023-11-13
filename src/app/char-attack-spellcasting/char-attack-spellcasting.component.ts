@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-char-attack-spellcasting',
   templateUrl: './char-attack-spellcasting.component.html',
-  styleUrls: ['./char-attack-spellcasting.component.css']
+  styleUrls: ['./char-attack-spellcasting.component.css'],
 })
 export class CharAttackSpellcastingComponent implements OnInit {
+  @Input() character: any;
+  @Input() characterData: any;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-death-saves',
   templateUrl: './death-saves.component.html',
-  styleUrls: ['./death-saves.component.css']
+  styleUrls: ['./death-saves.component.css'],
 })
 export class DeathSavesComponent implements OnInit {
+  @Input() character: any;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

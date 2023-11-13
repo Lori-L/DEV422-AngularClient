@@ -1,26 +1,14 @@
 <div id="whole">
-    <div class="center">
-        Attacks & Spellcasting
-    </div>
-    <div id="attacks">
-        <ul>
-            <li>Dagger - #d#- Piercing</li>
-            <li>Dagger - #d#- Piercing</li>
-            <li>Dagger - #d#- Piercing</li>
-            <li>Dagger - #d#- Piercing</li>
-            <li>Dagger - #d#- Piercing</li>
-        </ul>
-    </div>
-    <div class="center">
-        Equipable
-    </div>
-    <div id="gear">
-        <ul>
-            <li>Dagger - #d#- Piercing</li>
-            <li>Dagger - #d#- Piercing</li>
-            <li>Dagger - #d#- Piercing</li>
-            <li>Dagger - #d#- Piercing</li>
-            <li>Dagger - #d#- Piercing</li>
-        </ul>
-    </div>
+  <div class="center">Attacks & Spellcasting</div>
+  <div id="attacks">
+    <ul *ngFor="let equipped of characterData.equippedItemsIndexes">
+      <li>{{ equipped }} - #d#- Piercing</li>
+    </ul>
+  </div>
+  <div class="center">Equipable</div>
+  <div id="gear">
+    <ul *ngFor="let items of characterData.inventoryItemsIndexes">
+      <li>{{ items }}</li>
+    </ul>
+  </div>
 </div>
