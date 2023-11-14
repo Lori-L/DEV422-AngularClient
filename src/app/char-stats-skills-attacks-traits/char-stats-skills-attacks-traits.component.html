@@ -1,6 +1,18 @@
 <div>
-    <app-char-stats></app-char-stats>
-    <app-char-skills></app-char-skills>
-    <app-char-attacks></app-char-attacks>
-    <app-char-traits></app-char-traits>
+  <app-char-stats
+    [characterData]="characterData"
+    [character]="character"
+  ></app-char-stats>
+  <app-char-skills
+    [characterData]="characterData"
+    [character]="character"
+  ></app-char-skills>
+  <app-char-attacks
+    [characterData]="characterData"
+    [character]="character"
+  ></app-char-attacks>
+  <app-char-traits
+    [characterData]="characterData"
+    [character]="character"
+  ></app-char-traits>
 </div>

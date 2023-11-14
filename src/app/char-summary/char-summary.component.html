@@ -1,19 +1,24 @@
-<div id="name">
-    Name
-</div>
-<div id="additional-stats">
+<div *ngFor="let class of characterData.classes">
+  <div id="name">{{ characterData.name }}</div>
+  <div id="additional-stats">
     <div id="top">
-        <div id="class">Class</div>
-        <div id="level">Level</div>
-        <div id="background">Background</div>
-        <div id="player-name">Player Name</div>
+      <div id="class">Class: {{ class.classIndex }}</div>
+      <div id="level">Level: {{ class.classLevel }}</div>
+      <div id="background">
+        <!-- TODO: get from api -->
+        Background: {{ character.background.backgroundIndex }}
+      </div>
+      <div id="player-name">Player Name</div>
     </div>
     <div id="bottom">
-        <div id="race">Race</div>
-        <div id="alignment">Alignment</div>
-        <div id="experience">
-            <label for="xp">Exp: </label>
-            <input id="xp" type="Text">
-        </div>
+      <div id="race">Race: {{ characterData.race.raceIndex }}</div>
+      <div id="alignment">
+        Alignment: {{ characterData.personality.alignmentIndex }}
+      </div>
+      <div id="experience">
+        <label for="xp">Exp: </label>
+        <input id="xp" type="Text" />
+      </div>
     </div>
+  </div>
 </div>

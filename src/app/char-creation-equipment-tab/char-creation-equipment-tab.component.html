@@ -1,6 +1,8 @@
 <h2>Equipment</h2>
 
-<div *ngIf="startingClass == 'barbarian'">
+<!--NOTE: CHOICE SELECTIONS ARE TEMPORARILY HARD-CODED-->
+<!--FOR EXAMPLE: 1 GLAIVE IS ADDED INSTEAD OF USER BEING PRESENTED WITH ANY MARTIAL MELEE WEAPON CHOICE-->
+<div *ngIf="startingClass == 'barbarian' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -11,23 +13,23 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems(['greataxe'])">
         <label for="1a">(a) A greataxe</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems(['glaive'])">
         <label for="1b">(b) Any martial melee weapon</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems(['handaxe', 'handaxe'])">
         <label for="2a">(a) Two handaxes</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems(['club'])">
         <label for="2b">(b) Any simple weapon</label><br>
     </div>
 </div>
 
-<div *ngIf="startingClass == 'bard'">
+<div *ngIf="startingClass == 'bard' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -65,7 +67,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'cleric'">
+<div *ngIf="startingClass == 'cleric' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -110,7 +112,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'druid'">
+<div *ngIf="startingClass == 'druid' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -142,7 +144,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'fighter'">
+<div *ngIf="startingClass == 'fighter' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <p>Choose between...</p>
@@ -180,7 +182,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'monk'">
+<div *ngIf="startingClass == 'monk' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -206,7 +208,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'paladin'">
+<div *ngIf="startingClass == 'paladin' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -245,7 +247,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'ranger'">
+<div *ngIf="startingClass == 'ranger' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -280,7 +282,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'rogue'">
+<div *ngIf="startingClass == 'rogue' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -319,7 +321,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'sorcerer'">
+<div *ngIf="startingClass == 'sorcerer' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -353,7 +355,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'warlock'">
+<div *ngIf="startingClass == 'warlock' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -393,7 +395,7 @@
     </div>
 </div>
 
-<div *ngIf="startingClass == 'wizard'">
+<div *ngIf="startingClass == 'wizard' && currentChar.startingEquipmentSelected == false">
     <h4>Starting Equipment:</h4>
 
     <ul>
@@ -427,44 +429,9 @@
     </div>
 </div>
 
-
-
-<h4>Select Starting Equipment:</h4>
-
-<p>Choose between...</p>
-
-<div>
-    <input type="radio" id="1a" name="classEquipment1" value="1a">
-    <label for="1a">(a) A martial weapon and a shield</label><br>
-
-    <input type="radio" id="1b" name="classEquipment1" value="1b">
-    <label for="1b">(b) Two martial weapons</label><br>
+<div *ngIf="startingClass == undefined">
+    <h2>Select a starting class in the Classes tab to view starting equipment options.</h2>
 </div>
-
-<div>
-    <input type="radio" id="2a" name="classEquipment2" value="2a">
-    <label for="2a">(a) Five javelins</label><br>
-
-    <input type="radio" id="2b" name="classEquipment2" value="2b">
-    <label for="2b">(b) Any simple melee weapon</label><br>
-</div>
-
-<div>
-    <input type="radio" id="3a" name="classEquipment3" value="3a">
-    <label for="3a">(a) A priest's pack</label><br>
-
-    <input type="radio" id="3b" name="classEquipment3" value="3b">
-    <label for="3b">(b) An explorer's pack</label><br>
-</div>
-
-<p>Equipment from background:</p>
-<ul>
-    <li>A holy symbol (a gift to you when you entered the priesthood</li>
-    <li>A prayer book or prayer wheel</li>
-    <li>5 sticks of incense</li>
-    <li>A set of common clothes</li>
-    <li>A pouch containing 15 gp</li>
-</ul>
 
 <br><br>
 

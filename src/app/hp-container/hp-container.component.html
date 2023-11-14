@@ -1,20 +1,25 @@
 <div id="whole">
-    <div id="max-top">
-        Max HP
-    </div>
-    <div id="max-bottom">
-        ##
-    </div>
-    <div id="current-top">
-        Current HP
-    </div>
-    <div id="current-bottom">
-        <input type="text" id="current">
-    </div>
-    <div id="temp-top">
-        Temp HP
-    </div>
-    <div id="temp-bottom">
-        <input type="text" id="temp">
-    </div>
+  <div id="max-top">Max HP</div>
+  <div id="max-bottom">{{ characterData.hp.maxHP }}</div>
+  <div id="current-top">Current HP</div>
+  <div id="current-bottom">
+    <input
+      type="text"
+      id="current"
+      [(ngModel)]="characterData.hp.currentHP"
+      (input)="updateCurrentHP($event)"
+    />
+    <button (click)="sendCurrentHP()">send</button>
+  </div>
+  <div id="temp-top">Temp HP</div>
+
+  <div id="temp-bottom">
+    <input
+      type="text"
+      id="temp"
+      [(ngModel)]="characterData.hp.tempHP"
+      (input)="updateTempHP($event)"
+    />
+    <button (click)="sendTempHP()">send</button>
+  </div>
 </div>

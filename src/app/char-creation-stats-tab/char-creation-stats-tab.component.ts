@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { charObject } from '../create-edit-page/charObject';
 
 @Component({
   selector: 'app-char-creation-stats-tab',
@@ -21,6 +22,8 @@ export class CharCreationStatsTabComponent implements OnInit {
     let pointBuyPoints: number;
   }
 
+  currentChar: charObject = new charObject;
+
   standardArray = false;
   manualEntry = false;
   pointBuy = false;
@@ -33,11 +36,52 @@ export class CharCreationStatsTabComponent implements OnInit {
 
   pointBuyPoints = 27;
 
-  onSelect(value: string) {
+  updateStat(ind: number) {
+    this.currentChar.abilityScores[ind] = Number((document.getElementById("manualEntry" + ind) as HTMLInputElement)?.value);
+    console.log(this.currentChar);
 
+    sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
+  }
+
+  newGenMethod() {
+    switch(this.selectedOption) {
+      case "standardArray": {
+        this.standardArray = false;
+        break;
+      }
+      case "manualEntry": {
+        this.manualEntry = false;
+        break;
+      }
+      case "pointBuy": {
+        this.pointBuy = false;
+        break;
+      }
+    }
+
+    switch((document.getElementById("generationMethod") as HTMLSelectElement)?.value) {
+      case "standardArray": {
+        this.standardArray = true;
+        this.selectedOption = "standardArray";
+        break;
+      }
+      case "manualEntry": {
+        this.manualEntry = true;
+        this.selectedOption = "manualEntry";
+        break;
+      }
+      case "pointBuy": {
+        this.pointBuy = true;
+        this.selectedOption = "pointBuy";
+        break;
+      }
+    }
   }
 
   ngOnInit(): void {
+    this.currentChar = JSON.parse(String(sessionStorage.getItem('currentChar')));
+    console.log(this.currentChar);
+
   }
 
 }

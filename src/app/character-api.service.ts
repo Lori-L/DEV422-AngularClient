@@ -10,9 +10,24 @@ export class CharacterApiService {
   getCharacters(userId: string): any {
     return this.http.get(`http://localhost:3000/char/all?userId=${userId}`);
   }
+  getCharacter(characterId: string): any {
+    return this.http.get(`http://localhost:3000/char/one?_id=${characterId}`);
+  }
 
-  deleteCharacter(id: string): any {
-    return this.http.delete(`http://localhost:3000/char/one?_id=${id}`);
+  favoriteCharacter(_id: string): any {
+    return this.http.post(`http://localhost:3000/char/favorite`, {
+      _id: _id,
+    });
+  }
+
+  unfavoriteCharacter(_id: string): any {
+    return this.http.post(`http://localhost:3000/char/unfavorite`, {
+      _id: _id,
+    });
+  }
+
+  deleteCharacter(_id: string): any {
+    return this.http.delete(`http://localhost:3000/char/one?_id=${_id}`);
   }
 
   createTestChars(): any {

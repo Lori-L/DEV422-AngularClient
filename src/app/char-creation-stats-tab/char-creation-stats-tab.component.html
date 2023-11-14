@@ -1,14 +1,14 @@
 <h2>Stats</h2>
 
 <label for="generationMethod">Ability Score Generaton Method: </label>
-<select name="generationMethod" id="generationMethod">
-    <option selected>Select</option> <!--TODO: Add functionality, have selections change which div is displayed-->
+<select name="generationMethod" id="generationMethod" (change)="newGenMethod()">
+    <option selected>Select</option>
     <option value="standardArray">Standard Array</option>
     <option value="manualEntry">Manual Entry</option>
     <option value="pointBuy">Point Buy</option>
 </select>
 
-<div class="standardArray">
+<div class="standardArray" *ngIf="standardArray">
     <br><br>
 
     <div class="stats">
@@ -23,16 +23,16 @@
     </div>
 </div>
 
-<div class="manualEntry">
+<div class="manualEntry" *ngIf="manualEntry">
     <br><br>
 
     <div class="statblock" *ngFor="let stat of stats, index as i">
         <label>{{stat}}</label>
-        <input type="text" [(ngModel)]="enteredStats[i]">
+        <input type="text" id="manualEntry{{i}}" [(ngModel)]="enteredStats[i]" (change)="updateStat(i)">
     </div>
 </div>
 
-<div class="pointBuy">
+<div class="pointBuy" *ngIf="pointBuy">
     <br><br>
 
     <p>Points: {{pointBuyPoints}} / 27</p>

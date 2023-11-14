@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-char-traits',
   templateUrl: './char-traits.component.html',
-  styleUrls: ['./char-traits.component.css']
+  styleUrls: ['./char-traits.component.css'],
 })
 export class CharTraitsComponent implements OnInit {
+  @Input() character: any;
+  @Input() characterData: any;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
