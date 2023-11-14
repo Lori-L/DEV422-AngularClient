@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CharClasses } from '../char-creation-class-tab/charClasses';
+import { charObject } from './charObject';
 
 @Component({
   selector: 'app-create-edit-page',
@@ -26,6 +26,9 @@ export class CreateEditPageComponent implements OnInit {
   ngOnInit(): void {
     sessionStorage.setItem("classList", JSON.stringify([["Bard", 3], ["Barbarian", 1]]));
     sessionStorage.setItem("startingClass", "bard");
+    
+    let testChar: charObject = new charObject;
+    sessionStorage.setItem("currentChar", JSON.stringify(testChar));
   }
 
 }

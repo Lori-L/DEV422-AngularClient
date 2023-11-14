@@ -1,7 +1,7 @@
 <h2>Personality</h2>
 
 <label for="alignment">Character Alignment: </label>
-<select name="alignment" id="alignment">
+<select name="alignment" id="alignment" (change)="updateAlignment()">
     <option selected>Select</option>
 
     <option value="lawfulGood">Lawful Good</option>
@@ -28,7 +28,7 @@
   <label for="sampleTrait3"> Sample Personality Trait 3</label><br>
   
 <label for="userTrait">Additional Trait(s): </label>
-<input type="text" id="userTrait" name="userTrait">
+<input type="text" id="userTrait" name="userTrait" (change)="updateTraits()">
 
 
 
@@ -45,7 +45,7 @@
   <label for="sampleIdeal3"> Sample Ideal 3</label><br>
 
 <label for="userIdeal">Additional Ideal(s): </label>
-<input type="text" id="userIdeal" name="userIdeal">
+<input type="text" id="userIdeal" name="userIdeal" (change)="updateIdeals()">
   
 
 
@@ -62,7 +62,7 @@
   <label for="sampleBond3"> Sample Bond 3</label><br>
   
 <label for="userBond">Additional Bond(s): </label>
-<input type="text" id="userBond" name="userBond">
+<input type="text" id="userBond" name="userBond" (change)="updateBonds()">
 
 
 
@@ -79,4 +79,4 @@
   <label for="sampleFlaw3"> Sample Flaw 3</label><br>
   
 <label for="userFlaw">Additional Flaw(s): </label>
-<input type="text" id="userFlaw" name="userFlaw">
+<input type="text" id="userFlaw" name="userFlaw" (change)="updateFlaws()">

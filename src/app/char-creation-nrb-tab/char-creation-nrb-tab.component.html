@@ -1,20 +1,20 @@
 <h2>Name, Race, Background</h2>
 
 <label for="charName">Character Name: </label>
-<input type="text" id="charName" name="charName">
+<input type="text" id="charName" name="charName" (change)="updateName()">
 
 <br><br>
 
 <label for="charRace">Character Race: </label>
-<select name="charRace" id="charRace">
-    <option selected>Select</option>
+<select name="charRace" id="charRace" (change)="updateRace()">
+    <option selected value="none">Select</option>
     <option *ngFor="let race of raceList" [value]="race.index">{{race.name}}</option>
 </select>
 
 <br><br>
 
 <label for="charBackground">Character Background: </label>
-<select name="charBackground" id="charBackground">
+<select name="charBackground" id="charBackground" (change)="updateBackground()">
     <option selected>Select</option>
     <option *ngFor="let background of backgroundList" [value]="background.index">{{background.name}}</option>
 </select>
