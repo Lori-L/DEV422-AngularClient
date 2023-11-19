@@ -49,6 +49,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DeleteCharDialogComponent } from './delete-char-dialog/delete-char-dialog.component';
 import { SingleSheetPage1Component } from './single-sheet-page1/single-sheet-page1.component';
 import { SingleSheetPage2Component } from './single-sheet-page2/single-sheet-page2.component';
+import { SpellComponent } from './spell/spell.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { SingleSheetPage2Component } from './single-sheet-page2/single-sheet-pag
     DeleteCharDialogComponent,
     SingleSheetPage1Component,
     SingleSheetPage2Component,
+    SpellComponent,
   ],
   imports: [
     BrowserModule,
