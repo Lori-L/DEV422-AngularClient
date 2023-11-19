@@ -1,25 +1,34 @@
 #center {
-    margin: auto;
-    display: block;
-    width: 95%;
+  margin: auto;
+  display: block;
+  width: 95%;
 }
 
 #check {
-    margin-top: 1em;
+  margin-top: 1em;
 }
 
-#number p, #text p, #check {
-    border-style: inset;
-    border-width: 3px;
+#number p,
+#text p,
+#check {
+  border-style: inset;
+  border-width: 3px;
 }
 
-#number, #check {
-    width: calc(18% - 6px);
-    float: left;
-    text-align: center;
+#number,
+#check {
+  width: calc(18% - 6px);
+  float: left;
+  text-align: center;
 }
 
 #text {
-    width: calc(59% - 6px);
-    float: left;
+  width: calc(59% - 6px);
+  float: left;
+}
+
+.disabled {
+  color: blue; /* Adjust the color to your preference */
+  /* cursor: not-allowed;cd */
+  pointer-events: none;
 }

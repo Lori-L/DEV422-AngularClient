@@ -2,8 +2,10 @@
   <div id="name">{{ characterData.name }}</div>
   <div id="additional-stats">
     <div id="top">
-      <div id="class">Class: {{ class.classIndex }}</div>
-      <div id="level">Level: {{ class.classLevel }}</div>
+      <div id="class">
+        Class: {{ class.classIndex }} (Lvl: {{ class.classLevel }})
+      </div>
+      <div id="level">Character Level: {{ class.classLevel }}</div>
       <div id="background">
         <!-- TODO: get from api -->
         Background: {{ character.background.backgroundIndex }}

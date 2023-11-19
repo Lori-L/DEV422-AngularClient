@@ -1,6 +1,12 @@
 <div id="center">
   <div id="check">
-    <input type="checkbox" id="checkbox" value="Has" />
+    <input
+      class="disabled"
+      type="checkbox"
+      id="checkbox"
+      value="Has"
+      [checked]="isChecked"
+    />
   </div>
   <div id="number">
     <p>{{ value }}</p>

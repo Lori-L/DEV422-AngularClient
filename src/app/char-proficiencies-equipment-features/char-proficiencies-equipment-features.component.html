@@ -1,7 +1,13 @@
 <div id="whole">
   <div id="prof">
-    <app-num-box [title]="character" [value]="character"></app-num-box>
-    <app-textbox [trait]="character" [traitText]="character"></app-textbox>
+    <app-num-box
+      [title]="character.name"
+      [value]="character.name"
+    ></app-num-box>
+    <app-textbox
+      [trait]="character.name"
+      [traitText]="character.name"
+    ></app-textbox>
   </div>
   <div id="equipment">
     <div>Equipment</div>
