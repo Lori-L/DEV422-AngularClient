@@ -1,0 +1,24 @@
+#main {
+    margin: auto;
+    width: 80%;
+}
+
+#top, #bottom {
+    width: 100%;
+}
+
+#age, #height, #weight {
+    display: flex;
+    float: left;
+    width: calc(33% - 2px);
+    border-style: inset;
+    border-width: 3px;
+}
+
+#eyes, #skin, #hair {
+    display: flex;
+    float: left;
+    width: calc(33% - 2px);
+    border-style: inset;
+    border-width: 3px;
+}
