@@ -1,18 +1,27 @@
-.center {
-    text-align: center;
+#whole {
+  display: flex;
+  flex-direction: column;
 }
 
-div {
-    border-style: outset;
-    border-width: 3px;
+.center {
+  display: flex;
+  justify-content: center;
+  border: 1px solid grey;
+  margin: 0 10px 0 10px;
 }
 
 #attacks {
-    overflow: scroll;
-    height: 5.5rem;
+  overflow: auto;
+  height: 5.5rem;
+  max-height: 5.5rem;
+  border: 1px solid grey;
+  margin: 0 10px 10px 10px;
 }
 
 #gear {
-    overflow: scroll;
-    height: 10.4rem;
+  overflow: auto;
+  height: 10.4rem;
+  max-height: 10.4rem;
+  border: 1px solid grey;
+  margin: 0 10px 10px 10px;
 }

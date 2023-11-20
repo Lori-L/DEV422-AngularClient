@@ -1,20 +1,20 @@
-#prof, #features, #equipment {
-    width: calc(33.3% - 6px);
-    float: left;
-    border-style: outset;
-    border-width: 3px;
+#prof,
+#features,
+#equipment {
+  width: calc(33.3% - 6px);
+  float: left;
+  border-width: 3px;
 }
 
 #features {
-    float: right;
+  float: right;
 }
 
 #whole {
-    border-style: inset;
-    border-width: 3px;
 }
 
-#equip-scroll, #feature-scroll {
-    overflow: scroll;
-    height: 200px;
+#equip-scroll,
+#feature-scroll {
+  overflow: scroll;
+  height: 200px;
 }

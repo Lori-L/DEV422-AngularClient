@@ -1,6 +1,4 @@
 div {
-    width: 100%;
-    border-style: inset;
-    float: left;
-    display: block;
+  width: 100%;
+  display: block;
 }

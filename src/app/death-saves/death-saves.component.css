@@ -1,31 +1,73 @@
-div {
-    border-style: outset;
-    border-width: 3px;
-    display: block;
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
 }
 
-#dice {
-    width: 49%;
-    margin:auto;
+.title {
+  border: 1px solid grey;
+  border-bottom: none;
+  padding: 5px;
+}
+
+.no-right {
+  border-right: none;
+}
+
+#dice-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 51%;
+  margin: auto;
+}
+
+#total-top {
+  border: 1px solid grey;
+  border-bottom: none;
+  border-right: none;
+  padding: 5px;
+}
+#total-bottom {
+  border: 1px solid grey;
+  border-right: none;
+  padding: 5px;
 }
 
 #saves {
-    width: 49%;
-    margin:auto;
+  width: 50%;
+  margin: auto;
+}
+
+#saves-top {
+  border: 1px solid grey;
+  border-bottom: none;
+  padding: 5px;
+}
+#saves-bottom {
+  border: 1px solid grey;
+
+  padding: 5.5px;
 }
 
 input {
-    width: 90%;
+  width: 90%;
 }
 
-
-
-#dice, #saves {
-    width: 47%;
-    float: left;
+#saves {
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+  margin: auto;
+  justify-content: space-evenly;
 }
 
-#s0, #s1, #s2, #f0, #f1, #f2 {
-    width: 20px;
-    display: inline-block;
+#s0,
+#s1,
+#s2,
+#f0,
+#f1,
+#f2 {
+  width: 20px;
+  display: inline-block;
 }

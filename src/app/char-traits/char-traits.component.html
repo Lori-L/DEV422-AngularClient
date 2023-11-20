@@ -1,3 +1,11 @@
-<div *ngFor="let trait of character.apiInfo.race.traits">
-  <app-textbox [trait]="trait[0]" [traitText]="trait[1]"></app-textbox>
+<div class="wrapper">
+  <div class="trait-div" *ngFor="let trait of character.apiInfo.race.traits">
+    <app-textbox [trait]="trait[0]" [traitText]="trait[1]"></app-textbox>
+  </div>
+  <div class="features">
+    <div id="more-features">
+      <div>Features & Traits</div>
+      <div id="feature-scroll"></div>
+    </div>
+  </div>
 </div>
