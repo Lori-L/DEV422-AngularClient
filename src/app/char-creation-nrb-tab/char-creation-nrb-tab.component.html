@@ -11,6 +11,46 @@
     <option *ngFor="let race of raceList" [value]="race.index">{{race.name}}</option>
 </select>
 
+<div class="container" style="width: 50%;" *ngIf="currentChar.race.raceIndex != ''">
+    <h3>{{currentChar.race.raceIndex}} Info:</h3>
+
+    <p>Alignment: {{currentRace?.alignmentText}}</p>
+    <p>Lifespan: {{currentRace?.ageText}}</p>
+    <p>Size: {{currentRace?.sizeText}}</p>
+    <p>Known Languages: {{currentRace?.languageText}}</p>
+    <ul>
+        <li *ngFor="let ability of currentRace?.raceAbilityBonuses">{{ability[0]}}: +{{ability[1]}}</li>
+    </ul>
+
+    <div class="container" *ngIf="raceUserAbilitiesData != null">
+        <h4>Select {{raceUserAbilitiesCount}} ability bonuse(s):</h4>
+
+        <div *ngFor="let ability of raceUserAbilities">
+            <input type="checkbox" value={{ability[0]}} id="abilityScoreOptions" (click)="updateRaceAbilityBonuses(ability[0], ability[2])">
+            <label for="abilityScoreOptions">Increase {{ability[1]}} by {{ability[2]}}</label><br>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="raceUserProficienciesData != null">
+        <h4>Select {{raceUserProficienciesCount}} proficiencie(s):</h4>
+
+        <div *ngFor="let proficiency of raceUserProficiencies">
+            <input type="checkbox" value={{proficiency[0]}} id="proficiencyOptions" (click)="updateRaceProficiencies(proficiency[0], proficiency[1])">
+            <label for="proficiencyOptions">Become proficient in {{proficiency[1]}}</label><br>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="raceUserLanguages != null">
+        <h4>Select {{raceUserLanguagesCount}} language(s):</h4>
+
+        <div *ngFor="let language of raceUserLanguages">
+            <input type="checkbox" value={{language[0]}} id="languageOptions" (click)="updateRaceLanguages(language[0], language[1])">
+            <label for="languageOptions">Learn {{language[1]}}</label><br>
+        </div>
+    </div>
+
+</div>
+
 <br><br>
 
 <label for="charBackground">Character Background: </label>
@@ -18,3 +58,36 @@
     <option selected>Select</option>
     <option *ngFor="let background of backgroundList" [value]="background.index">{{background.name}}</option>
 </select>
+
+<div class="container" style="width: 50%;" *ngIf="currentChar.background.backgroundIndex != ''">
+    <h3>{{currentChar.background.backgroundIndex}} Info:</h3>
+
+    <div class="container">
+        <h4>{{currentBackground!.feature[0]}}</h4>
+        <p>{{currentBackground!.feature[1]}}</p>
+    </div>
+
+    <div class="container">
+        <h4>Background Equipment:</h4>
+        <ul>
+            <li *ngFor="let item of currentBackground?.startingEquipment">{{item[1]}} {{item[0]}}</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h4>Background Proficiencies:</h4>
+        <ul>
+            <li *ngFor="let prof of currentBackground?.startingProfiencies">{{prof[1]}}</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h4>Select {{backgroundUserLanguagesCount}} language(s):</h4>
+
+        <div *ngFor="let language of backgroundLanguageList">
+            <input type="checkbox" value={{language[0]}} id="languageOptions" (click)="updateBackgroundLanguage(language[0], language[1])">
+            <label for="languageOptions">Learn {{language[1]}}</label><br>
+        </div>
+    </div>
+   
+</div>

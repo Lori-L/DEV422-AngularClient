@@ -15,10 +15,22 @@ export class DndApiServiceService {
     );
   }
 
+  RaceInfo(raceIndex: string): Observable<any>{
+    return this.http.get(
+      'https://www.dnd5eapi.co/api/races/' + raceIndex
+    );
+  }
+
   BackgroundList(): Observable<any> {
     return this.http.get(
       'https://www.dnd5eapi.co/api/backgrounds/'
     );
+  }
+
+  BackgroundInfo(backgroundIndex: string): Observable<any> {
+    return this.http.get(
+      'https://www.dnd5eapi.co/api/backgrounds/' + backgroundIndex
+    )
   }
 
   ClassList(): Observable<any> {
@@ -27,6 +39,19 @@ export class DndApiServiceService {
     );
   }
 
+  SingleClassData(classIndex: string): Observable<any> {
+    return this.http.get(
+      'https://www.dnd5eapi.co/api/classes/' + classIndex
+    );
+  }
+
+  EquipmentCategoryData(category: string): Observable<any> {
+    return this.http.get(
+      'https://www.dnd5eapi.co/api/equipment-categories/' + category
+    )
+  }
+
+  //deprecated
   DetermineIfSpellcaster(className: string): Observable<any> {
     return this.http.get(
       'https://www.dnd5eapi.co/api/classes/' + className + '/spells'
@@ -48,6 +73,12 @@ export class DndApiServiceService {
   DetermineSpellcastingAbility(className: string): Observable<any> {
     return this.http.get(
       'https://www.dnd5eapi.co/api/classes/' + className + '/spellcasting'
+    );
+  }
+
+  MiscQuery(url: string): Observable<any> {
+    return this.http.get(
+      'https://www.dnd5eapi.co' + url
     );
   }
 }
