@@ -1,0 +1,21 @@
+#main {
+    margin: auto;
+    width: 100%;
+}
+
+#name {
+    display: flex;
+    float: left;
+    width: calc(100% - 35px);
+    border-style: outset;
+    border-width: 3px;
+    height: 100%;
+}
+
+#prepared {
+    display: flex;
+    float: left;
+    width: 23px;
+    border-style: outset;
+    border-width: 3px;
+}
