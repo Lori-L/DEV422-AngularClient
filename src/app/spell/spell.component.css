@@ -3,6 +3,14 @@
     width: 100%;
 }
 
+#prepared {
+    display: flex;
+    float: left;
+    width: 23px;
+    border-style: outset;
+    border-width: 3px;
+}
+
 #name {
     display: flex;
     float: left;
@@ -12,10 +20,11 @@
     height: 100%;
 }
 
-#prepared {
+#description {
     display: flex;
     float: left;
-    width: 23px;
+    width: calc(100% - 7px);
     border-style: outset;
     border-width: 3px;
+    height: 100%;
 }
