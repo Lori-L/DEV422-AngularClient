@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { charObject } from '../create-edit-page/charObject';
 
 @Component({
@@ -22,6 +22,8 @@ export class CharCreationStatsTabComponent implements OnInit {
     let pointBuyPoints: number;
   }
 
+  @Output() completionUpdater = new EventEmitter();
+
   currentChar: charObject = new charObject;
 
   standardArray = false;
@@ -36,9 +38,21 @@ export class CharCreationStatsTabComponent implements OnInit {
 
   pointBuyPoints = 27;
 
+  //event emitter shenanigans
+  updateCompletedStatus() {
+    if(this.currentChar.abilityScores.includes(0) == false) {
+      this.completionUpdater.emit([2, true]);
+    }
+    else {
+      this.completionUpdater.emit([2, false]);
+    }
+  }
+
   updateStat(ind: number) {
     this.currentChar.abilityScores[ind] = Number((document.getElementById("manualEntry" + ind) as HTMLInputElement)?.value);
     console.log(this.currentChar);
+
+    this.updateCompletedStatus();
 
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }

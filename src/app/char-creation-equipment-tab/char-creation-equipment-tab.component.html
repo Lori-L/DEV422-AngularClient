@@ -13,18 +13,18 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems(['greataxe'])">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['greataxe', 1]])">
         <label for="1a">(a) A greataxe</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems(['glaive'])">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['glaive', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="1b">(b) Any martial melee weapon</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems(['handaxe', 'handaxe'])">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['handaxe', 2]])">
         <label for="2a">(a) Two handaxes</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems(['club'])">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['club', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="2b">(b) Any simple weapon</label><br>
     </div>
 </div>
@@ -40,29 +40,29 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['rapier', 1]])">
         <label for="1a">(a) A rapier</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['longsword', 1]])">
         <label for="1b">(b) A longsword</label><br>
 
-        <input type="radio" id="1c" name="classEquipment1" value="1c">
+        <input type="radio" id="1c" name="classEquipment1" value="1c" (click)="addItems([['club', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="1c">(c) Any simple weapon</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['diplomats-pack', 1]])">
         <label for="2a">(a) A diplomat's pack</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['entertainers-pack', 1]])">
         <label for="2b">(b) An entertainer's pack</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a" (click)="addItems([['lute', 1]])">
         <label for="3a">(a) A lute</label><br>
 
-        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <input type="radio" id="3b" name="classEquipment3" value="3b" (click)="addItems([['drum', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="3b">(b) Any other musical instrument</label><br>
     </div>
 </div>
@@ -77,38 +77,52 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['mace', 1]])">
         <label for="1a">(a) A mace</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['warhammer', 1]])">
         <label for="1b">(b) A warhammer</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['scale-mail', 1]])">
         <label for="2a">(a) Scale mail</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['leather-armor', 1]])">
         <label for="2b">(b) Leather armor</label><br>
 
-        <input type="radio" id="2c" name="classEquipment2" value="2c">
+        <input type="radio" id="2c" name="classEquipment2" value="2c" (click)="addItems([['chain-mail', 1]])">
         <label for="2c">(c) Chain mail</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a" (click)="addItems([['crossbow-light', 1], ['crossbow-bolt', 20]])">
         <label for="3a">(a) A light crossbow and 20 bolts</label><br>
 
-        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <input type="radio" id="3b" name="classEquipment3" value="3b" (click)="addItems([['club', 1]]); threeB = true;"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="3b">(b) Any simple weapon</label><br>
+
+        <select name="simpleWeapon" id="simpleWeapon" *ngIf="threeB" (change)="addItems([[]])">
+            <option selected>Select</option>
+            <option *ngFor="let simple of simple_weapons" [value]="simple[0]">{{simple[1]}}</option>
+        </select> 
     </div>
 
     <div>
-        <input type="radio" id="4a" name="classEquipment4" value="4a">
+        <input type="radio" id="4a" name="classEquipment4" value="4a" (click)="addItems([['priests-pack', 1]])">
         <label for="4a">(a) A priest's pack</label><br>
 
-        <input type="radio" id="4b" name="classEquipment4" value="4b">
+        <input type="radio" id="4b" name="classEquipment4" value="4b" (click)="addItems([['explorers-pack', 1]])">
         <label for="4b">(b) An explorer's pack</label><br>
+    </div>
+
+    <div>
+        <label for="holySymbol">A holy symbol: </label>
+        <!--TODO: MAKE NEW ADDITEMS METHOD FOR SELECT OPTIONS-->
+        <select name="holySymbol" id="holySymbol" (change)="addItems([[]])">
+            <option selected>Select</option>
+            <option *ngFor="let holy of holy_symbols" [value]="holy[0]">{{holy[1]}}</option>
+        </select> <!--EQUIPMENT TYPE SELECTOR-->
     </div>
 </div>
 
@@ -123,23 +137,23 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['shield', 1]])">
         <label for="1a">(a) A wooden shield</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['club', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="1b">(b) Any simple weapon</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['scimitar', 1]])">
         <label for="2a">(a) A scimitar</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['club', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="2b">(b) Any simple melee weapon</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="3a">A druidic focus</label><br>
     </div>
 </div>
@@ -150,34 +164,34 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['chain-mail', 1]])">
         <label for="1a">(a) Chain mail</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['leather-armor', 1], ['longbow', 1], ['arrow', 20]])">
         <label for="1b">(b) Leather armor, a longbow, and 20 arrows</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['shield', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="2a">(a) A martial weapon and a shield</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="2b">(b) Two martial weapons</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a" (click)="addItems([['crossbow-light', 1], ['crossbow-bolt', 20]])">
         <label for="3a">(a) A light crossbow and 20 bolts</label><br>
 
-        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <input type="radio" id="3b" name="classEquipment3" value="3b" (click)="addItems([['handaxe', 2]])">
         <label for="3b">(b) Two handaxes</label><br>
     </div>
 
     <div>
-        <input type="radio" id="4a" name="classEquipment4" value="4a">
+        <input type="radio" id="4a" name="classEquipment4" value="4a" (click)="addItems([['dungeoneers-pack', 1]])">
         <label for="4a">(a) A dungeoneer's pack</label><br>
 
-        <input type="radio" id="4b" name="classEquipment4" value="4b">
+        <input type="radio" id="4b" name="classEquipment4" value="4b" (click)="addItems([['explorers-pack', 1]])">
         <label for="4b">(b) An explorer's pack</label><br>
     </div>
 </div>
@@ -192,18 +206,18 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['shortsword', 1]])">
         <label for="1a">(a) A shortsword</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['club', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="1b">(b) Any simple weapon</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['dungeoneers-pack', 1]])">
         <label for="2a">(a) A dungeoneer's pack</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['explorers-pack', 1]])">
         <label for="2b">(b) An explorer's pack</label><br>
     </div>
 </div>
@@ -218,31 +232,31 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['shield', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="1a">(a) A martial weapon and a shield</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="1b">(b) Two martial weapons</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['javelin', 5]])">
         <label for="2a">(a) 5 javelins</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['club', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="2b">(b) Any simple melee weapon</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a" (click)="addItems([['priests-pack', 1]])">
         <label for="3a">(a) A priest's pack</label><br>
 
-        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <input type="radio" id="3b" name="classEquipment3" value="3b" (click)="addItems([['explorers-pack', 1]])">
         <label for="3b">(b) An explorer's pack</label><br>
     </div>
 
     <div>
-        <input type="radio" id="4a" name="classEquipment4" value="4a">
+        <input type="radio" id="4a" name="classEquipment4" value="4a"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="4a">A holy symbol</label><br>
     </div>
 </div>
@@ -258,26 +272,26 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['scale-mail', 1]])">
         <label for="1a">(a) Scale mail</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['leather-armor', 1]])">
         <label for="1b">(b) Leather armor</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['shortsword', 2]])">
         <label for="2a">(a) 2 shortswords</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['club', 2]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="2b">(b) 2 simple melee weapons</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a" (click)="addItems([['dungeoneers-pack', 1]])">
         <label for="3a">(a) A dungeoneer's pack</label><br>
 
-        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <input type="radio" id="3b" name="classEquipment3" value="3b" (click)="addItems([['explorers-pack', 1]])">
         <label for="3b">(b) An explorer's pack</label><br>
     </div>
 </div>
@@ -294,29 +308,29 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['rapier', 1]])">
         <label for="1a">(a) A rapier</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['shortsword', 1]])">
         <label for="1b">(b) A shortsword</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['shortbow', 1], ['arrow', 20]])">
         <label for="2a">(a) A shortbow and quiver of 20 arrows</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['shortsword', 1]])">
         <label for="2b">(b) A shortsword</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a" (click)="addItems([['burglars-pack', 1]])">
         <label for="3a">(a) A burglar's pack</label><br>
 
-        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <input type="radio" id="3b" name="classEquipment3" value="3b" (click)="addItems([['dungeoneers-pack', 1]])">
         <label for="3b">(b) A dungeoneer's pack</label><br>
 
-        <input type="radio" id="3c" name="classEquipment3" value="3c">
+        <input type="radio" id="3c" name="classEquipment3" value="3c" (click)="addItems([['explorers-pack', 1]])">
         <label for="3c">(c) An explorer's pack</label><br>
     </div>
 </div>
@@ -331,26 +345,26 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['crossbow-light', 1], ['crossbow-bolt', 20]])">
         <label for="1a">(a) A light crossbow and 20 bolts</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['club', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="1b">(b) Any simple weapon</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['component-pouch', 1]])">
         <label for="2a">(a) A component pouch</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['orb', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="2b">(b) An arcane focus</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a" (click)="addItems([['dungeoneers-pack', 1]])">
         <label for="3a">(a) A dungeoneer's pack</label><br>
 
-        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <input type="radio" id="3b" name="classEquipment3" value="3b" (click)="addItems([['explorers-pack', 1]])">
         <label for="3b">(b) An explorer's pack</label><br>
     </div>
 </div>
@@ -366,31 +380,31 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['crossbow-light', 1], ['crossbow-bolt', 20]])">
         <label for="1a">(a) A light crossbow and 20 bolts</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['club', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="1b">(b) Any simple weapon</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['component-pouch', 1]])">
         <label for="2a">(a) A component pouch</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['orb', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="2b">(b) An arcane focus</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a" (click)="addItems([['scholars-pack', 1]])">
         <label for="3a">(a) A scholar's pack</label><br>
 
-        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <input type="radio" id="3b" name="classEquipment3" value="3b" (click)="addItems([['dungeoneers-pack', 1]])">
         <label for="3b">(b) A dungeoneer's pack</label><br>
     </div>
 
     <div>
-        <input type="radio" id="4a" name="classEquipment4" value="4a">
+        <input type="radio" id="4a" name="classEquipment4" value="4a" (click)="addItems([['club', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="4a">Any simple weapon</label><br>
     </div>
 </div>
@@ -405,26 +419,26 @@
     <p>Choose between...</p>
 
     <div>
-        <input type="radio" id="1a" name="classEquipment1" value="1a">
+        <input type="radio" id="1a" name="classEquipment1" value="1a" (click)="addItems([['quarterstaff', 1]])">
         <label for="1a">(a) A quarterstaff</label><br>
 
-        <input type="radio" id="1b" name="classEquipment1" value="1b">
+        <input type="radio" id="1b" name="classEquipment1" value="1b" (click)="addItems([['dagger', 1]])">
         <label for="1b">(b) A dagger</label><br>
     </div>
 
     <div>
-        <input type="radio" id="2a" name="classEquipment2" value="2a">
+        <input type="radio" id="2a" name="classEquipment2" value="2a" (click)="addItems([['component-pouch', 1]])">
         <label for="2a">(a) A component pouch</label><br>
 
-        <input type="radio" id="2b" name="classEquipment2" value="2b">
+        <input type="radio" id="2b" name="classEquipment2" value="2b" (click)="addItems([['orb', 1]])"> <!--EQUIPMENT TYPE SELECTOR-->
         <label for="2b">(b) An arcane focus</label><br>
     </div>
 
     <div>
-        <input type="radio" id="3a" name="classEquipment3" value="3a">
+        <input type="radio" id="3a" name="classEquipment3" value="3a" (click)="addItems([['scholars-pack', 1]])">
         <label for="3a">(a) A scholar's pack</label><br>
 
-        <input type="radio" id="3b" name="classEquipment3" value="3b">
+        <input type="radio" id="3b" name="classEquipment3" value="3b" (click)="addItems([['explorers-pack', 1]])">
         <label for="3b">(b) An explorer's pack</label><br>
     </div>
 </div>

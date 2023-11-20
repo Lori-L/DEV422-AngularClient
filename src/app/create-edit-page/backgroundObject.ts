@@ -1,5 +1,5 @@
 export class backgroundObject {
     backgroundIndex: string = '';
-    chosenLanguagesIndexes?: string[];
+    chosenLanguageIndexes?: string[][];
     chosenEquipmentIndexes?: string[];
 }

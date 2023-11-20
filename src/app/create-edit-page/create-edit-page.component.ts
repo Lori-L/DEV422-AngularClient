@@ -15,7 +15,19 @@ export class CreateEditPageComponent implements OnInit {
   }
 
   tabOrder = [true, false, false, false, false, false, false, false];
+  requiredTabsComplete: boolean[] = [false, false, false, false, false];;
+  minimumCompleted: boolean = false;
   previousTab = 0;
+
+  updateCompletedTabs(change: any[]) {
+    this.requiredTabsComplete[change[0]] = change[1];
+
+    if(!this.requiredTabsComplete.includes(false)) {
+      this.minimumCompleted = true;
+    }
+
+    console.log(this.requiredTabsComplete);
+  }
 
   navTab(tabIndex: number) {
     this.tabOrder[this.previousTab] = false;
