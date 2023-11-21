@@ -12,7 +12,6 @@
   float: left;
   width: calc(30% - 6px);
   border: 1px solid grey;
-  border-top: none;
   border-right: none;
   border-bottom: none;
 }
@@ -22,7 +21,6 @@
   float: left;
   width: calc(70% - 6px);
   border: 1px solid grey;
-  border-top: none;
   border-bottom: none;
 }
 
