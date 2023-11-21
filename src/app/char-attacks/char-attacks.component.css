@@ -1,20 +1,32 @@
 #attacks {
-    display: block;
-    float: left;
-    width: calc(30% - 6px);
-    border-style: outset;
-    border-width: 3px;
+  /* display: block; */
+  display: flex;
+  flex-direction: column;
+  float: left;
+  width: calc(30% - 6px);
 }
 
 app-char-stat-block {
-    width: 33.3%;
-    float: left;
+  width: 33.3%;
+  float: left;
 }
 
 #ac-and-stuff {
-    margin: auto;
+  margin: 20px 0 20px 0;
+}
+
+#hp {
+  margin: 0 0 20px 0;
+}
+
+#hit-dice {
+  margin: 0 0 20px 0;
+}
+
+#spellcasting {
+  margin: 0 0 20px 0;
 }
 
 p {
-    color: white;
+  color: white;
 }

@@ -1,7 +1,16 @@
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.stat-title {
+  padding: 0 5px 0 5px;
+}
+
 div {
-    border-style: outset;
-    border-width: 3px;
-    width: calc(10% - 6px);
-    display: block;
-    float: left;
+  border: 1px solid grey;
+  width: calc(10% - 6px);
+  display: block;
+  float: left;
 }

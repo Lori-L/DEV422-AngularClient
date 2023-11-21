@@ -1,21 +1,24 @@
-#number p, #text p {
-    border-style: inset;
-    border-width: 3px;
-}
-
 #number {
-    width: calc(18% - 6px);
-    float: left;
-    text-align: center;
+  width: calc(18% - 6px);
+  float: left;
+  text-align: center;
+  border: 1px solid grey;
 }
 
 #text {
-    width: calc(77% - 6px);
-    float: left;
+  display: flex;
+  justify-content: center;
+  width: calc(77% - 6px);
+  float: left;
+  border: 1px solid grey;
+  border-left: none;
 }
 
 #center {
-    margin: auto;
-    display: block;
-    width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  width: 95%;
+  margin-bottom: 16px;
 }

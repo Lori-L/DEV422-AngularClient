@@ -1,31 +1,12 @@
 <div id="whole">
   <div id="prof">
-    <app-num-box [title]="character" [value]="character"></app-num-box>
-    <app-textbox [trait]="character" [traitText]="character"></app-textbox>
-  </div>
-  <div id="equipment">
-    <div>Equipment</div>
-    <div id="equip-scroll">
-      <ul>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-        <li>Shield - 2lbs. - Equip</li>
-      </ul>
-    </div>
-  </div>
-  <div id="features">
-    <div id="more-features">
-      <div>Features & Traits</div>
-      <div id="feature-scroll"></div>
-    </div>
+    <app-num-box
+      [title]="characterData.name"
+      [value]="characterData.name"
+    ></app-num-box>
+    <app-textbox
+      [trait]="characterData.name"
+      [traitText]="characterData.name"
+    ></app-textbox>
   </div>
 </div>

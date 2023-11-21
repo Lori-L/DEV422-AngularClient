@@ -1,9 +1,36 @@
-div {
-    border-style: outset;
-    border-width: 3px;
+#max-top {
+  border-bottom: 1px solid grey;
+  padding: 5px;
+}
+#max-bottom {
+  border-bottom: 1px solid grey;
+  padding: 5px;
+}
+
+#current-top {
+  border-bottom: 1px solid grey;
+  padding: 5px;
+  width: 100%;
+}
+
+#current-bottom {
+  border-bottom: 1px solid grey;
+  padding: 5px;
+}
+
+#temp-top {
+  border-bottom: 1px solid grey;
+  padding: 5px;
+}
+#temp-bottom {
+  padding: 5px;
+}
+
+.hp-container {
 }
 
 #whole {
-    width: 95%;
-    margin: auto;
+  width: 95%;
+  margin: auto;
+  border: 1px solid grey;
 }

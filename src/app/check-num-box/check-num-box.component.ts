@@ -8,7 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CheckNumBoxComponent implements OnInit {
   @Input() title: any;
   @Input() value: any;
+
+  isChecked = false;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.value > 12) {
+      this.isChecked = true;
+    }
+  }
 }

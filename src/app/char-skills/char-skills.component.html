@@ -1,11 +1,12 @@
 <div id="skills">
-  <p>Insp/Prof B</p>
+  <p class="title">Insp/Prof B</p>
   <app-num-box [title]="inspirationTitle"></app-num-box>
   <app-num-box
     [title]="proficiencyTitle"
     [value]="character.apiInfo.proficiencyBonus"
   ></app-num-box>
   <p>Saving Throws</p>
+  <!-- TODO: pull from api -->
   <app-check-num-box
     [title]="strengthTitle"
     [value]="character.apiInfo.totalAbilityScores[0]"

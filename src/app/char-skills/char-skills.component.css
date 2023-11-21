@@ -1,9 +1,14 @@
 #skills {
-    border-style: outset;
-    border-width: 3px;
-    width: calc(30% - 6px);
-    display: block;
-    float: left;
-    overflow: scroll;
-    height: 755px;
+  border: 1px solid grey;
+  border-left: none;
+  border-top: none;
+  width: calc(30% - 6px);
+  display: block;
+  float: left;
+  overflow: auto;
+  height: 755px;
+}
+
+.title {
+  padding: 0 5px 0 5px;
 }

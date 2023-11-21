@@ -1,21 +1,103 @@
-#name {
-    display: flex;
-    border-style: outset;
-    border-width: 3px;
-    float: left;
-    width: calc(40% - 6px);
-    height: 100%;
-    font-size: 2em;
-    padding-top: calc(5.20% - 1em);
-    padding-bottom: calc(5.20% - 1em);
+.char-info-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid grey;
+  border-right: none;
 }
 
-#additional-stats div {
-    display: flex;
-    border-style: outset;
-    border-width: 3px;
-    float: right;
-    width: calc(60% - 6px);
-    margin: auto;
-    font-size: 1em;
+.name {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 0 0 20px;
+  width: calc(40% - 6px);
+  height: 100%;
+  font-size: 2em;
+  padding-top: calc(5.2% - 1em);
+  padding-bottom: calc(5.2% - 1em);
+}
+
+.additional-stats {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.class {
+  /* grid row 1 column 1 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 1;
+  grid-column: 1 / 4;
+  border: 1px solid grey;
+  border-top: none;
+}
+.level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 1;
+  grid-column: 4 / 7;
+  border: 1px solid grey;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 1;
+  grid-column: 7 / 10;
+  border: 1px solid grey;
+  border-top: none;
+  border-right: none;
+  padding: 10px;
+}
+.player-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 1;
+  grid-column: 10 / 13;
+  border: 1px solid grey;
+  border-top: none;
+}
+.race {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 2;
+  grid-column: 1 / 5;
+  border: 1px solid grey;
+  border-top: none;
+  border-bottom: none;
+}
+.alignment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 2;
+  grid-column: 5 / 9;
+  border: 1px solid grey;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+.experience {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 2;
+  grid-column: 9 / 13;
+  border: 1px solid grey;
+  border-top: none;
+  border-bottom: none;
+}
+
+.class-title {
+  margin: 0 5px 0 0;
 }

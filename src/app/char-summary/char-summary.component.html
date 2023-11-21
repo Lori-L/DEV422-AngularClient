@@ -1,24 +1,26 @@
-<div *ngFor="let class of characterData.classes">
-  <div id="name">{{ characterData.name }}</div>
-  <div id="additional-stats">
-    <div id="top">
-      <div id="class">Class: {{ class.classIndex }}</div>
-      <div id="level">Level: {{ class.classLevel }}</div>
-      <div id="background">
-        <!-- TODO: get from api -->
-        Background: {{ character.background.backgroundIndex }}
-      </div>
-      <div id="player-name">Player Name</div>
+<div class="char-info-grid">
+  <div class="name">{{ characterData.name }}</div>
+  <div class="additional-stats">
+    <div class="class">
+      <span class="class-title">Class:</span>
+      <span *ngFor="let class of characterData.classes"
+        >{{ class.classIndex }} ({{ class.classLevel }}),</span
+      >
     </div>
-    <div id="bottom">
-      <div id="race">Race: {{ characterData.race.raceIndex }}</div>
-      <div id="alignment">
-        Alignment: {{ characterData.personality.alignmentIndex }}
-      </div>
-      <div id="experience">
-        <label for="xp">Exp: </label>
-        <input id="xp" type="Text" />
-      </div>
+    <div class="level">Character Level: {{ characterData.overallLevel }}</div>
+    <div class="background">
+      <!-- TODO: get from api -->
+      Background: {{ character.background.backgroundIndex }}
+    </div>
+    <div class="player-name">Player Name</div>
+
+    <div class="race">Race: {{ characterData.race.raceIndex }}</div>
+    <div class="alignment">
+      Alignment: {{ characterData.personality.alignmentIndex }}
+    </div>
+    <div class="experience">
+      <label for="xp">Exp: </label>
+      <input id="xp" type="Text" />
     </div>
   </div>
 </div>
