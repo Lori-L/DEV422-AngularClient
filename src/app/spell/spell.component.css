@@ -6,7 +6,7 @@
 #prepared {
     display: flex;
     float: left;
-    width: 23px;
+    width: 22px;
     border-style: outset;
     border-width: 3px;
 }
@@ -23,7 +23,7 @@
 #description {
     display: flex;
     float: left;
-    width: calc(100% - 7px);
+    width: calc(100% - 8px);
     border-style: outset;
     border-width: 3px;
     height: 100%;

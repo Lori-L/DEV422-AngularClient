@@ -1,6 +1,7 @@
 #main {
     margin: auto;
     width: 80%;
+    display: block;
 }
 
 #top, #bottom {
