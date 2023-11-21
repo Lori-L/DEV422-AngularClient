@@ -21,15 +21,15 @@
     <li><button type="button" (click)="navTab(7)">Backstory</button></li>
 </ul>
 
-<app-char-creation-nrb-tab *ngIf="tabOrder[0]"></app-char-creation-nrb-tab>
+<app-char-creation-nrb-tab *ngIf="tabOrder[0]" (completionUpdater)="updateCompletedTabs($any($event))"></app-char-creation-nrb-tab>
 
-<app-char-creation-class-tab *ngIf="tabOrder[1]"></app-char-creation-class-tab>
+<app-char-creation-class-tab *ngIf="tabOrder[1]" (completionUpdater)="updateCompletedTabs($any($event))"></app-char-creation-class-tab>
 
-<app-char-creation-stats-tab *ngIf="tabOrder[2]"></app-char-creation-stats-tab>
+<app-char-creation-stats-tab *ngIf="tabOrder[2]" (completionUpdater)="updateCompletedTabs($any($event))"></app-char-creation-stats-tab>
 
-<app-char-creation-spells-tab *ngIf="tabOrder[3]"></app-char-creation-spells-tab>
+<app-char-creation-spells-tab *ngIf="tabOrder[3]" (completionUpdater)="updateCompletedTabs($any($event))"></app-char-creation-spells-tab>
 
-<app-char-creation-equipment-tab *ngIf="tabOrder[4]"></app-char-creation-equipment-tab>
+<app-char-creation-equipment-tab *ngIf="tabOrder[4]" (completionUpdater)="updateCompletedTabs($any($event))"></app-char-creation-equipment-tab>
 
 <app-char-creation-personality-tab *ngIf="tabOrder[5]"></app-char-creation-personality-tab>
 
@@ -38,4 +38,4 @@
 <app-char-creation-backstory-tab *ngIf="tabOrder[7]"></app-char-creation-backstory-tab>
 
 <br><br>
-<button type="button" routerLink="/sheet-view" *ngIf="previousTab >= 5">Finish & View Character</button>
+<button type="button" routerLink="/sheet-view" *ngIf="minimumCompleted">Finish & View Character</button>

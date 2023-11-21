@@ -1,31 +1,31 @@
-<div>
-  <p>Str:</p>
+<div class="stats-container">
+  <p class="stat-title">Str:</p>
   <!-- TODO: get from api (character.apiInfo) -->
   <app-char-stat-block
     [modifier]="character.apiInfo.abilityScoreModifiers[0]"
     [total]="characterData.abilityScores[0]"
   ></app-char-stat-block>
-  <p>Dex:</p>
+  <p class="stat-title">Dex:</p>
   <app-char-stat-block
     [modifier]="character.apiInfo.abilityScoreModifiers[1]"
     [total]="characterData.abilityScores[1]"
   ></app-char-stat-block>
-  <p>Con:</p>
+  <p class="stat-title">Con:</p>
   <app-char-stat-block
     [modifier]="character.apiInfo.abilityScoreModifiers[2]"
     [total]="characterData.abilityScores[2]"
   ></app-char-stat-block>
-  <p>Int:</p>
+  <p class="stat-title">Int:</p>
   <app-char-stat-block
     [modifier]="character.apiInfo.abilityScoreModifiers[3]"
     [total]="characterData.abilityScores[3]"
   ></app-char-stat-block>
-  <p>Wis:</p>
+  <p class="stat-title">Wis:</p>
   <app-char-stat-block
     [modifier]="character.apiInfo.abilityScoreModifiers[4]"
     [total]="characterData.abilityScores[4]"
   ></app-char-stat-block>
-  <p>Cha:</p>
+  <p class="stat-title">Cha:</p>
   <app-char-stat-block
     [modifier]="character.apiInfo.abilityScoreModifiers[5]"
     [total]="characterData.abilityScores[5]"

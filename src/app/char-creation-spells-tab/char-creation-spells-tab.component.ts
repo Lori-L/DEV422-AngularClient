@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DndApiServiceService } from '../dnd-api-service.service';
 import { spellCasterInfo } from './spellcasterInfo';
 import { charObject } from '../create-edit-page/charObject';
@@ -15,11 +15,23 @@ export class CharCreationSpellsTabComponent implements OnInit {
   constructor(private dndApiService: DndApiServiceService) { 
   }
 
+  @Output() completionUpdater = new EventEmitter();
+
   currentChar: charObject = new charObject;
 
   spellcastingClasses: any[] = [];
 
   charClasses: any[] = [];
+
+  //event emitter shenanigans
+  updateCompletedStatus() {
+    if(this.spellcastingClasses.length == 0 || this.currentChar.classes[0].spellcasterInfo?.spellsKnown?.length != 0) {
+      this.completionUpdater.emit([3, true]);
+    }
+    else {
+      this.completionUpdater.emit([3, false]);
+    }
+  }
 
   //TODO: MAKE BOTH UPDATE METHODS APPLY TO THE CLASSINDEX INSTEAD OF FIRST ARRAY ITEM
   updateCantrips(classIndex: string, cantripIndex: string, cantripName: string) {
@@ -52,6 +64,8 @@ export class CharCreationSpellsTabComponent implements OnInit {
 
     console.log(classSpellcasterInfo.spellsKnown);
     console.log(this.currentChar);
+
+    this.updateCompletedStatus();
 
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
@@ -156,7 +170,7 @@ export class CharCreationSpellsTabComponent implements OnInit {
       }
     })
 
-
+    this.updateCompletedStatus();
 
   }
 

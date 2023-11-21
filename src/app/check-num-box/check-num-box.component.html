@@ -1,11 +1,17 @@
-<div id="center">
-  <div id="check">
-    <input type="checkbox" id="checkbox" value="Has" />
+<div class="center">
+  <div class="check">
+    <input
+      class="disabled"
+      type="checkbox"
+      id="checkbox"
+      value="Has"
+      [checked]="isChecked"
+    />
   </div>
-  <div id="number">
-    <p>{{ value }}</p>
+  <div class="number">
+    {{ value }}
   </div>
-  <div id="text">
-    <p>{{ title }}</p>
+  <div class="text">
+    {{ title }}
   </div>
 </div>

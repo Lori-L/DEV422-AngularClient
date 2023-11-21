@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./char-proficiencies-equipment-features.component.css'],
 })
 export class CharProficienciesEquipmentFeaturesComponent implements OnInit {
-  @Input() character: any;
+  @Input() characterData: any;
   constructor() {}
 
   ngOnInit(): void {}

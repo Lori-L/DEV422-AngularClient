@@ -1,0 +1,29 @@
+#main {
+  margin: auto;
+  width: 100%;
+}
+
+#prepared {
+  display: flex;
+  float: left;
+  width: 22px;
+  border: 1px solid grey;
+}
+
+#name {
+  display: flex;
+  float: left;
+  width: calc(100% - 35px);
+  border: 1px solid grey;
+  border-top: none;
+  border-left: none;
+  height: 100%;
+}
+
+#description {
+  display: flex;
+  float: left;
+  width: calc(100% - 8px);
+  border: 1px solid grey;
+  height: 100%;
+}

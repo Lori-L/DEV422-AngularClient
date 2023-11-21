@@ -13,6 +13,7 @@ export class charObject {
     active: boolean = false;
     favorite: boolean = false;
     startingEquipmentSelected: boolean = false;
+    defaultStartingEquipmentCollected: boolean = false;
 
     name: string = '';
     overallLevel: number = 0;

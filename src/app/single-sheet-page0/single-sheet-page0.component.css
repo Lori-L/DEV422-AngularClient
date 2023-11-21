@@ -1,5 +1,5 @@
 div {
-    margin: auto;
-    width: 80%;
-    border-style: inset;
+  padding: 20px;
+  margin: auto;
+  max-width: 1440px;
 }
