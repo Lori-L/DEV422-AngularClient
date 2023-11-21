@@ -1,46 +1,44 @@
 #main {
-    margin: auto;
-    width: 80%;
-    border-style: outset;
-    border-width: 3px;
+  margin: auto;
+  width: 80%;
 }
 
 #top {
-    width: 100%;
-    border-style: inset;
-    border-width: 3px;
+  width: 100%;
 }
 
 #spellcasting-class {
-    display: flex;
-    float: left;
-    width: calc(30% - 6px);
-    border-style: inset;
-    border-width: 3px;
+  display: flex;
+  float: left;
+  width: calc(30% - 6px);
+  border: 1px solid grey;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 #stats {
-    display: flex;
-    float: left;
-    width: calc(70% - 6px);
-    border-style: inset;
-    border-width: 3px;
+  display: flex;
+  float: left;
+  width: calc(70% - 6px);
+  border: 1px solid grey;
+  border-top: none;
+  border-bottom: none;
 }
 
 #spells {
-    width: 100%;
-    border-style: inset;
-    display: block;
-    float: left;
-    border-width: 3px;
+  width: 100%;
+  border: 1px solid grey;
+  display: block;
+  float: left;
 }
 
 .header {
-    display: flex;
-    float: left;
-    width: calc(100% - 6px);
-    border-style: outset;
-    border-width: 3px;
+  display: flex;
+  float: left;
+  width: calc(100% - 6px);
+  border: 1px solid grey;
+  border-left: none;
 }
 
 #slots0,
@@ -53,15 +51,16 @@
 #slots7,
 #slots8,
 #slots9 {
-    margin-left: 10px;
-    width: 23px;
+  margin-left: 10px;
+  width: 23px;
+  border: 1px solid grey;
 }
 
 .h-text {
-    font-size: larger;
+  font-size: larger;
 }
 
 li {
-    list-style: none;
-    width: 90%;
+  list-style: none;
+  width: 90%;
 }

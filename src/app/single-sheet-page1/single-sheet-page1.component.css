@@ -1,25 +1,33 @@
 #main {
-    margin: auto;
-    width: 80%;
-    display: block;
+  margin: auto;
+  width: 80%;
+  display: block;
 }
 
-#top, #bottom {
-    width: 100%;
+#top,
+#bottom {
+  width: 100%;
 }
 
-#age, #height, #weight {
-    display: flex;
-    float: left;
-    width: calc(33% - 2px);
-    border-style: inset;
-    border-width: 3px;
+#age,
+#height,
+#weight {
+  display: flex;
+  float: left;
+  width: calc(33% - 2px);
+  border: 1px solid grey;
 }
 
-#eyes, #skin, #hair {
-    display: flex;
-    float: left;
-    width: calc(33% - 2px);
-    border-style: inset;
-    border-width: 3px;
+#eyes,
+#skin,
+#hair {
+  display: flex;
+  float: left;
+  width: calc(33% - 2px);
+  border: 1px solid grey;
+  border-top: none;
+}
+
+.border-left-none {
+  border-left: none;
 }
