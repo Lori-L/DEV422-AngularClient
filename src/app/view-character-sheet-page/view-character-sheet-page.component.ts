@@ -63,6 +63,38 @@ export class ViewCharacterSheetPageComponent implements OnInit {
       otherNotes: 'other appearance note',
     },
     backstory: 'likes to hit things',
+    spells: [
+      {
+        name: 'spell1',
+        level: 1,
+        school: 'school',
+        castingTime: 'casting time',
+        range: 'range',
+        components: 'components',
+        duration: 'duration',
+        description: 'description',
+      },
+      {
+        name: 'spell2',
+        level: 1,
+        school: 'school',
+        castingTime: 'casting time',
+        range: 'range',
+        components: 'components',
+        duration: 'duration',
+        description: 'description',
+      },
+      {
+        name: 'spell3',
+        level: 1,
+        school: 'school',
+        castingTime: 'casting time',
+        range: 'range',
+        components: 'components',
+        duration: 'duration',
+        description: 'description',
+      },
+    ],
     apiInfo: {
       proficiencyBonus: 2,
 
