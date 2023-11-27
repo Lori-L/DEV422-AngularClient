@@ -30,6 +30,8 @@ export class CharCreationClassTabComponent implements OnInit {
   totalLevel = 0;
 
   //event emitter shenanigans
+  //indicates whether the classes tab is considered "complete" for the purpose of the "finish and view character" button appearing
+  //conditions to be met: character has at least one class
   updateCompletedStatus() {
     if(this.currentChar.classes.length != 0) {
       this.completionUpdater.emit([1, true]);
@@ -39,6 +41,8 @@ export class CharCreationClassTabComponent implements OnInit {
     }
   }
 
+  //adds / removes user-selected proficiency to / from the relevant class's proficiency list
+  //creates a proficiency list if it does not yet exist
   updateClassProficiency(profIndex: string, profName: string, classIndex: number) {
     let charClassInfo = this.currentChar.classes[classIndex];
 
@@ -55,6 +59,10 @@ export class CharCreationClassTabComponent implements OnInit {
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
 
+  //checks to see if the specified item is already present in the specified container array
+  //if it is present, removes it and returns false
+  //if it is NOT present, returns true
+  //used for "toggling" whether the character has a certain property each time the user checks / unchecks a checkbox
   removeIfPresent(itemIndex: string, containerArray: string[][]) {
     let presentAtIndex: number = -1;
 
@@ -73,17 +81,49 @@ export class CharCreationClassTabComponent implements OnInit {
     }
   }
 
+  //adds a new class to the character
   newClassSelected() {
     console.log((document.getElementById("newClass") as HTMLSelectElement)?.value);
     let newCharClass: classObject = new classObject;
 
     newCharClass.classIndex = (document.getElementById("newClass") as HTMLSelectElement)?.value
 
+    this.establishClassInfo(newCharClass, true);
+    
+  }
+
+  //finds the specified class's features depending on class level
+  establishFeatures(charClass: classObject) {
+    this.dndApiService.ClassLevelsData(charClass.classIndex).subscribe((levelsData) => {
+      let featureList: string[] = [];
+      let temp: number = 0;
+
+      for (let i = 0; i < charClass.classLevel; i++) {
+        levelsData[i].features.forEach((feature: any) => {
+          featureList.push(feature.index);
+        });
+      }
+
+      featureList.forEach((featureName: any, index) => {
+        this.dndApiService.ClassFeatureData(featureName).subscribe((featureData) => {
+          this.currentClassInfo!.levelFeatures.push([featureData.name, featureData.desc]);
+          console.log(this.currentClassInfo);
+
+          //likely unnecessary test boolean
+          this.currentClassInfo!.test = true;
+        });
+      });
+    });
+  }
+
+  //gathers relevant displayable class information
+  //if addToClasses == true, gathers basic spellcasting info and adds the class to character's classes array
+  establishClassInfo(newCharClass: classObject, addToClasses: boolean) {
+
     //checks to see if the new class is a spellcaster.
     //if it is, fills out the essentials of the class's spellCasterObject property
     this.dndApiService.SingleClassData(newCharClass.classIndex).subscribe((classData) => {
 
-      //TODO: make this whole section into its own method
       this.currentClassInfo = new classInfo(newCharClass.classIndex);
 
       this.currentClassInfo.hitDie = classData.hit_die;
@@ -115,89 +155,115 @@ export class CharCreationClassTabComponent implements OnInit {
         this.currentClassInfo!.userProficienciesOptions!.push([choice.item.index, choice.item.name]);
       });
 
+      //likely unnecessary test boolean
+      if(this.currentClassInfo.test == false) {
+
+        //TODO: FIX DOUBLE VALUES / VALUES NOT APPEARING ON INITIAL CLASS ADDITION
+        this.establishFeatures(newCharClass);
+      }
+      
+
       this.charClassesInfo.push(this.currentClassInfo);
 
       console.log(this.currentClassInfo);
 
-      if (classData.spellcasting != null) {
-        newCharClass.isSpellcaster = true;
-        newCharClass.spellcasterInfo = new spellCasterObject;
-
-        switch(newCharClass.classIndex) {
-          case('bard'): {
-            newCharClass.spellcasterInfo.spellCastingAbility = 'cha';
-            newCharClass.spellcasterInfo.knowsCantrips = true;
-            newCharClass.spellcasterInfo.learnsSpells = true;
-            newCharClass.spellcasterInfo.preparesSpells = false;
-            break;
+      if(addToClasses) {
+        if (classData.spellcasting != null) {
+          newCharClass.isSpellcaster = true;
+          newCharClass.spellcasterInfo = new spellCasterObject;
+  
+          switch(newCharClass.classIndex) {
+            case('bard'): {
+              newCharClass.spellcasterInfo.spellCastingAbility = 'cha';
+              newCharClass.spellcasterInfo.knowsCantrips = true;
+              newCharClass.spellcasterInfo.learnsSpells = true;
+              newCharClass.spellcasterInfo.preparesSpells = false;
+              break;
+            }
+            case('cleric'): {
+              newCharClass.spellcasterInfo.spellCastingAbility = 'wis';
+              newCharClass.spellcasterInfo.knowsCantrips = true;
+              newCharClass.spellcasterInfo.learnsSpells = false;
+              newCharClass.spellcasterInfo.preparesSpells = true;
+              break;
+            }
+            case('druid'): {
+              newCharClass.spellcasterInfo.spellCastingAbility = 'wis';
+              newCharClass.spellcasterInfo.knowsCantrips = true;
+              newCharClass.spellcasterInfo.learnsSpells = false;
+              newCharClass.spellcasterInfo.preparesSpells = true;
+              break;
+            }
+            case('paladin'): {
+              newCharClass.spellcasterInfo.spellCastingAbility = 'cha';
+              newCharClass.spellcasterInfo.knowsCantrips = false;
+              newCharClass.spellcasterInfo.learnsSpells = false;
+              newCharClass.spellcasterInfo.preparesSpells = true;
+              break;
+            }
+            case('ranger'): {
+              newCharClass.spellcasterInfo.spellCastingAbility = 'wis';
+              newCharClass.spellcasterInfo.knowsCantrips = false;
+              newCharClass.spellcasterInfo.learnsSpells = true;
+              newCharClass.spellcasterInfo.preparesSpells = false;
+              break;
+            }
+            case('sorcerer'): {
+              newCharClass.spellcasterInfo.spellCastingAbility = 'cha';
+              newCharClass.spellcasterInfo.knowsCantrips = true;
+              newCharClass.spellcasterInfo.learnsSpells = true;
+              newCharClass.spellcasterInfo.preparesSpells = false;
+              break;
+            }
+            case('warlock'): {
+              newCharClass.spellcasterInfo.spellCastingAbility = 'cha';
+              newCharClass.spellcasterInfo.knowsCantrips = true;
+              newCharClass.spellcasterInfo.learnsSpells = true;
+              newCharClass.spellcasterInfo.preparesSpells = false;
+              break;
+            }
+            case('wizard'): {
+              newCharClass.spellcasterInfo.spellCastingAbility = 'int';
+              newCharClass.spellcasterInfo.knowsCantrips = true;
+              newCharClass.spellcasterInfo.learnsSpells = true;
+              newCharClass.spellcasterInfo.preparesSpells = true;
+              break;
+            }
           }
-          case('cleric'): {
-            newCharClass.spellcasterInfo.spellCastingAbility = 'wis';
-            newCharClass.spellcasterInfo.knowsCantrips = true;
-            newCharClass.spellcasterInfo.learnsSpells = false;
-            newCharClass.spellcasterInfo.preparesSpells = true;
-            break;
-          }
-          case('druid'): {
-            newCharClass.spellcasterInfo.spellCastingAbility = 'wis';
-            newCharClass.spellcasterInfo.knowsCantrips = true;
-            newCharClass.spellcasterInfo.learnsSpells = false;
-            newCharClass.spellcasterInfo.preparesSpells = true;
-            break;
-          }
-          case('paladin'): {
-            newCharClass.spellcasterInfo.spellCastingAbility = 'cha';
-            newCharClass.spellcasterInfo.knowsCantrips = false;
-            newCharClass.spellcasterInfo.learnsSpells = false;
-            newCharClass.spellcasterInfo.preparesSpells = true;
-            break;
-          }
-          case('ranger'): {
-            newCharClass.spellcasterInfo.spellCastingAbility = 'wis';
-            newCharClass.spellcasterInfo.knowsCantrips = false;
-            newCharClass.spellcasterInfo.learnsSpells = true;
-            newCharClass.spellcasterInfo.preparesSpells = false;
-            break;
-          }
-          case('sorcerer'): {
-            newCharClass.spellcasterInfo.spellCastingAbility = 'cha';
-            newCharClass.spellcasterInfo.knowsCantrips = true;
-            newCharClass.spellcasterInfo.learnsSpells = true;
-            newCharClass.spellcasterInfo.preparesSpells = false;
-            break;
-          }
-          case('warlock'): {
-            newCharClass.spellcasterInfo.spellCastingAbility = 'cha';
-            newCharClass.spellcasterInfo.knowsCantrips = true;
-            newCharClass.spellcasterInfo.learnsSpells = true;
-            newCharClass.spellcasterInfo.preparesSpells = false;
-            break;
-          }
-          case('wizard'): {
-            newCharClass.spellcasterInfo.spellCastingAbility = 'int';
-            newCharClass.spellcasterInfo.knowsCantrips = true;
-            newCharClass.spellcasterInfo.learnsSpells = true;
-            newCharClass.spellcasterInfo.preparesSpells = true;
-            break;
-          }
+  
+          this.currentChar.classes.push(newCharClass);
+          sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
+  
+          this.ngOnInit();
         }
-
-        this.currentChar.classes.push(newCharClass);
-        sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
-
-        this.ngOnInit();
-      }
-      else {
-        this.currentChar.classes.push(newCharClass);
-        sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
-
-        this.ngOnInit();
+        else {
+          this.currentChar.classes.push(newCharClass);
+          sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
+  
+          this.ngOnInit();
+        }
       }
 
       this.updateCompletedStatus()
     });
   }
 
+  //returns true if specified option has previously been chosen by the user
+  //used to determine whether or not to have it checked on component load
+  classesCheckboxes(abilityIndex: string, arrayChecked: any[][]) {
+    let isPresent: boolean = false;
+
+    arrayChecked.forEach((element: any) => {
+      if(element[0] == abilityIndex) {
+        isPresent = true;
+      }
+    });
+
+    return isPresent;
+  }
+
+  //takes in current character object and collects displayable information about any existing char classes
+  //gets a list of classes (minus any already on the char)
   ngOnInit(): void {
     this.classList = [];
     this.totalLevel = 0;
@@ -211,6 +277,7 @@ export class CharCreationClassTabComponent implements OnInit {
 
     this.charClasses.forEach((element: any) => {
       this.totalLevel += element.classLevel;
+      this.establishClassInfo(element, false);
     })
 
     //Gets a list of classes from dnd api. Puts into classList.

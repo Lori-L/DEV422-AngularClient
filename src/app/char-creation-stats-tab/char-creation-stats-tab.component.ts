@@ -34,11 +34,11 @@ export class CharCreationStatsTabComponent implements OnInit {
   stats = ["Str", "Dex", "Con", "Int", "Wis", "Cha"];
   standardArraySet = [15, 14, 13, 12, 10, 8];
 
-  enteredStats = [0,0,0,0,0,0];
-
   pointBuyPoints = 27;
 
   //event emitter shenanigans
+  //indicates whether the stats tab is considered "complete" for the purpose of the "finish and view character" button appearing
+  //conditions to be met: all ability scores have been modified (have a nonzero value)
   updateCompletedStatus() {
     if(this.currentChar.abilityScores.includes(0) == false) {
       this.completionUpdater.emit([2, true]);
@@ -48,6 +48,7 @@ export class CharCreationStatsTabComponent implements OnInit {
     }
   }
 
+  //changes the ability score (corresponding to the passed-in index) on the character object
   updateStat(ind: number) {
     this.currentChar.abilityScores[ind] = Number((document.getElementById("manualEntry" + ind) as HTMLInputElement)?.value);
     console.log(this.currentChar);
@@ -57,6 +58,9 @@ export class CharCreationStatsTabComponent implements OnInit {
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
 
+  //used for displaying the currently chosen generation method / hiding the other two (done through *ngIf statements in the html)
+  //changes the "selected option" from the previously displayed generation method to the current one
+  //turns the previous generation method false, and the current one true
   newGenMethod() {
     switch(this.selectedOption) {
       case "standardArray": {
@@ -92,6 +96,7 @@ export class CharCreationStatsTabComponent implements OnInit {
     }
   }
 
+  //takes in the current character object
   ngOnInit(): void {
     this.currentChar = JSON.parse(String(sessionStorage.getItem('currentChar')));
     console.log(this.currentChar);

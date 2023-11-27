@@ -4,7 +4,7 @@ import { subclassObject } from "./subclassObject";
 export class classObject {
     classIndex: string = '';
     classLevel: number = 1;
-    chosenProficiencyIndex?: string[][];
+    chosenProficiencyIndex: string[][] = [];
     chosenExpertisesIntex?: string[][];
 
     uniqueClassChoices?: string[][][];

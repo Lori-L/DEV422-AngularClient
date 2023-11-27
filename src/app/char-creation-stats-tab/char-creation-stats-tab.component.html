@@ -28,7 +28,7 @@
 
     <div class="statblock" *ngFor="let stat of stats, index as i">
         <label>{{stat}}</label>
-        <input type="text" id="manualEntry{{i}}" [(ngModel)]="enteredStats[i]" (change)="updateStat(i)">
+        <input type="text" id="manualEntry{{i}}" (change)="updateStat(i)" value="{{currentChar.abilityScores[i]}}">
     </div>
 </div>
 

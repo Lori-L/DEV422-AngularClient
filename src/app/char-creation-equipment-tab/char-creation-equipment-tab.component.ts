@@ -18,16 +18,26 @@ export class CharCreationEquipmentTabComponent implements OnInit {
 
   currentChar: charObject = new charObject;
 
+  startingClass?: string;
+
   charItems = [
     "item1", "item2", "item3"
   ];
 
-  threeB: boolean = false;
+  chosenOptions: string[] = [];
 
-  holy_symbols: string[][] = [['amulet', 'Amulet'], ['emblem', 'Emblem'], ['reliquary', 'Reliquary']];
-  simple_weapons: string[][] = [['club', 'Club'], ['dagger', 'Dagger'], ['greatclub', 'Greatclub']];
+  arcane_foci: string[][] = [];
+  druidic_foci: string[][] = [];
+  holy_symbols: string[][] = []; //[['amulet', 'Amulet'], ['emblem', 'Emblem'], ['reliquary', 'Reliquary']];
+  martial_weapons: string[][] = [];
+  martial_melee_weapons: string[][] = [];
+  musical_instruments: string[][] = [];
+  simple_weapons: string[][] = [];
+  simple_melee_weapons: string[][] = [];
 
   //event emitter shenanigans
+  //indicates whether the equipment tab is considered "complete" for the purpose of the "finish and view character" button appearing
+  //conditions to be met: character has at least one item
   updateCompletedStatus() {
     if(this.currentChar.inventoryItemsIndexes.length > 0) {
       this.completionUpdater.emit([4, true]);
@@ -37,6 +47,7 @@ export class CharCreationEquipmentTabComponent implements OnInit {
     }
   }
 
+  //adds each item to the character object the specified amount of times
   addItems(itemsArray: any[][]) {
     itemsArray.forEach(element => {
       for(let i=0; i < element[1]; i++) {
@@ -50,21 +61,14 @@ export class CharCreationEquipmentTabComponent implements OnInit {
     this.updateCompletedStatus();
   }
 
-  startingClass?: string;
+  //locates the specified select dropdown, and adds the selected item to the character object
+  addItemsFromSelect(htmlId: string) {
+    let temp: any[][] = [[(document.getElementById(htmlId) as HTMLSelectElement)?.value, 1]];
 
-  equipmentCategoryBreakdown(categoryName: string, arrayToEdit: string[][]) {
-    let tempArray: string[][] = [];
-
-    this.dndApiService.EquipmentCategoryData(categoryName).subscribe((catData) => {
-      catData.equipment.forEach((item: any) => {
-        tempArray.push([item.index, item.name]);
-      });;
-
-      arrayToEdit = tempArray;
-      console.log(arrayToEdit);
-    });
+    this.addItems(temp);
   }
 
+  //adds a set of "default" items to the character's inventory (depending on the character's class)
   addDefaultItems(className: string) {
     switch(className) {
       case 'barbarian': {
@@ -117,9 +121,33 @@ export class CharCreationEquipmentTabComponent implements OnInit {
     }
   }
 
+  //displays the specified section
+  revealCategory(hiddenSelectID: string) {
+    (document.getElementById(hiddenSelectID) as HTMLSelectElement).style.display = "block";
+  }
+
+  //updates the "startingEquipmentOptions" array (which stores user selections so they can be re-checked on component reload)
+  updateSelected(newSelection: string) {
+    this.chosenOptions.push(newSelection);
+
+    sessionStorage.setItem('startingEquipmentOptions', JSON.stringify(this.chosenOptions));
+  }
+
+  //takes in the current character object and determines the character's "starting class"
+  //distributes "default" starting items, if they haven't yet been received
+  //stores previous starting equipment selections, if they exist
+  //collects and stores item lists from relevant equipment categories
   ngOnInit(): void {
     this.currentChar = JSON.parse(String(sessionStorage.getItem('currentChar')));
     console.log(this.currentChar);
+
+    if(sessionStorage.getItem('startingEquipmentOptions') == null) {
+      sessionStorage.setItem('startingEquipmentOptions', JSON.stringify([]));
+    }
+    else{
+      this.chosenOptions = JSON.parse(String(sessionStorage.getItem('startingEquipmentOptions')));
+      console.log(this.chosenOptions);
+    }
 
 
     if(this.currentChar.classes.length > 0) {
@@ -129,6 +157,62 @@ export class CharCreationEquipmentTabComponent implements OnInit {
         this.addDefaultItems(this.startingClass);
         this.currentChar.defaultStartingEquipmentCollected = true;
         sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
+
+        this.dndApiService.EquipmentCategoryData('arcane-foci').subscribe((data) => {
+          let results = data.equipment;
+          results.forEach((element: any) => {
+            this.arcane_foci.push([element.index, element.name]);
+          });
+        });
+
+        this.dndApiService.EquipmentCategoryData('druidic-foci').subscribe((data) => {
+          let results = data.equipment;
+          results.forEach((element: any) => {
+            this.druidic_foci.push([element.index, element.name]);
+          });
+        });
+
+        this.dndApiService.EquipmentCategoryData('holy-symbols').subscribe((data) => {
+          let results = data.equipment;
+          results.forEach((element: any) => {
+            this.holy_symbols.push([element.index, element.name]);
+          });
+        });
+
+        this.dndApiService.EquipmentCategoryData('martial-weapons').subscribe((data) => {
+          let results = data.equipment;
+          results.forEach((element: any) => {
+            this.martial_weapons.push([element.index, element.name]);
+          });
+        });
+
+        this.dndApiService.EquipmentCategoryData('martial-melee-weapons').subscribe((data) => {
+          let results = data.equipment;
+          results.forEach((element: any) => {
+            this.martial_melee_weapons.push([element.index, element.name]);
+          });
+        });
+
+        this.dndApiService.EquipmentCategoryData('musical-instruments').subscribe((data) => {
+          let results = data.equipment;
+          results.forEach((element: any) => {
+            this.musical_instruments.push([element.index, element.name]);
+          });
+        });
+
+        this.dndApiService.EquipmentCategoryData('simple-weapons').subscribe((data) => {
+          let results = data.equipment;
+          results.forEach((element: any) => {
+            this.simple_weapons.push([element.index, element.name]);
+          });
+        });
+
+        this.dndApiService.EquipmentCategoryData('simple-melee-weapons').subscribe((data) => {
+          let results = data.equipment;
+          results.forEach((element: any) => {
+            this.simple_melee_weapons.push([element.index, element.name]);
+          });
+        });
       }
       
     }

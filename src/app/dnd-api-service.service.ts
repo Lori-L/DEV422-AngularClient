@@ -45,6 +45,18 @@ export class DndApiServiceService {
     );
   }
 
+  ClassLevelsData(classIndex: string): Observable<any> {
+    return this.http.get(
+      'https://www.dnd5eapi.co/api/classes/' + classIndex + '/levels'
+    )
+  }
+
+  ClassFeatureData(featureName: string): Observable<any> {
+    return this.http.get(
+      'https://www.dnd5eapi.co/api/features/' + featureName
+    )
+  }
+
   EquipmentCategoryData(category: string): Observable<any> {
     return this.http.get(
       'https://www.dnd5eapi.co/api/equipment-categories/' + category
