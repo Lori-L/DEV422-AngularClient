@@ -9,7 +9,7 @@ export class charObject {
         //eventually will be used to pass in values when editing existing characters
     }
 
-    _userID: string = '';
+    _userID: any = '';
     active: boolean = false;
     favorite: boolean = false;
     startingEquipmentSelected: boolean = false;
@@ -28,6 +28,8 @@ export class charObject {
 
     equippedItemsIndexes: string[] = [];
     inventoryItemsIndexes: string[] = [];
+
+    //charactersShard: any = 0;
 
     //Non required char creation sections. Can be left blank while still having a completed character
     personality?: personalityObject;
