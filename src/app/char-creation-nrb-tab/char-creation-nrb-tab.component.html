@@ -26,7 +26,7 @@
         <h4>Select {{raceUserAbilitiesCount}} ability bonuse(s):</h4>
 
         <div *ngFor="let ability of raceUserAbilities">
-            <input type="checkbox" value={{ability[0]}} id="abilityScoreOptions" (click)="updateRaceAbilityBonuses(ability[0], ability[2])">
+            <input type="checkbox" [attr.checked]="(nrbCheckboxes(ability[0], currentChar.race.chosenAbilityBonuses)) ? true : null" value={{ability[0]}} id="abilityScoreOptions" (click)="updateRaceAbilityBonuses(ability[0], ability[2])">
             <label for="abilityScoreOptions">Increase {{ability[1]}} by {{ability[2]}}</label><br>
         </div>
     </div>
@@ -35,16 +35,16 @@
         <h4>Select {{raceUserProficienciesCount}} proficiencie(s):</h4>
 
         <div *ngFor="let proficiency of raceUserProficiencies">
-            <input type="checkbox" value={{proficiency[0]}} id="proficiencyOptions" (click)="updateRaceProficiencies(proficiency[0], proficiency[1])">
+            <input type="checkbox" [attr.checked]="(nrbCheckboxes(proficiency[0], currentChar.race.chosenProficiencyIndex)) ? true : null" value={{proficiency[0]}} id="proficiencyOptions" (click)="updateRaceProficiencies(proficiency[0], proficiency[1])">
             <label for="proficiencyOptions">Become proficient in {{proficiency[1]}}</label><br>
         </div>
     </div>
 
-    <div class="container" *ngIf="raceUserLanguages != null">
+    <div class="container" *ngIf="raceUserLanguagesData != null">
         <h4>Select {{raceUserLanguagesCount}} language(s):</h4>
 
         <div *ngFor="let language of raceUserLanguages">
-            <input type="checkbox" value={{language[0]}} id="languageOptions" (click)="updateRaceLanguages(language[0], language[1])">
+            <input type="checkbox" [attr.checked]="(nrbCheckboxes(language[0], currentChar.race.chosenLanguageIndex)) ? true : null" value={{language[0]}} id="languageOptions" (click)="updateRaceLanguages(language[0], language[1])">
             <label for="languageOptions">Learn {{language[1]}}</label><br>
         </div>
     </div>
@@ -85,7 +85,7 @@
         <h4>Select {{backgroundUserLanguagesCount}} language(s):</h4>
 
         <div *ngFor="let language of backgroundLanguageList">
-            <input type="checkbox" value={{language[0]}} id="languageOptions" (click)="updateBackgroundLanguage(language[0], language[1])">
+            <input type="checkbox" [attr.checked]="(nrbCheckboxes(language[0], currentChar.background.chosenLanguageIndexes)) ? true : null"  value={{language[0]}} id="languageOptions" (click)="updateBackgroundLanguage(language[0], language[1])">
             <label for="languageOptions">Learn {{language[1]}}</label><br>
         </div>
     </div>

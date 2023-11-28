@@ -24,6 +24,8 @@ export class CharCreationSpellsTabComponent implements OnInit {
   charClasses: any[] = [];
 
   //event emitter shenanigans
+  //indicates whether the spells tab is considered "complete" for the purpose of the "finish and view character" button appearing
+  //conditions to be met: character can't cast spells OR a spellcasting character has learnt at least one spell
   updateCompletedStatus() {
     if(this.spellcastingClasses.length == 0 || this.currentChar.classes[0].spellcasterInfo?.spellsKnown?.length != 0) {
       this.completionUpdater.emit([3, true]);
@@ -33,9 +35,10 @@ export class CharCreationSpellsTabComponent implements OnInit {
     }
   }
 
-  //TODO: MAKE BOTH UPDATE METHODS APPLY TO THE CLASSINDEX INSTEAD OF FIRST ARRAY ITEM
+  //adds / removes user-selected cantrip to / from the relevant class's cantrip list
+  //creates a cantrip list if it does not yet exist
   updateCantrips(classIndex: string, cantripIndex: string, cantripName: string) {
-    let classSpellcasterInfo = this.currentChar.classes[0]!.spellcasterInfo!;
+    let classSpellcasterInfo = this.currentChar.classes[this.findRelevantIndex(classIndex)]!.spellcasterInfo!;
 
     if(classSpellcasterInfo.cantripsKnown == null) {
       classSpellcasterInfo.cantripsKnown = [];
@@ -51,14 +54,16 @@ export class CharCreationSpellsTabComponent implements OnInit {
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
 
+  //adds / removes user-selected spell to / from the relevant class's spell list
+  //creates a spell list if it does not yet exist
   updateLeveledSpells(classIndex: string, spellIndex: string, spellName: string) {
-    let classSpellcasterInfo = this.currentChar.classes[0]!.spellcasterInfo!;
+    let classSpellcasterInfo = this.currentChar.classes[this.findRelevantIndex(classIndex)]!.spellcasterInfo!;
 
     if(classSpellcasterInfo.spellsKnown == null) {
       classSpellcasterInfo.spellsKnown = [];
     }
 
-    if(this.removeIfPresent(spellIndex, classSpellcasterInfo.spellsKnown)) {
+    if(this.removeIfPresent(spellIndex, classSpellcasterInfo.spellsKnown)) {6
       classSpellcasterInfo.spellsKnown.push([spellIndex, spellName]);
     }
 
@@ -70,6 +75,23 @@ export class CharCreationSpellsTabComponent implements OnInit {
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
 
+  //based off of a classIndex string, finds the appropriate index value in the character's classes array
+  findRelevantIndex(classIndex: string) {
+    let num = 0;
+
+    this.currentChar.classes.forEach((element: any, index) => {
+      if(element.classIndex == classIndex) {
+        num = index;
+      }
+    });
+
+    return num;
+  }
+
+  //checks to see if the specified spell is already present in the specified container array
+  //if it is present, removes it and returns false
+  //if it is NOT present, returns true
+  //used for "toggling" whether the character knows a spell each time the user checks / unchecks a checkbox
   removeIfPresent(spellIndex: string, containerArray: string[][]) {
     let presentAtIndex: number = -1;
 
@@ -88,6 +110,33 @@ export class CharCreationSpellsTabComponent implements OnInit {
     }
   }
 
+  //returns true if specified spell has previously been chosen by the user (for the specified class)
+  //used to determine whether or not to have it checked on component load
+  spellCheckboxes(spellIndex: string, leveledSpell: boolean, classIndex: string) {
+    let isPresent: boolean = false;
+    let classLocation = this.findRelevantIndex(classIndex);
+
+    if(leveledSpell) {
+      this.currentChar.classes[classLocation].spellcasterInfo!.spellsKnown.forEach((element: any) => {
+        if(element[0] == spellIndex) {
+          isPresent = true;
+        }
+      });
+    }
+    else {
+      this.currentChar.classes[classLocation].spellcasterInfo!.cantripsKnown.forEach((element: any) => {
+        if(element[0] == spellIndex) {
+          isPresent = true;
+        }
+      });
+    }
+
+    return isPresent;
+  }
+
+  //takes in the current character object, checks to see if any of its existing classes can learn spells
+  //takes stock of each spellcasting class and fills out a spellcasterInfo object for them
+  //the spellcasterInfo object contains relevant displayable information (spells available to learn, how many spells can be cast in a day, etc)
   ngOnInit(): void {
     this.currentChar = JSON.parse(String(sessionStorage.getItem('currentChar')));
     console.log(this.currentChar);

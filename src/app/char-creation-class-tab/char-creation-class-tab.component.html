@@ -13,11 +13,14 @@
         <option value="etc">etc</option>
     </select>
 
-    <h4>Features (placeholders):</h4>
-    <ul>
-        <li>feature1</li>
-        <li>feature2</li>
-    </ul>
+    <h4>Features:</h4>
+
+    <div *ngFor="let feat of charClassesInfo[i].levelFeatures">
+        <p>{{feat[0]}}: </p>
+        <p *ngFor="let line of feat[1]">{{line}}</p>
+
+        <br>
+    </div>
 
     <div *ngIf="charClass == charClasses[0]">
         <h4>Proficiencies:</h4>
@@ -30,7 +33,7 @@
         <h4>Skills (Choose {{charClassesInfo[i].skillProficiencyCount}}):</h4>
 
         <div *ngFor="let profOption of charClassesInfo[i].userProficienciesOptions">
-            <input type="checkbox" id="skillProfOptions" value={{profOption[0]}} (click)="updateClassProficiency(profOption[0], profOption[1], i)">
+            <input type="checkbox" id="skillProfOptions" [attr.checked]="(classesCheckboxes(profOption[0], currentChar.classes[i].chosenProficiencyIndex)) ? true : null" value={{profOption[0]}} (click)="updateClassProficiency(profOption[0], profOption[1], i)">
             <label for="skillProfOptions"> {{profOption[1]}}</label><br>
         </div>
     </div>
