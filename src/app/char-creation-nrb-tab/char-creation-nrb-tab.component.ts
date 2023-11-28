@@ -39,6 +39,8 @@ export class CharCreationNrbTabComponent implements OnInit {
   backgroundLanguageList: string[][] = [];
 
   //event emitter shenanigans
+  //indicates whether the nrb tab is considered "complete" for the purpose of the "finish and view character" button appearing
+  //conditions to be met: character name exists AND a background is chosen AND a race is chosen
   updateCompletedStatus() {
     if(this.currentChar.name != '' && this.currentChar.background.backgroundIndex != '' && this.currentChar.race.raceIndex != '') {
       this.completionUpdater.emit([0, true]);
@@ -48,8 +50,7 @@ export class CharCreationNrbTabComponent implements OnInit {
     }
   }
 
-  //to make this secure even in the case of multiple tabs open, should first refresh currentChar from session storage
-  //left out for now to avoid clutter and focus on more important functionality
+  //sets the current character's race according to user choice
   updateRace() {
     this.raceUserAbilitiesData = null;
     this.raceUserProficienciesData = null;
@@ -60,6 +61,12 @@ export class CharCreationNrbTabComponent implements OnInit {
 
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
 
+    this.establishRaceInfo();
+  }
+
+  //gathers relevant displayable race information based off of the current character's race
+  //also checks if the race allows the user to choose ability score bonuses, proficiencies, and/or languages
+  establishRaceInfo() {
     this.dndApiService.RaceInfo(this.currentChar.race.raceIndex).subscribe((raceData) => {
       this.currentRace = new raceInfo(this.currentChar.race.raceIndex);
 
@@ -91,6 +98,7 @@ export class CharCreationNrbTabComponent implements OnInit {
         });
       }
 
+      //if the chosen race allows the user to choose proficiencies
       if(raceData.starting_proficiency_options) {
         this.raceUserProficienciesData = raceData.starting_proficiency_options;
         let data = this.raceUserProficienciesData;
@@ -104,6 +112,7 @@ export class CharCreationNrbTabComponent implements OnInit {
         });
       }
 
+      //if the chosen race allows the user to choose a language
       if(raceData.language_options) {
         this.raceUserLanguagesData = raceData.language_options;
         let data = this.raceUserLanguagesData;
@@ -123,7 +132,8 @@ export class CharCreationNrbTabComponent implements OnInit {
     });
   }
 
-  //updateRaceAbilityBonuses
+  //adds / removes an ability bonus to / from the current character's race information
+  //creates an ability bonuses array to the race object if it doesn't yet exist
   updateRaceAbilityBonuses(abilityIndex: string, bonusAmount: number) {
     let charRaceInfo = this.currentChar.race;
 
@@ -141,7 +151,8 @@ export class CharCreationNrbTabComponent implements OnInit {
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
 
-  //updateRaceProficiencies
+  //adds / removes a proficiency to / from the current character's race information
+  //creates a proficiencies array to the race object if it doesn't yet exist
   updateRaceProficiencies(proficiencyIndex: string, proficiencyName: string) {
     let charRaceInfo = this.currentChar.race;
 
@@ -158,7 +169,8 @@ export class CharCreationNrbTabComponent implements OnInit {
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
 
-  //updateRaceLanguages
+  //adds / removes a language to / from the current character's race information
+  //creates a languages array to the race object if it doesn't yet exist
   updateRaceLanguages(languageIndex: string, languageName: string) {
     let charRaceInfo = this.currentChar.race;
 
@@ -175,6 +187,10 @@ export class CharCreationNrbTabComponent implements OnInit {
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
 
+  //checks to see if the specified item is already present in the specified container array
+  //if it is present, removes it and returns false
+  //if it is NOT present, returns true
+  //used for "toggling" whether the character has a certain property each time the user checks / unchecks a checkbox
   removeIfPresent(itemIndex: string, containerArray: string[][]) {
     let presentAtIndex: number = -1;
 
@@ -193,12 +209,19 @@ export class CharCreationNrbTabComponent implements OnInit {
     }
   }
 
+  //sets the current character's background according to user choice
   updateBackground() {
     this.currentChar.background.backgroundIndex = (document.getElementById("charBackground") as HTMLSelectElement)?.value;
     console.log(this.currentChar);
 
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
 
+    this.establishBackgroundInfo();
+  }
+
+  //gathers relevant displayable background information based off of the current character's background
+  //also gathers a list of languages from which the user can choose for their character to learn
+  establishBackgroundInfo() {
     this.dndApiService.BackgroundInfo(this.currentChar.background.backgroundIndex).subscribe((backgroundData) => {
       this.currentBackground = new backgroundInfo(this.currentChar.background.backgroundIndex);
 
@@ -233,6 +256,8 @@ export class CharCreationNrbTabComponent implements OnInit {
     });
   }
 
+  //adds / removes a language to / from the current character's background information
+  //creates a languages array to the background object if it doesn't yet exist
   updateBackgroundLanguage(languageIndex: string, languageName: string) {
     let charBackgroundInfo = this.currentChar.background;
 
@@ -249,6 +274,7 @@ export class CharCreationNrbTabComponent implements OnInit {
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
 
+  //updates the current character's name according to user choice
   updateName() {
     this.currentChar.name = (document.getElementById("charName") as HTMLInputElement)?.value;
     console.log(this.currentChar);
@@ -258,6 +284,22 @@ export class CharCreationNrbTabComponent implements OnInit {
     sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
   }
 
+  //returns true if specified option has previously been chosen by the user
+  //used to determine whether or not to have it checked on component load
+  nrbCheckboxes(abilityIndex: string, arrayChecked: any[][]) {
+    let isPresent: boolean = false;
+
+    arrayChecked.forEach((element: any) => {
+      if(element[0] == abilityIndex) {
+        isPresent = true;
+      }
+    });
+
+    return isPresent;
+  }
+
+  //gets a list of all API-available races and backgrounds
+  //takes in the current character object and (as relevant) populates viewable fields with existing character info
   ngOnInit(): void {
     //Gets a list of races from dnd api. Puts into raceList.
     this.dndApiService.RaceList().subscribe((data) => {
@@ -277,5 +319,16 @@ export class CharCreationNrbTabComponent implements OnInit {
 
     this.currentChar = JSON.parse(String(sessionStorage.getItem('currentChar')));
     console.log(this.currentChar);
+
+    //populating selections if the character object is already populated
+    if(this.currentChar.name.length > 0) {
+      (document.getElementById("charName") as HTMLInputElement).value = this.currentChar.name;
+    }
+    if(this.currentChar.race.raceIndex.length > 0) {
+      this.establishRaceInfo();
+    }
+    if(this.currentChar.background.backgroundIndex.length > 0) {
+      this.establishBackgroundInfo();
+    }
   }
 }
