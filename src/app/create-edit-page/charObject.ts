@@ -9,7 +9,7 @@ export class charObject {
         //eventually will be used to pass in values when editing existing characters
     }
 
-    _userID: any = '';
+    userId: any = '';
     active: boolean = false;
     favorite: boolean = false;
     startingEquipmentSelected: boolean = false;

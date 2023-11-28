@@ -42,7 +42,7 @@ export class CreateEditPageComponent implements OnInit {
     this.currentChar = JSON.parse(String(sessionStorage.getItem('currentChar')));
     let userId: any = localStorage.getItem('userId')?.replace(/['"]+/g, '');
 
-    this.currentChar._userID = userId;
+    this.currentChar.userId = userId;
 
     console.log(this.currentChar);
 
