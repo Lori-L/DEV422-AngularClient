@@ -38,4 +38,4 @@
 <app-char-creation-backstory-tab *ngIf="tabOrder[7]"></app-char-creation-backstory-tab>
 
 <br><br>
-<button type="button" routerLink="/sheet-view" *ngIf="minimumCompleted">Finish & View Character</button>
+<button type="button" *ngIf="minimumCompleted" (click)="submitChar()">Finish & View Character</button> <!--routerLink="/sheet-view"-->

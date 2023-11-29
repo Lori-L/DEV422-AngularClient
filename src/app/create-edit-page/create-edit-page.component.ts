@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { charObject } from './charObject';
+import { CharacterApiService } from '../character-api.service';
 
 @Component({
   selector: 'app-create-edit-page',
@@ -8,7 +9,7 @@ import { charObject } from './charObject';
 })
 export class CreateEditPageComponent implements OnInit {
 
-  constructor() {
+  constructor(private characterApiService: CharacterApiService) {
     //used for navigation between steps
     let tabOrder: boolean[];
     let previousTab: number;
@@ -18,6 +19,8 @@ export class CreateEditPageComponent implements OnInit {
   requiredTabsComplete: boolean[] = [false, false, false, false, false];;
   minimumCompleted: boolean = false;
   previousTab = 0;
+
+  currentChar: charObject = new charObject;
 
   updateCompletedTabs(change: any[]) {
     this.requiredTabsComplete[change[0]] = change[1];
@@ -33,6 +36,19 @@ export class CreateEditPageComponent implements OnInit {
     this.tabOrder[this.previousTab] = false;
     this.tabOrder[tabIndex] = true;
     this.previousTab = tabIndex;
+  }
+
+  submitChar() {
+    this.currentChar = JSON.parse(String(sessionStorage.getItem('currentChar')));
+    let userId: any = localStorage.getItem('userId')?.replace(/['"]+/g, '');
+
+    this.currentChar.userId = userId;
+
+    console.log(this.currentChar);
+
+    this.characterApiService.createFinishedChar(this.currentChar).subscribe((data: any) => {
+      console.log(data);
+    });
   }
 
   ngOnInit(): void {

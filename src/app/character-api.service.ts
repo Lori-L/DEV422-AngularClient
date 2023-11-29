@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { charObject } from './create-edit-page/charObject';
 
 @Injectable({
   providedIn: 'root',
@@ -36,5 +37,13 @@ export class CharacterApiService {
     return this.http.post(`http://localhost:3000/char/testFill`, {
       userId: userId,
     });
+  }
+
+  createFinishedChar(char: charObject): any {
+    return this.http.post(
+      'http://localhost:3000/char/whole', {
+        char
+      }
+    );
   }
 }
