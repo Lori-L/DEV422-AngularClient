@@ -105,7 +105,7 @@ export class CharCreationClassTabComponent implements OnInit {
       }
 
       featureList.forEach((featureName: any, index) => {
-        this.dndApiService.ClassFeatureData(featureName).subscribe((featureData) => {
+        this.dndApiService.FeatureData(featureName).subscribe((featureData) => {
           this.currentClassInfo!.levelFeatures.push([featureData.name, featureData.desc]);
           console.log(this.currentClassInfo);
 
