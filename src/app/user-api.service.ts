@@ -13,12 +13,12 @@ export class UserApiService {
   // login
   Login(username: string, password: string): Observable<any> {
     return this.http.get(
-      `https://dnddbnodeserver.azurewebsites.net/user/password?username=${username}&password=${password}`
+      `http://localhost:3000/user/password?username=${username}&password=${password}`
     );
   }
 
   SignUp(username: string, password: string, email: string): Observable<any> {
-    return this.http.post('https://dnddbnodeserver.azurewebsites.net/user/signup/', {
+    return this.http.post('http://localhost:3000/user/signup/', {
       username,
       password,
       email,
