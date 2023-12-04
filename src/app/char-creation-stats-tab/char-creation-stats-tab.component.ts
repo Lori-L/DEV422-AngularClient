@@ -27,7 +27,7 @@ export class CharCreationStatsTabComponent implements OnInit {
   currentChar: charObject = new charObject;
 
   standardArray = false;
-  manualEntry = false;
+  manualEntry = true;
   pointBuy = false;
   selectedOption=''
 
@@ -40,7 +40,7 @@ export class CharCreationStatsTabComponent implements OnInit {
   //indicates whether the stats tab is considered "complete" for the purpose of the "finish and view character" button appearing
   //conditions to be met: all ability scores have been modified (have a nonzero value)
   updateCompletedStatus() {
-    if(this.currentChar.abilityScores.includes(0) == false) {
+    if(this.currentChar.abilityScoresBasic.includes(0) == false) {
       this.completionUpdater.emit([2, true]);
     }
     else {
@@ -50,7 +50,7 @@ export class CharCreationStatsTabComponent implements OnInit {
 
   //changes the ability score (corresponding to the passed-in index) on the character object
   updateStat(ind: number) {
-    this.currentChar.abilityScores[ind] = Number((document.getElementById("manualEntry" + ind) as HTMLInputElement)?.value);
+    this.currentChar.abilityScoresBasic[ind] = Number((document.getElementById("manualEntry" + ind) as HTMLInputElement)?.value);
     console.log(this.currentChar);
 
     this.updateCompletedStatus();

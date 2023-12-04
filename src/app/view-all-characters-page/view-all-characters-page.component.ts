@@ -27,6 +27,8 @@ export class ViewAllCharactersPageComponent implements OnInit {
   ngOnInit(): void {
     // get user data
 
+    sessionStorage.setItem("currentChar", 'e');
+
     let userId = localStorage.getItem('userId') ?? '';
 
     userId = userId.replace(/['"]+/g, '');

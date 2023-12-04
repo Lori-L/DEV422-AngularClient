@@ -56,6 +56,38 @@ export class CharCreationNrbTabComponent implements OnInit {
     this.raceUserProficienciesData = null;
     this.raceUserLanguagesData = null;
 
+    //reverts any ability score boosts from the previous race
+    if(this.currentRace) {
+      this.currentRace.raceAbilityBonuses.forEach(bonus => {
+        switch(bonus[0]){
+          case('str'): {
+            this.currentChar.abilityScores[0] -= bonus[1];
+            break;
+          }
+          case ('dex'):  {
+            this.currentChar.abilityScores[1] -= bonus[1];
+            break;
+          }
+          case('con'): {
+            this.currentChar.abilityScores[2] -= bonus[1];
+            break;
+          }
+          case('int'): {
+            this.currentChar.abilityScores[3] -= bonus[1];
+            break;
+          }
+          case('wis'): {
+            this.currentChar.abilityScores[4] -= bonus[1];
+            break;
+          }
+          case ('cha'): {
+            this.currentChar.abilityScores[5] -= bonus[1];
+            break;
+          }
+        }
+      });
+    }
+
     this.currentChar.race.raceIndex = (document.getElementById("charRace") as HTMLSelectElement)?.value;
     console.log(this.currentChar);
 
@@ -80,6 +112,33 @@ export class CharCreationNrbTabComponent implements OnInit {
 
       raceData.ability_bonuses.forEach((element: any) => {
         tempAbilities.push([element.ability_score.index, element.bonus]);
+
+        switch(element.ability_score.index){
+          case('str'): {
+            this.currentChar.abilityScores[0] += element.bonus;
+            break;
+          }
+          case ('dex'):  {
+            this.currentChar.abilityScores[1] += element.bonus;
+            break;
+          }
+          case('con'): {
+            this.currentChar.abilityScores[2] += element.bonus;
+            break;
+          }
+          case('int'): {
+            this.currentChar.abilityScores[3] += element.bonus;
+            break;
+          }
+          case('wis'): {
+            this.currentChar.abilityScores[4] += element.bonus;
+            break;
+          }
+          case ('cha'): {
+            this.currentChar.abilityScores[5] += element.bonus;
+            break;
+          }
+        }
       });
 
       this.currentRace.raceAbilityBonuses = tempAbilities;
@@ -298,6 +357,23 @@ export class CharCreationNrbTabComponent implements OnInit {
     return isPresent;
   }
 
+  //populating selections if the character object is already populated
+  prePopulate() {
+    try {
+      if(this.currentChar.name.length > 0) {
+        (document.getElementById("charName") as HTMLInputElement).value = this.currentChar.name;
+      }
+      if(this.currentChar.race.raceIndex.length > 0) {
+        this.establishRaceInfo();
+      }
+      if(this.currentChar.background.backgroundIndex.length > 0) {
+        this.establishBackgroundInfo();
+      }
+    } catch (error) {
+      this.prePopulate;
+    }
+  }
+
   //gets a list of all API-available races and backgrounds
   //takes in the current character object and (as relevant) populates viewable fields with existing character info
   ngOnInit(): void {
@@ -320,15 +396,7 @@ export class CharCreationNrbTabComponent implements OnInit {
     this.currentChar = JSON.parse(String(sessionStorage.getItem('currentChar')));
     console.log(this.currentChar);
 
-    //populating selections if the character object is already populated
-    if(this.currentChar.name.length > 0) {
-      (document.getElementById("charName") as HTMLInputElement).value = this.currentChar.name;
-    }
-    if(this.currentChar.race.raceIndex.length > 0) {
-      this.establishRaceInfo();
-    }
-    if(this.currentChar.background.backgroundIndex.length > 0) {
-      this.establishBackgroundInfo();
-    }
+    this.prePopulate();
+    
   }
 }

@@ -2,7 +2,7 @@
     <button type="button" (click)="navTab(previousTab - 1)" *ngIf="previousTab != 0">Previous Step</button>
     <button type="button" *ngIf="previousTab == 0"></button>
 
-    <h1 style="text-align: center; flex-grow: 3;">Character Creator</h1>
+    <h1 style="text-align: center; flex-grow: 3;">{{headerText}}</h1>
 
     <button type="button" (click)="navTab(previousTab + 1)" *ngIf="previousTab != 7" style="float:right">Next Step</button>
     <button type="button" *ngIf="previousTab == 7" style="float:right"></button>
@@ -21,7 +21,7 @@
     <li><button type="button" (click)="navTab(7)">Backstory</button></li>
 </ul>
 
-<app-char-creation-nrb-tab *ngIf="tabOrder[0]" (completionUpdater)="updateCompletedTabs($any($event))"></app-char-creation-nrb-tab>
+<app-char-creation-nrb-tab *ngIf="tabOrder[0] && canLoad" (completionUpdater)="updateCompletedTabs($any($event))"></app-char-creation-nrb-tab>
 
 <app-char-creation-class-tab *ngIf="tabOrder[1]" (completionUpdater)="updateCompletedTabs($any($event))"></app-char-creation-class-tab>
 
