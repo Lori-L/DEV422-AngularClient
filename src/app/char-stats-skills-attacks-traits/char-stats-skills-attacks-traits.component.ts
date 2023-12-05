@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CharStatsSkillsAttacksTraitsComponent implements OnInit {
   @Input() character: any;
   @Input() characterData: any;
+  @Input() apiInfo: any;
   constructor() {}
 
   ngOnInit(): void {}

@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CharAttacksComponent implements OnInit {
   @Input() character: any;
   @Input() characterData: any;
+  @Input() apiInfo: any;
   armorTitle = ['Armor Class', 'Initiative', 'Speed'];
   constructor() {}
 

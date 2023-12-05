@@ -35,6 +35,7 @@ export class CharSkillsComponent implements OnInit {
 
   @Input() character: any;
   @Input() characterData: any;
+  @Input() apiInfo: any;
   constructor() {}
 
   ngOnInit(): void {}
