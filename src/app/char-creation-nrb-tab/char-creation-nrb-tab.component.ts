@@ -55,6 +55,7 @@ export class CharCreationNrbTabComponent implements OnInit {
     this.raceUserAbilitiesData = null;
     this.raceUserProficienciesData = null;
     this.raceUserLanguagesData = null;
+    this.currentChar.race.defaultAbilityBonusApplied = false;
 
     //reverts any ability score boosts from the previous race
     if(this.currentRace) {
@@ -113,33 +114,37 @@ export class CharCreationNrbTabComponent implements OnInit {
       raceData.ability_bonuses.forEach((element: any) => {
         tempAbilities.push([element.ability_score.index, element.bonus]);
 
-        switch(element.ability_score.index){
-          case('str'): {
-            this.currentChar.abilityScores[0] += element.bonus;
-            break;
-          }
-          case ('dex'):  {
-            this.currentChar.abilityScores[1] += element.bonus;
-            break;
-          }
-          case('con'): {
-            this.currentChar.abilityScores[2] += element.bonus;
-            break;
-          }
-          case('int'): {
-            this.currentChar.abilityScores[3] += element.bonus;
-            break;
-          }
-          case('wis'): {
-            this.currentChar.abilityScores[4] += element.bonus;
-            break;
-          }
-          case ('cha'): {
-            this.currentChar.abilityScores[5] += element.bonus;
-            break;
+        if(this.currentChar.race.defaultAbilityBonusApplied == false) {
+          switch(element.ability_score.index){
+            case('str'): {
+              this.currentChar.abilityScores[0] += element.bonus;
+              break;
+            }
+            case ('dex'):  {
+              this.currentChar.abilityScores[1] += element.bonus;
+              break;
+            }
+            case('con'): {
+              this.currentChar.abilityScores[2] += element.bonus;
+              break;
+            }
+            case('int'): {
+              this.currentChar.abilityScores[3] += element.bonus;
+              break;
+            }
+            case('wis'): {
+              this.currentChar.abilityScores[4] += element.bonus;
+              break;
+            }
+            case ('cha'): {
+              this.currentChar.abilityScores[5] += element.bonus;
+              break;
+            }
           }
         }
       });
+      
+      this.currentChar.race.defaultAbilityBonusApplied = true;
 
       this.currentRace.raceAbilityBonuses = tempAbilities;
 
@@ -185,6 +190,8 @@ export class CharCreationNrbTabComponent implements OnInit {
         });
       }
 
+      sessionStorage.setItem('currentChar', JSON.stringify(this.currentChar));
+
       this.updateCompletedStatus();
 
       console.log(this.currentRace);
@@ -202,6 +209,62 @@ export class CharCreationNrbTabComponent implements OnInit {
 
     if(this.removeIfPresent(abilityIndex, charRaceInfo.chosenAbilityBonuses)) {
       charRaceInfo.chosenAbilityBonuses.push([abilityIndex, bonusAmount]);
+      //add to char abilityScores
+      switch(abilityIndex){
+        case('str'): {
+          this.currentChar.abilityScores[0] += bonusAmount;
+          break;
+        }
+        case ('dex'):  {
+          this.currentChar.abilityScores[1] += bonusAmount;
+          break;
+        }
+        case('con'): {
+          this.currentChar.abilityScores[2] += bonusAmount;
+          break;
+        }
+        case('int'): {
+          this.currentChar.abilityScores[3] += bonusAmount;
+          break;
+        }
+        case('wis'): {
+          this.currentChar.abilityScores[4] += bonusAmount;
+          break;
+        }
+        case ('cha'): {
+          this.currentChar.abilityScores[5] += bonusAmount;
+          break;
+        }
+      }
+    }
+    else {
+      //remove from char abilityScores
+      switch(abilityIndex){
+        case('str'): {
+          this.currentChar.abilityScores[0] -= bonusAmount;
+          break;
+        }
+        case ('dex'):  {
+          this.currentChar.abilityScores[1] -= bonusAmount;
+          break;
+        }
+        case('con'): {
+          this.currentChar.abilityScores[2] -= bonusAmount;
+          break;
+        }
+        case('int'): {
+          this.currentChar.abilityScores[3] -= bonusAmount;
+          break;
+        }
+        case('wis'): {
+          this.currentChar.abilityScores[4] -= bonusAmount;
+          break;
+        }
+        case ('cha'): {
+          this.currentChar.abilityScores[5] -= bonusAmount;
+          break;
+        }
+      }
     }
 
     console.log(charRaceInfo.chosenAbilityBonuses);

@@ -50,7 +50,15 @@ export class CharCreationStatsTabComponent implements OnInit {
 
   //changes the ability score (corresponding to the passed-in index) on the character object
   updateStat(ind: number) {
+    let oldStat = this.currentChar.abilityScoresBasic[ind];
+
     this.currentChar.abilityScoresBasic[ind] = Number((document.getElementById("manualEntry" + ind) as HTMLInputElement)?.value);
+
+    let difference = this.currentChar.abilityScoresBasic[ind] - oldStat;
+
+    //adds (or subtracts) the difference between the new and old stats to the char's adjusted abilityScores array
+    this.currentChar.abilityScores[ind] += difference;
+
     console.log(this.currentChar);
 
     this.updateCompletedStatus();

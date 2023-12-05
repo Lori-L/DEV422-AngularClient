@@ -86,6 +86,8 @@ export class CreateEditPageComponent implements OnInit {
     if(this.currentChar.userId.length > 0) {
       this.characterApiService.updateExistingChar(this.currentChar).subscribe((data: any) => {
         console.log(data);
+
+        this._router.navigate(['/character/' + data.message]);
       })
     }
     //else if the character is new, create
