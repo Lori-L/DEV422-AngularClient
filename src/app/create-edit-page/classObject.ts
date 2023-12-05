@@ -7,6 +7,8 @@ export class classObject {
     chosenProficiencyIndex: string[][] = [];
     chosenExpertisesIntex?: string[][];
 
+    hitDie: number = 0;
+
     uniqueClassChoices?: string[][][];
 
     isSpellcaster: boolean = false;

@@ -41,7 +41,7 @@ export class NavBarComponent implements OnInit {
 
   GoCreate() {
     if (localStorage.getItem('userId') != null) {
-      this.router.navigate(['/create-edit']);
+      this.router.navigate(['/create-edit', 'newchar']);
     }
   }
 

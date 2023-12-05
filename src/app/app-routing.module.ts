@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   { path: 'choose-view', component: ChooseViewComponent },
 
-  { path: 'create-edit', component: CreateEditPageComponent },
+  { path: 'create-edit/:id', component: CreateEditPageComponent },
 
   {
     path: 'sheet-view',

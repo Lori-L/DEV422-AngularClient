@@ -51,9 +51,15 @@ export class DndApiServiceService {
     )
   }
 
-  ClassFeatureData(featureName: string): Observable<any> {
+  FeatureData(featureName: string): Observable<any> {
     return this.http.get(
       'https://www.dnd5eapi.co/api/features/' + featureName
+    )
+  }
+
+  TraitData(traitName: string): Observable<any> {
+    return this.http.get(
+      'https://www.dnd5eapi.co/api/traits/' + traitName
     )
   }
 
@@ -87,6 +93,19 @@ export class DndApiServiceService {
       'https://www.dnd5eapi.co/api/classes/' + className + '/spellcasting'
     );
   }
+
+  EquipmentInfo(equipmentIndex: string): Observable<any> {
+    return this.http.get(
+      'https://www.dnd5eapi.co/api/equipment/' + equipmentIndex
+    );
+  }
+
+  SpellInfo(spellIndex: string): Observable<any> {
+    return this.http.get(
+      'https://www.dnd5eapi.co/api/spells/' + spellIndex
+    );
+  }
+
 
   MiscQuery(url: string): Observable<any> {
     return this.http.get(

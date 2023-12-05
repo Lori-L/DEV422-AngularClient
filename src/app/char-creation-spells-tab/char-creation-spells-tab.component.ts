@@ -208,8 +208,27 @@ export class CharCreationSpellsTabComponent implements OnInit {
             
           //Determines how many spells can be prepared (for relevant classes)
           spellCastingClass.spellCastingAbility = charClass.spellcasterInfo.spellCastingAbility;
+          switch (spellCastingClass.spellCastingAbility) {
+            case('int'):  {
+              spellCastingClass.spellCastingModifier = Math.floor((this.currentChar.abilityScoresBasic[3] - 10) / 2);
+              break;
+            }
+            case('wis'): {
+              spellCastingClass.spellCastingModifier = Math.floor((this.currentChar.abilityScoresBasic[4] - 10) / 2);
+              break;
+            }
+            case('cha'): {
+              spellCastingClass.spellCastingModifier = Math.floor((this.currentChar.abilityScoresBasic[5] - 10) / 2);
+              break;
+            }
+          }
+
           if(charClass.classIndex == ('cleric' || 'druid' || 'paladin' || 'wizard')) {
             spellCastingClass.maxPreparedSpells = charClass.classLevel + spellCastingClass.spellCastingModifier;
+
+            if(spellCastingClass.maxPreparedSpells! < 1) {
+              spellCastingClass.maxPreparedSpells = 1;
+            }
           }
 
           this.spellcastingClasses.push(spellCastingClass);
