@@ -12,5 +12,9 @@ export class CharAttacksComponent implements OnInit {
   armorTitle = ['Armor Class', 'Initiative', 'Speed'];
   constructor() {}
 
+  findModifier(abilityScore: number) {
+    return Math.floor(( abilityScore - 10) / 2);
+  }
+
   ngOnInit(): void {}
 }
