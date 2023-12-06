@@ -10,8 +10,12 @@
       <div class="h-text">Cantrips</div>
     </div>
     <ul id="cantrips">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let cantrip of characterData.classes[0].spellcasterInfo.cantripsKnown
+        "
+      >
+        <app-spell [spell]="cantrip"></app-spell>
       </li>
     </ul>
 

@@ -226,11 +226,13 @@ export class ViewCharacterSheetPageComponent implements OnInit {
         this.apiService
           .RaceInfo(this.characterData.race.raceIndex)
           .subscribe((data: any) => {
+            console.log(data);
             this.apiInfo.speed = data.speed;
 
             this.apiService
               .SingleClassData(this.characterData.classes[0].classIndex)
               .subscribe((data: any) => {
+                console.log(data);
                 this.apiInfo.classIndex =
                   this.characterData.classes[0].classIndex;
                 for (const i of data.saving_throws) {

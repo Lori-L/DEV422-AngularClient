@@ -17,8 +17,6 @@ export class CheckNumBoxComponent implements OnInit {
   constructor(private apiService: DndApiServiceService) {}
 
   ngOnInit(): void {
-    console.log(this.characterData.classes[0].classIndex, this.value);
-
     this.apiService
       .SingleClassData(this.characterData.classes[0].classIndex)
       .subscribe((data: any) => {
@@ -31,8 +29,6 @@ export class CheckNumBoxComponent implements OnInit {
         if (this.savingThrows.includes(this.title.slice(0, 3).toLowerCase())) {
           this.isChecked = true;
         }
-
-        console.log(this.savingThrows);
       });
 
     // if (
