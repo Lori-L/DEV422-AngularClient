@@ -9,7 +9,7 @@ export class spellCasterInfo {
     spellCastingModifier: number = 0;
 
     spellSlotsArray: number[] = [];
-    spellsByLevel: string[][][] = [];
+    spellsByLevel: any[][][] = [];
     cantripsKnownCount?: number;
     cantripsList: string[][] = [];
     spellsKnownCount?: number;

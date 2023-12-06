@@ -19,7 +19,7 @@
             <p>Spell Slots: {{level}}</p> <br>
 
             <div *ngFor="let spell of cast.spellsByLevel[i]">
-                <input type="checkbox" [attr.checked]="(spellCheckboxes(spell[0], true, cast.classIndex)) ? true : null" value={{spell[0]}} id="leveledSpells" (click)="updateLeveledSpells(cast.classIndex, spell[0], spell[1])">
+                <input type="checkbox" [attr.checked]="(spellCheckboxes(spell[0], true, cast.classIndex)) ? true : null" value={{spell[0]}} id="leveledSpells" (click)="updateLeveledSpells(cast.classIndex, spell[0], spell[1], spell[2])">
                 <label for="leveledSpells">{{spell[1]}}</label><br>
             </div>
         </div>

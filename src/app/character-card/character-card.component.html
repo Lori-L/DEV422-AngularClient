@@ -17,7 +17,7 @@
       class="button-styles view-button"
       >View</Button
     >
-    <Button routerLink="/create-edit" class="button-styles">Edit</Button>
+    <Button [routerLink]="['/create-edit', character._id]" class="button-styles">Edit</Button>
     <Button (click)="openDelete(character._id)" class="button-styles"
       >Delete</Button
     >

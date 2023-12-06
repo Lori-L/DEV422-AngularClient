@@ -3,10 +3,10 @@ import { classObject } from "./classObject";
 import { personalityObject } from "./personalityObject";
 import { appearanceObject } from "./appearanceObject";
 import { backgroundObject } from "./backgroundObject";
+import { hpObject } from "./hpObject";
 
 export class charObject {
     constructor() {
-        //eventually will be used to pass in values when editing existing characters
     }
 
     userId: any = '';
@@ -24,15 +24,19 @@ export class charObject {
 
     classes: classObject[] = [];
 
-    abilityScores: number[] = [0,0,0,0,0,0]; //in order of STR DEX CON INT WIS CHA
+    hp: hpObject = new hpObject;
+
+    abilityScoresBasic: number[] = [0,0,0,0,0,0]; //in order of STR DEX CON INT WIS CHA
+    abilityScores: number[] = [0,0,0,0,0,0] //accounts for boosts to ability scores
 
     equippedItemsIndexes: string[] = [];
     inventoryItemsIndexes: string[] = [];
 
-    //charactersShard: any = 0;
+    _id?: string;
+    charactersShard?: number;
 
     //Non required char creation sections. Can be left blank while still having a completed character
-    personality?: personalityObject;
-    appearance?: appearanceObject;
-    backstory?: string;
+    personality: personalityObject = new personalityObject;
+    appearance: appearanceObject = new appearanceObject;
+    backstory: string = '';
 }

@@ -3,4 +3,6 @@ export class raceObject {
     chosenLanguageIndex: string[][] = [];
     chosenProficiencyIndex: string[][] = [];
     chosenAbilityBonuses: any[][] = [];
+
+    defaultAbilityBonusApplied: boolean = false;
 }
