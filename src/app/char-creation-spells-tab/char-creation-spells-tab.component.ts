@@ -56,15 +56,15 @@ export class CharCreationSpellsTabComponent implements OnInit {
 
   //adds / removes user-selected spell to / from the relevant class's spell list
   //creates a spell list if it does not yet exist
-  updateLeveledSpells(classIndex: string, spellIndex: string, spellName: string) {
+  updateLeveledSpells(classIndex: string, spellIndex: string, spellName: string, spellLevel: number) {
     let classSpellcasterInfo = this.currentChar.classes[this.findRelevantIndex(classIndex)]!.spellcasterInfo!;
 
     if(classSpellcasterInfo.spellsKnown == null) {
       classSpellcasterInfo.spellsKnown = [];
     }
 
-    if(this.removeIfPresent(spellIndex, classSpellcasterInfo.spellsKnown)) {6
-      classSpellcasterInfo.spellsKnown.push([spellIndex, spellName]);
+    if(this.removeIfPresent(spellIndex, classSpellcasterInfo.spellsKnown)) {
+      classSpellcasterInfo.spellsKnown.push([spellIndex, spellName, spellLevel]);
     }
 
     console.log(classSpellcasterInfo.spellsKnown);
@@ -193,7 +193,7 @@ export class CharCreationSpellsTabComponent implements OnInit {
             if(spellLevel > 0) {
               this.dndApiService.DetermineAvailableSpellsAtSpellLevel(charClass.classIndex, String(index+1)).subscribe((spells) => {
                 spells.results.forEach((spell: any) => {
-                  tempSpells.push([spell.index, spell.name]);
+                  tempSpells.push([spell.index, spell.name, (index+1)]);
                 })
               })
             }
