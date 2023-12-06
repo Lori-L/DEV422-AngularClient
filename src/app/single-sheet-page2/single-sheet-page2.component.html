@@ -1,4 +1,11 @@
-<div id="main">
+<div
+  id="main"
+  *ngIf="
+    characterData.classes[0]?.spellcasterInfo !== null &&
+    characterData.classes[0]?.spellcasterInfo?.cantripsKnown !== null &&
+    characterData.classes[0]?.spellcasterInfo?.spellsKnown !== null
+  "
+>
   <div id="top-bar">
     <div id="spellcasting-class">Spellcasting Class: TBD</div>
     <div id="stats">
@@ -9,167 +16,181 @@
     <div class="header">
       <div class="h-text">Cantrips</div>
     </div>
-    <ul id="cantrips">
-      <li
-        *ngFor="
-          let cantrip of characterData.classes[0].spellcasterInfo.cantripsKnown
-        "
-      >
-        <app-spell [spell]="cantrip"></app-spell>
-      </li>
-    </ul>
-
-    <div class="header">
-      <div class="h-text">Level 1</div>
-      <input type="text" id="slots1" />
-      / 3
+    <div
+      *ngIf="
+        characterData.classes[0]?.spellcasterInfo !== null &&
+        characterData.classes[0]?.spellcasterInfo?.cantripsKnown !== null
+      "
+    >
+      <ul id="cantrips">
+        <li
+          *ngFor="
+            let cantrip of characterData.classes[0].spellcasterInfo
+              .cantripsKnown
+          "
+        >
+          <app-spell [spell]="cantrip"></app-spell>
+        </li>
+      </ul>
     </div>
-    <ul id="level1">
-      <li
-        *ngFor="
-          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
-        "
-      >
-        <ng-container *ngIf="spell[2] === 1">
-          <app-spell [spell]="spell"></app-spell>
-        </ng-container>
-      </li>
-    </ul>
+    <div
+      *ngIf="
+        characterData.classes[0]?.spellcasterInfo !== null &&
+        characterData.classes[0]?.spellcasterInfo?.spellsKnown !== null
+      "
+    >
+      <div class="header">
+        <div class="h-text">Level 1</div>
+        <input type="text" id="slots1" />
+        / 3
+      </div>
+      <ul id="level1">
+        <li
+          *ngFor="
+            let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+          "
+        >
+          <ng-container *ngIf="spell[2] === 1">
+            <app-spell [spell]="spell"></app-spell>
+          </ng-container>
+        </li>
+      </ul>
 
-    <div class="header">
-      <div class="h-text">Level 2</div>
-      <input type="text" id="slots2" />
-      / 3
-    </div>
-    <ul id="level2">
-      <li
-        *ngFor="
-          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
-        "
-      >
-        <ng-container *ngIf="spell[2] === 2">
-          <app-spell [spell]="spell"></app-spell>
-        </ng-container>
-      </li>
-    </ul>
+      <div class="header">
+        <div class="h-text">Level 2</div>
+        <input type="text" id="slots2" />
+        / 3
+      </div>
+      <ul id="level2">
+        <li
+          *ngFor="
+            let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+          "
+        >
+          <ng-container *ngIf="spell[2] === 2">
+            <app-spell [spell]="spell"></app-spell>
+          </ng-container>
+        </li>
+      </ul>
 
-    <div class="header">
-      <div class="h-text">Level 3</div>
-      <input type="text" id="slots3" />
-      / 3
-    </div>
-    <ul id="level3">
-      <li
-        *ngFor="
-          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
-        "
-      >
-        <ng-container *ngIf="spell[2] === 3">
-          <app-spell [spell]="spell"></app-spell>
-        </ng-container>
-      </li>
-    </ul>
+      <div class="header">
+        <div class="h-text">Level 3</div>
+        <input type="text" id="slots3" />
+        / 3
+      </div>
+      <ul id="level3">
+        <li
+          *ngFor="
+            let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+          "
+        >
+          <ng-container *ngIf="spell[2] === 3">
+            <app-spell [spell]="spell"></app-spell>
+          </ng-container>
+        </li>
+      </ul>
 
-    <div class="header">
-      <div class="h-text">Level 4</div>
-      <input type="text" id="slots4" />
-      / 3
-    </div>
-    <ul id="level4">
-      <li
-        *ngFor="
-          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
-        "
-      >
-        <ng-container *ngIf="spell[2] === 4">
-          <app-spell [spell]="spell"></app-spell>
-        </ng-container>
-      </li>
-    </ul>
+      <div class="header">
+        <div class="h-text">Level 4</div>
+        <input type="text" id="slots4" />
+        / 3
+      </div>
+      <ul id="level4">
+        <li
+          *ngFor="
+            let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+          "
+        >
+          <ng-container *ngIf="spell[2] === 4">
+            <app-spell [spell]="spell"></app-spell>
+          </ng-container>
+        </li>
+      </ul>
 
-    <div class="header">
-      <div class="h-text">Level 5</div>
-      <input type="text" id="slots5" />
-      / 3
-    </div>
-    <ul id="level5">
-      <li
-        *ngFor="
-          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
-        "
-      >
-        <ng-container *ngIf="spell[2] === 5">
-          <app-spell [spell]="spell"></app-spell>
-        </ng-container>
-      </li>
-    </ul>
+      <div class="header">
+        <div class="h-text">Level 5</div>
+        <input type="text" id="slots5" />
+        / 3
+      </div>
+      <ul id="level5">
+        <li
+          *ngFor="
+            let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+          "
+        >
+          <ng-container *ngIf="spell[2] === 5">
+            <app-spell [spell]="spell"></app-spell>
+          </ng-container>
+        </li>
+      </ul>
 
-    <div class="header">
-      <div class="h-text">Level 6</div>
-      <input type="text" id="slots6" />
-      / 3
-    </div>
-    <ul id="level6">
-      <li
-        *ngFor="
-          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
-        "
-      >
-        <ng-container *ngIf="spell[2] === 6">
-          <app-spell [spell]="spell"></app-spell>
-        </ng-container>
-      </li>
-    </ul>
+      <div class="header">
+        <div class="h-text">Level 6</div>
+        <input type="text" id="slots6" />
+        / 3
+      </div>
+      <ul id="level6">
+        <li
+          *ngFor="
+            let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+          "
+        >
+          <ng-container *ngIf="spell[2] === 6">
+            <app-spell [spell]="spell"></app-spell>
+          </ng-container>
+        </li>
+      </ul>
 
-    <div class="header">
-      <div class="h-text">Level 7</div>
-      <input type="text" id="slots7" />
-      / 3
-    </div>
-    <ul id="level7">
-      <li
-        *ngFor="
-          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
-        "
-      >
-        <ng-container *ngIf="spell[2] === 7">
-          <app-spell [spell]="spell"></app-spell>
-        </ng-container>
-      </li>
-    </ul>
+      <div class="header">
+        <div class="h-text">Level 7</div>
+        <input type="text" id="slots7" />
+        / 3
+      </div>
+      <ul id="level7">
+        <li
+          *ngFor="
+            let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+          "
+        >
+          <ng-container *ngIf="spell[2] === 7">
+            <app-spell [spell]="spell"></app-spell>
+          </ng-container>
+        </li>
+      </ul>
 
-    <div class="header">
-      <div class="h-text">Level 8</div>
-      <input type="text" id="slots8" />
-      / 3
-    </div>
-    <ul id="level8">
-      <li
-        *ngFor="
-          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
-        "
-      >
-        <ng-container *ngIf="spell[2] === 8">
-          <app-spell [spell]="spell"></app-spell>
-        </ng-container>
-      </li>
-    </ul>
+      <div class="header">
+        <div class="h-text">Level 8</div>
+        <input type="text" id="slots8" />
+        / 3
+      </div>
+      <ul id="level8">
+        <li
+          *ngFor="
+            let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+          "
+        >
+          <ng-container *ngIf="spell[2] === 8">
+            <app-spell [spell]="spell"></app-spell>
+          </ng-container>
+        </li>
+      </ul>
 
-    <div class="header">
-      <div class="h-text">Level 9</div>
-      <input type="text" id="slots9" />
-      / 3
+      <div class="header">
+        <div class="h-text">Level 9</div>
+        <input type="text" id="slots9" />
+        / 3
+      </div>
+      <ul id="level9">
+        <li
+          *ngFor="
+            let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+          "
+        >
+          <ng-container *ngIf="spell[2] === 9">
+            <app-spell [spell]="spell"></app-spell>
+          </ng-container>
+        </li>
+      </ul>
     </div>
-    <ul id="level9">
-      <li
-        *ngFor="
-          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
-        "
-      >
-        <ng-container *ngIf="spell[2] === 9">
-          <app-spell [spell]="spell"></app-spell>
-        </ng-container>
-      </li>
-    </ul>
   </div>
 </div>
