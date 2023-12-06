@@ -16,6 +16,7 @@ export class ViewCharacterSheetPageComponent implements OnInit {
     proficiencyBonus: null,
     speed: null,
     hitDie: null,
+    classIndex: null,
     equipment: [],
     savingThrows: [],
     savingThrowProficiencies: [],
@@ -219,30 +220,32 @@ export class ViewCharacterSheetPageComponent implements OnInit {
       const id = params['id'];
       this.characterApiService.getCharacter(id).subscribe((data: any) => {
         this.characterData = data.result;
+        console.log(this.characterData);
 
         // api calls
         this.apiService
           .RaceInfo(this.characterData.race.raceIndex)
           .subscribe((data: any) => {
-            console.log(data);
             this.apiInfo.speed = data.speed;
-          });
-        this.apiService
-          .SingleClassData(this.characterData.classes[0].classIndex)
-          .subscribe((data: any) => {
-            console.log(data);
 
-            for (const i of data.saving_throws) {
-              this.apiInfo.savingThrows.push(i.index);
-            }
+            this.apiService
+              .SingleClassData(this.characterData.classes[0].classIndex)
+              .subscribe((data: any) => {
+                this.apiInfo.classIndex =
+                  this.characterData.classes[0].classIndex;
+                for (const i of data.saving_throws) {
+                  this.apiInfo.savingThrows.push(i.index);
+                }
 
-            this.apiInfo.proficiencyBonus = data.proficiency_bonus;
-            this.apiInfo.hitDie = data.hit_die;
-          });
-        this.apiService
-          .ClassLevelsData(this.characterData.classes[0].classIndex)
-          .subscribe((data: any) => {
-            console.log(data);
+                this.apiInfo.proficiencyBonus = data.proficiency_bonus;
+                this.apiInfo.hitDie = data.hit_die;
+
+                this.apiService
+                  .ClassLevelsData(this.characterData.classes[0].classIndex)
+                  .subscribe((data: any) => {
+                    console.log(data);
+                  });
+              });
           });
       });
     });
