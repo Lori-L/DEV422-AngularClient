@@ -16,11 +16,26 @@ export class CharTraitsComponent implements OnInit {
     this.apiService
       .RaceInfo(this.characterData.race.raceIndex)
       .subscribe((data: any) => {
-        console.log(data);
         for (const trait of data.traits) {
-          this.trait.push(trait);
+          this.apiService.TraitData(trait.index).subscribe((data) => {
+            // console.log(data);
+            this.trait.push([trait.name, data.desc]);
+          });
         }
-        console.log(this.trait);
+      });
+
+    this.apiService
+      .ClassLevelsData(this.characterData.classes[0].classIndex)
+      .subscribe((data: any) => {
+        console.log(data);
+
+        for (const i of data) {
+          for (const j of i.features) {
+            this.apiService.FeatureData(j.index).subscribe((data) => {
+              this.trait.push([data.name, data.desc]);
+            });
+          }
+        }
       });
   }
 }

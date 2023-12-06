@@ -271,10 +271,6 @@ export class ViewCharacterSheetPageComponent implements OnInit {
 
                 this.apiInfo.proficiencyBonus = data.proficiency_bonus;
                 this.apiInfo.hitDie = data.hit_die;
-
-                this.apiService
-                  .ClassLevelsData(this.characterData.classes[0].classIndex)
-                  .subscribe((data: any) => {});
               });
           });
       });
