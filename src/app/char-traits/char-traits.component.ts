@@ -38,7 +38,6 @@ export class CharTraitsComponent implements OnInit {
     this.apiService
       .BackgroundInfo(this.characterData.background.backgroundIndex)
       .subscribe((data: any) => {
-        console.log(data);
         this.trait.push([data.feature.name, data.feature.desc]);
       });
   }
