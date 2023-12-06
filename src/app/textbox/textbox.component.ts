@@ -13,6 +13,6 @@ export class TextboxComponent implements OnInit {
   constructor(private apiService: DndApiServiceService) {}
 
   ngOnInit(): void {
-    console.log(this.trait);
+    // console.log(this.trait);
   }
 }
