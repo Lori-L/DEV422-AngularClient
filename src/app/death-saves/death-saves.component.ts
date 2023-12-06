@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DeathSavesComponent implements OnInit {
   @Input() character: any;
+  @Input() characterData: any;
   constructor() {}
 
   ngOnInit(): void {}

@@ -1,16 +1,19 @@
 <h2>Stats</h2>
 
-<label for="generationMethod">Ability Score Generaton Method: </label>
-<select name="generationMethod" id="generationMethod" (change)="newGenMethod()">
-    <option selected>Select</option>
-    <option value="standardArray">Standard Array</option>
-    <option value="manualEntry">Manual Entry</option>
-    <option value="pointBuy">Point Buy</option>
-</select>
+<div style="display: none;">
+    <label for="generationMethod">Ability Score Generaton Method: </label>
+    <select name="generationMethod" id="generationMethod" (change)="newGenMethod()">
+        <option selected>Select</option>
+        <option value="standardArray">Standard Array</option>
+        <option value="manualEntry">Manual Entry</option>
+        <option value="pointBuy">Point Buy</option>
+    </select>
+
+    <br><br>
+</div>
+
 
 <div class="standardArray" *ngIf="standardArray">
-    <br><br>
-
     <div class="stats">
         <div class="statblock" *ngFor="let stat of stats">
             <label>
@@ -24,17 +27,15 @@
 </div>
 
 <div class="manualEntry" *ngIf="manualEntry">
-    <br><br>
+    <h3>Manual Entry:</h3>
 
     <div class="statblock" *ngFor="let stat of stats, index as i">
         <label>{{stat}}</label>
-        <input type="text" id="manualEntry{{i}}" (change)="updateStat(i)" value="{{currentChar.abilityScores[i]}}">
+        <input type="text" id="manualEntry{{i}}" (change)="updateStat(i)" value="{{currentChar.abilityScoresBasic[i]}}">
     </div>
 </div>
 
 <div class="pointBuy" *ngIf="pointBuy">
-    <br><br>
-
     <p>Points: {{pointBuyPoints}} / 27</p>
 
     <div class="statblock" *ngFor="let stat of stats">

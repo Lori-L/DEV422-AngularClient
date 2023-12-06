@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CharacterApiService } from '../character-api.service';
+import { DndApiServiceService } from '../dnd-api-service.service';
 
 @Component({
   selector: 'app-view-character-sheet-page',
@@ -9,6 +10,19 @@ import { CharacterApiService } from '../character-api.service';
 })
 export class ViewCharacterSheetPageComponent implements OnInit {
   @Input() characterData: any;
+  @Input() RaceInfo: any;
+  @Input() savingThrows: any = [];
+  @Input() apiInfo: any = {
+    proficiencyBonus: null,
+    speed: null,
+    hitDie: null,
+    classIndex: null,
+    equipment: [],
+    savingThrows: [],
+    savingThrowProficiencies: [],
+    skillProficiencies: [],
+  };
+
   character = {
     name: 'Klor',
     overallLevel: 2,
@@ -124,6 +138,38 @@ export class ViewCharacterSheetPageComponent implements OnInit {
             'DARKVISION:',
             'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
           ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
 
           ['HELLISH RESISTANCE:', 'You have resistance to fire damage.'],
 
@@ -197,16 +243,36 @@ export class ViewCharacterSheetPageComponent implements OnInit {
   };
   constructor(
     private route: ActivatedRoute,
-    private characterApiService: CharacterApiService
+    private characterApiService: CharacterApiService,
+    private apiService: DndApiServiceService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(async (params) => {
       const id = params['id'];
-      console.log(id);
       this.characterApiService.getCharacter(id).subscribe((data: any) => {
         this.characterData = data.result;
-        console.log(data.result);
+        console.log(this.characterData);
+
+        // api calls
+        this.apiService
+          .RaceInfo(this.characterData.race.raceIndex)
+          .subscribe((data: any) => {
+            this.apiInfo.speed = data.speed;
+
+            this.apiService
+              .SingleClassData(this.characterData.classes[0].classIndex)
+              .subscribe((data: any) => {
+                this.apiInfo.classIndex =
+                  this.characterData.classes[0].classIndex;
+                for (const i of data.saving_throws) {
+                  this.apiInfo.savingThrows.push(i.index);
+                }
+
+                this.apiInfo.proficiencyBonus = data.proficiency_bonus;
+                this.apiInfo.hitDie = data.hit_die;
+              });
+          });
       });
     });
   }

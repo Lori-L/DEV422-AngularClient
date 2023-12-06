@@ -5,7 +5,7 @@ export class spellCasterObject {
     cantripsKnown: string[][] = [];
 
     learnsSpells: boolean = false;
-    spellsKnown: string[][] = [];
+    spellsKnown: any[][] = [];
 
     preparesSpells: boolean = false;
     spellsPrepared?: string[][];

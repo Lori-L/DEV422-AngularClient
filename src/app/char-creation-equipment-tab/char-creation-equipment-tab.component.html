@@ -674,15 +674,17 @@
 
 <br><br>
 
-<h4>Manage Inventory</h4>
-<div class="grid" *ngFor="let item of charItems" style="width: 30%;">
-    <p>{{item}}</p>
-    <button type="button">Remove</button>
-</div>
+<div style="display: none;">
+    <h4>Manage Inventory</h4>
+    <div class="grid" *ngFor="let item of charItems" style="width: 30%;">
+        <p>{{item}}</p>
+        <button type="button">Remove</button>
+    </div>
 
-<h4>Add Items</h4>
-<label for="search">Item Search: </label>
-<input type="text" id="search" name="search">
-<div style="width: 30%;">
-    <p>Results: </p>
+    <h4>Add Items</h4>
+    <label for="search">Item Search: </label>
+    <input type="text" id="search" name="search">
+    <div style="width: 30%;">
+        <p>Results: </p>
+    </div>
 </div>

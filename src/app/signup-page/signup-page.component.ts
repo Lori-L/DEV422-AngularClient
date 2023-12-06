@@ -39,7 +39,7 @@ export class SignupPageComponent implements OnInit {
       .SignUp(this.username, this.password, this.email)
       .subscribe((data) => {
         if (data.message == 'true') {
-          localStorage.setItem('userId', JSON.stringify(data.id));
+          localStorage.setItem('userId', JSON.stringify(data._id));
           localStorage.setItem('username', JSON.stringify(this.username));
           this.router.navigate(['/choose-view']);
           this.sharedVariablesService.setSharedData(true, this.username);

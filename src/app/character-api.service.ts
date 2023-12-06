@@ -46,4 +46,12 @@ export class CharacterApiService {
       }
     );
   }
+
+  updateExistingChar(char: charObject): any {
+    return this.http.post(
+      'http://localhost:3000/char/wupdate', {
+        char
+      }
+    );
+  }
 }
