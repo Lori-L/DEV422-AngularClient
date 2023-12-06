@@ -2,32 +2,32 @@
   <p class="stat-title">Str:</p>
   <!-- TODO: get from api (character.apiInfo) -->
   <app-char-stat-block
-    [modifier]="character.apiInfo.abilityScoreModifiers[0]"
+    [modifier]="findModifier(characterData.abilityScores[0])"
     [total]="characterData.abilityScores[0]"
   ></app-char-stat-block>
   <p class="stat-title">Dex:</p>
   <app-char-stat-block
-    [modifier]="character.apiInfo.abilityScoreModifiers[1]"
+    [modifier]="findModifier(characterData.abilityScores[1])"
     [total]="characterData.abilityScores[1]"
   ></app-char-stat-block>
   <p class="stat-title">Con:</p>
   <app-char-stat-block
-    [modifier]="character.apiInfo.abilityScoreModifiers[2]"
+    [modifier]="findModifier(characterData.abilityScores[2])"
     [total]="characterData.abilityScores[2]"
   ></app-char-stat-block>
   <p class="stat-title">Int:</p>
   <app-char-stat-block
-    [modifier]="character.apiInfo.abilityScoreModifiers[3]"
+    [modifier]="findModifier(characterData.abilityScores[3])"
     [total]="characterData.abilityScores[3]"
   ></app-char-stat-block>
   <p class="stat-title">Wis:</p>
   <app-char-stat-block
-    [modifier]="character.apiInfo.abilityScoreModifiers[4]"
+    [modifier]="findModifier(characterData.abilityScores[4])"
     [total]="characterData.abilityScores[4]"
   ></app-char-stat-block>
   <p class="stat-title">Cha:</p>
   <app-char-stat-block
-    [modifier]="character.apiInfo.abilityScoreModifiers[5]"
+    [modifier]="findModifier(characterData.abilityScores[5])"
     [total]="characterData.abilityScores[5]"
   ></app-char-stat-block>
 </div>
