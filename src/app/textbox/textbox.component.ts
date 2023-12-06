@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DndApiServiceService } from '../dnd-api-service.service';
 
 @Component({
   selector: 'app-textbox',
@@ -7,9 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TextboxComponent implements OnInit {
   @Input() trait: any;
-  @Input() traitText: any;
+  @Input() traitDesc: any;
 
-  constructor() {}
+  constructor(private apiService: DndApiServiceService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.trait);
+
+    this.apiService.TraitData(this.trait.index).subscribe((data) => {
+      console.log(data);
+      this.traitDesc = data.desc;
+    });
+  }
 }

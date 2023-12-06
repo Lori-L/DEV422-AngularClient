@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DndApiServiceService } from '../dnd-api-service.service';
 
 @Component({
   selector: 'app-char-traits',
@@ -8,7 +9,18 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CharTraitsComponent implements OnInit {
   @Input() character: any;
   @Input() characterData: any;
-  constructor() {}
+  @Input() trait: any = [];
+  constructor(private apiService: DndApiServiceService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiService
+      .RaceInfo(this.characterData.race.raceIndex)
+      .subscribe((data: any) => {
+        console.log(data);
+        for (const trait of data.traits) {
+          this.trait.push(trait);
+        }
+        console.log(this.trait);
+      });
+  }
 }

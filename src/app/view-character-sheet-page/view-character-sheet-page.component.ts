@@ -138,6 +138,38 @@ export class ViewCharacterSheetPageComponent implements OnInit {
             'DARKVISION:',
             'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
           ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
+          [
+            'DARKVISION:',
+            'You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cannot discern color in darkness, only shades of gray.',
+          ],
 
           ['HELLISH RESISTANCE:', 'You have resistance to fire damage.'],
 
@@ -226,13 +258,11 @@ export class ViewCharacterSheetPageComponent implements OnInit {
         this.apiService
           .RaceInfo(this.characterData.race.raceIndex)
           .subscribe((data: any) => {
-            console.log(data);
             this.apiInfo.speed = data.speed;
 
             this.apiService
               .SingleClassData(this.characterData.classes[0].classIndex)
               .subscribe((data: any) => {
-                console.log(data);
                 this.apiInfo.classIndex =
                   this.characterData.classes[0].classIndex;
                 for (const i of data.saving_throws) {
@@ -244,9 +274,7 @@ export class ViewCharacterSheetPageComponent implements OnInit {
 
                 this.apiService
                   .ClassLevelsData(this.characterData.classes[0].classIndex)
-                  .subscribe((data: any) => {
-                    console.log(data);
-                  });
+                  .subscribe((data: any) => {});
               });
           });
       });

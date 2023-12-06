@@ -1,11 +1,4 @@
-<div
-  id="main"
-  *ngIf="
-    characterData.classes[0]?.spellcasterInfo !== null &&
-    characterData.classes[0]?.spellcasterInfo?.cantripsKnown !== null &&
-    characterData.classes[0]?.spellcasterInfo?.spellsKnown !== null
-  "
->
+<div id="main" *ngIf="characterData.classes[0]?.isSpellcaster !== false">
   <div id="top-bar">
     <div id="spellcasting-class">Spellcasting Class: TBD</div>
     <div id="stats">
