@@ -27,11 +27,14 @@ export class CharTraitsComponent implements OnInit {
       .ClassLevelsData(this.characterData.classes[0].classIndex)
       .subscribe((data: any) => {
         for (const i of data) {
-          for (const j of i.features) {
-            this.apiService.FeatureData(j.index).subscribe((data) => {
-              this.trait.push([data.name, data.desc]);
-            });
+          if(i.level <= this.characterData.classes[0].classLevel) {
+            for (const j of i.features) {
+              this.apiService.FeatureData(j.index).subscribe((data) => {
+                this.trait.push([data.name, data.desc]);
+              });
+            }
           }
+          
         }
       });
 

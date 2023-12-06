@@ -3,7 +3,7 @@
   <app-num-box [title]="inspirationTitle"></app-num-box>
   <app-num-box
     [title]="proficiencyTitle"
-    [value]="character.apiInfo.proficiencyBonus"
+    [value]="returnProficiency()"
   ></app-num-box>
   <p>Saving Throws</p>
   <!-- TODO: pull from api -->

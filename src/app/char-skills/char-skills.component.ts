@@ -42,5 +42,9 @@ export class CharSkillsComponent implements OnInit {
     return Math.floor(( abilityScore - 10) / 2);
   }
 
+  returnProficiency() {
+    return Math.ceil(this.characterData.overallLevel / 4) + 1;
+  }
+
   ngOnInit(): void {}
 }
