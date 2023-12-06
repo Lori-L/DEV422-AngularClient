@@ -2,11 +2,11 @@
   <div id="ac-and-stuff">
     <!-- TODO: get from api -->
     <app-char-stat-block
-      [modifier]="character.abilityScores[2]"
+      [modifier]="(10 + findModifier(characterData.abilityScores[1]))"
       [total]="armorTitle[0]"
     ></app-char-stat-block>
     <app-char-stat-block
-      [modifier]="character.abilityScores[2]"
+      [modifier]="findModifier(characterData.abilityScores[1])"
       [total]="armorTitle[1]"
     ></app-char-stat-block>
     <app-char-stat-block
