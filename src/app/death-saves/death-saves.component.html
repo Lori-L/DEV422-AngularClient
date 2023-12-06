@@ -1,7 +1,7 @@
 <div class="container">
   <div id="dice-container">
-    <div class="title no-right">Hit Dice</div>
-    <div id="total-top">Total: {{ character.apiInfo.class.hitDie }}</div>
+    <div class="title no-right">Hit Dice (d{{characterData.classes[0].hitDie }})</div>
+    <div id="total-top">Total: {{ characterData.overallLevel }}</div>
     <div id="total-bottom">
       <input type="text" id="hit-dice-total" />
     </div>
