@@ -25,8 +25,14 @@
       / 3
     </div>
     <ul id="level1">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+        "
+      >
+        <ng-container *ngIf="spell[2] === 1">
+          <app-spell [spell]="spell"></app-spell>
+        </ng-container>
       </li>
     </ul>
 
@@ -36,8 +42,14 @@
       / 3
     </div>
     <ul id="level2">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+        "
+      >
+        <ng-container *ngIf="spell[2] === 2">
+          <app-spell [spell]="spell"></app-spell>
+        </ng-container>
       </li>
     </ul>
 
@@ -47,8 +59,14 @@
       / 3
     </div>
     <ul id="level3">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+        "
+      >
+        <ng-container *ngIf="spell[2] === 3">
+          <app-spell [spell]="spell"></app-spell>
+        </ng-container>
       </li>
     </ul>
 
@@ -58,8 +76,14 @@
       / 3
     </div>
     <ul id="level4">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+        "
+      >
+        <ng-container *ngIf="spell[2] === 4">
+          <app-spell [spell]="spell"></app-spell>
+        </ng-container>
       </li>
     </ul>
 
@@ -69,8 +93,14 @@
       / 3
     </div>
     <ul id="level5">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+        "
+      >
+        <ng-container *ngIf="spell[2] === 5">
+          <app-spell [spell]="spell"></app-spell>
+        </ng-container>
       </li>
     </ul>
 
@@ -80,8 +110,14 @@
       / 3
     </div>
     <ul id="level6">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+        "
+      >
+        <ng-container *ngIf="spell[2] === 6">
+          <app-spell [spell]="spell"></app-spell>
+        </ng-container>
       </li>
     </ul>
 
@@ -91,8 +127,14 @@
       / 3
     </div>
     <ul id="level7">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+        "
+      >
+        <ng-container *ngIf="spell[2] === 7">
+          <app-spell [spell]="spell"></app-spell>
+        </ng-container>
       </li>
     </ul>
 
@@ -102,8 +144,14 @@
       / 3
     </div>
     <ul id="level8">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+        "
+      >
+        <ng-container *ngIf="spell[2] === 8">
+          <app-spell [spell]="spell"></app-spell>
+        </ng-container>
       </li>
     </ul>
 
@@ -113,8 +161,14 @@
       / 3
     </div>
     <ul id="level9">
-      <li *ngFor="let spell of character.spells">
-        <app-spell [spell]="spell"></app-spell>
+      <li
+        *ngFor="
+          let spell of characterData.classes[0].spellcasterInfo.spellsKnown
+        "
+      >
+        <ng-container *ngIf="spell[2] === 9">
+          <app-spell [spell]="spell"></app-spell>
+        </ng-container>
       </li>
     </ul>
   </div>

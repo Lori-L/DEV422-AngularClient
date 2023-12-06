@@ -15,7 +15,6 @@ export class SpellComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.SpellInfo(this.spell[0]).subscribe((data: any) => {
       console.log(data);
-      this.spellName = data.name;
       this.spellDesc = data.desc;
     });
   }
