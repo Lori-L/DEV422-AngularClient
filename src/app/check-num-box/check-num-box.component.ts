@@ -39,6 +39,7 @@ export class CheckNumBoxComponent implements OnInit {
             this.isChecked = this.isChecked;
           } else {
             this.isChecked = true;
+            this.value = this.addProficiencyBonus(this.value);
           }
         }
       });
@@ -51,6 +52,7 @@ export class CheckNumBoxComponent implements OnInit {
 
           if (newArr[1].toLowerCase() === this.title.toLowerCase()) {
             this.isChecked = true;
+            this.value = this.addProficiencyBonus(this.value);
           }
         }
       });
@@ -58,11 +60,13 @@ export class CheckNumBoxComponent implements OnInit {
     this.apiService
       .BackgroundInfo(this.characterData.background.backgroundIndex)
       .subscribe((data: any) => {
+        console.log(data);
         for (const i of data.starting_proficiencies) {
           const newArr = i.index.split('-');
 
           if (newArr[1].toLowerCase() === this.title.toLowerCase()) {
             this.isChecked = true;
+            this.value = this.addProficiencyBonus(this.value);
           }
         }
       });
@@ -71,6 +75,7 @@ export class CheckNumBoxComponent implements OnInit {
       const newArr = i[0].split('-');
       if (newArr[1].toLowerCase() === this.title.toLowerCase()) {
         this.isChecked = true;
+        this.value = this.addProficiencyBonus(this.value);
       }
     }
 
@@ -78,7 +83,12 @@ export class CheckNumBoxComponent implements OnInit {
       const newArr = i[0].split('-');
       if (newArr[1].toLowerCase() === this.title.toLowerCase()) {
         this.isChecked = true;
+        this.value = this.addProficiencyBonus(this.value);
       }
     }
+  }
+
+  addProficiencyBonus(value: number) {
+    return value + Math.ceil(this.characterData.overallLevel / 4) + 1;
   }
 }
