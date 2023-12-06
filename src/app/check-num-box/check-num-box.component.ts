@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DndApiServiceService } from '../dnd-api-service.service';
 
 @Component({
   selector: 'app-check-num-box',
@@ -8,13 +9,86 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CheckNumBoxComponent implements OnInit {
   @Input() title: any;
   @Input() value: any;
-
+  @Input() characterData: any;
+  @Input() testing = ['strength', 'dexterity'];
+  @Input() savingThrowsMapping = {
+    strength: 'str',
+    dexterity: 'dex',
+    constitution: 'con',
+    intelligence: 'int',
+    wisdom: 'wis',
+    charisma: 'cha',
+  };
+  savingThrows: string[] = [];
   isChecked = false;
-  constructor() {}
+
+  constructor(private apiService: DndApiServiceService) {}
 
   ngOnInit(): void {
-    if (this.value > 12) {
-      this.isChecked = true;
+    this.apiService
+      .SingleClassData(this.characterData.classes[0].classIndex)
+      .subscribe((data: any) => {
+        if (data.saving_throws) {
+          for (const i of data.saving_throws) {
+            this.savingThrows.push(i.index);
+          }
+        }
+
+        if (this.savingThrows.includes(this.title.slice(0, 3).toLowerCase())) {
+          if (this.title === 'Intimidation') {
+            this.isChecked = this.isChecked;
+          } else {
+            this.isChecked = true;
+            this.value = this.addProficiencyBonus(this.value);
+          }
+        }
+      });
+
+    this.apiService
+      .RaceInfo(this.characterData.race.raceIndex)
+      .subscribe((data: any) => {
+        for (const i of data.starting_proficiencies) {
+          const newArr = i.index.split('-');
+
+          if (newArr[1].toLowerCase() === this.title.toLowerCase()) {
+            this.isChecked = true;
+            this.value = this.addProficiencyBonus(this.value);
+          }
+        }
+      });
+
+    this.apiService
+      .BackgroundInfo(this.characterData.background.backgroundIndex)
+      .subscribe((data: any) => {
+        console.log(data);
+        for (const i of data.starting_proficiencies) {
+          const newArr = i.index.split('-');
+
+          if (newArr[1].toLowerCase() === this.title.toLowerCase()) {
+            this.isChecked = true;
+            this.value = this.addProficiencyBonus(this.value);
+          }
+        }
+      });
+
+    for (const i of this.characterData.classes[0].chosenProficiencyIndex) {
+      const newArr = i[0].split('-');
+      if (newArr[1].toLowerCase() === this.title.toLowerCase()) {
+        this.isChecked = true;
+        this.value = this.addProficiencyBonus(this.value);
+      }
     }
+
+    for (const i of this.characterData.race.chosenProficiencyIndex) {
+      const newArr = i[0].split('-');
+      if (newArr[1].toLowerCase() === this.title.toLowerCase()) {
+        this.isChecked = true;
+        this.value = this.addProficiencyBonus(this.value);
+      }
+    }
+  }
+
+  addProficiencyBonus(value: number) {
+    return value + Math.ceil(this.characterData.overallLevel / 4) + 1;
   }
 }

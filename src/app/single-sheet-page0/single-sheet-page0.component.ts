@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SingleSheetPage0Component implements OnInit {
   @Input() character: any;
   @Input() characterData: any;
+  @Input() apiInfo: any;
+
   constructor() {}
 
   ngOnInit(): void {}

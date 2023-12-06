@@ -2,30 +2,33 @@
   <div id="ac-and-stuff">
     <!-- TODO: get from api -->
     <app-char-stat-block
-      [modifier]="character.abilityScores[2]"
+      [modifier]="(10 + findModifier(characterData.abilityScores[1]))"
       [total]="armorTitle[0]"
     ></app-char-stat-block>
     <app-char-stat-block
-      [modifier]="character.abilityScores[2]"
+      [modifier]="findModifier(characterData.abilityScores[1])"
       [total]="armorTitle[1]"
     ></app-char-stat-block>
     <app-char-stat-block
-      [modifier]="character.apiInfo.race.speed"
+      [modifier]="apiInfo.speed"
       [total]="armorTitle[2]"
     ></app-char-stat-block>
   </div>
-  
+
   <div id="hp">
     <app-hp-container
       [characterData]="characterData"
       [character]="character"
     ></app-hp-container>
   </div>
-  
+
   <div id="hit-dice">
-    <app-death-saves [character]="character"></app-death-saves>
+    <app-death-saves 
+      [character]="character"
+      [characterData]="characterData"
+      ></app-death-saves>
   </div>
-  
+
   <div id="spellcasting">
     <app-char-attack-spellcasting
       [character]="character"

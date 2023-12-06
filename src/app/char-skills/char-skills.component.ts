@@ -35,7 +35,16 @@ export class CharSkillsComponent implements OnInit {
 
   @Input() character: any;
   @Input() characterData: any;
+  @Input() apiInfo: any;
   constructor() {}
+
+  findModifier(abilityScore: number) {
+    return Math.floor(( abilityScore - 10) / 2);
+  }
+
+  returnProficiency() {
+    return Math.ceil(this.characterData.overallLevel / 4) + 1;
+  }
 
   ngOnInit(): void {}
 }

@@ -3,106 +3,130 @@
   <app-num-box [title]="inspirationTitle"></app-num-box>
   <app-num-box
     [title]="proficiencyTitle"
-    [value]="character.apiInfo.proficiencyBonus"
+    [value]="returnProficiency()"
   ></app-num-box>
   <p>Saving Throws</p>
   <!-- TODO: pull from api -->
   <app-check-num-box
     [title]="strengthTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[0]"
+    [value]="findModifier(characterData.abilityScores[0])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="dexterityTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[1]"
+    [value]="findModifier(characterData.abilityScores[1])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="constitutionTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[2]"
+    [value]="findModifier(characterData.abilityScores[2])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
-    [title]="inspirationTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[3]"
+    [title]="intelligenceTitle"
+    [value]="findModifier(characterData.abilityScores[3])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="wisdomTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[4]"
+    [value]="findModifier(characterData.abilityScores[4])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="charismaTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[5]"
+    [value]="findModifier(characterData.abilityScores[5])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <p>Skills</p>
   <!-- TODO: find where the below values are -->
   <app-check-num-box
     [title]="acrobaticsTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[1]"
+    [value]="findModifier(characterData.abilityScores[1])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="animalHandlingTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[4]"
+    [value]="findModifier(characterData.abilityScores[4])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="arcanaTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[3]"
+    [value]="findModifier(characterData.abilityScores[3])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="athleticsTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[0]"
+    [value]="findModifier(characterData.abilityScores[0])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="deceptionTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[5]"
+    [value]="findModifier(characterData.abilityScores[5])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="historyTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[3]"
+    [value]="findModifier(characterData.abilityScores[3])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="insightTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[4]"
+    [value]="findModifier(characterData.abilityScores[4])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="intimidationTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[5]"
+    [value]="findModifier(characterData.abilityScores[5])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="investigationTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[3]"
+    [value]="findModifier(characterData.abilityScores[3])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="medicineTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[4]"
+    [value]="findModifier(characterData.abilityScores[4])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="natureTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[3]"
+    [value]="findModifier(characterData.abilityScores[3])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="perceptionTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[4]"
+    [value]="findModifier(characterData.abilityScores[4])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="performanceTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[5]"
+    [value]="findModifier(characterData.abilityScores[5])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="persuasionTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[5]"
+    [value]="findModifier(characterData.abilityScores[5])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="religionTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[3]"
+    [value]="findModifier(characterData.abilityScores[3])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="sleightOfHandTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[1]"
+    [value]="findModifier(characterData.abilityScores[1])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
     [title]="stealthTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[1]"
+    [value]="findModifier(characterData.abilityScores[1])"
+    [characterData]="characterData"
   ></app-check-num-box>
   <app-check-num-box
-    [title]="charismaTitle"
-    [value]="character.apiInfo.abilityScoreModifiers[4]"
+    [title]="survivalTitle"
+    [value]="findModifier(characterData.abilityScores[4])"
+    [characterData]="characterData"
   ></app-check-num-box>
 </div>

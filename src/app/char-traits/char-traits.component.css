@@ -1,9 +1,9 @@
-
-
 .trait-div {
   display: block;
   float: left;
   width: calc(30% - 6px);
+  height: 755px;
+  overflow: auto;
 }
 .features {
   display: flex;
@@ -11,4 +11,8 @@
   border: 1px solid grey;
   height: 20rem;
   margin: 10px 0 0;
+}
+.freature-scroll {
+  height: 755px;
+  overflow-y: auto;
 }

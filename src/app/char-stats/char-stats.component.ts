@@ -12,5 +12,9 @@ export class CharStatsComponent implements OnInit {
 
   constructor() {}
 
+  findModifier(abilityScore: number) {
+    return Math.floor(( abilityScore - 10) / 2);
+  }
+
   ngOnInit(): void {}
 }
