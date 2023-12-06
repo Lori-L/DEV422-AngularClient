@@ -1,8 +1,10 @@
 <div id="main" *ngIf="characterData.classes[0]?.isSpellcaster !== false">
   <div id="top-bar">
-    <div id="spellcasting-class">Spellcasting Class: TBD</div>
+    <div id="spellcasting-class">Spellcasting Class: {{characterData.classes[0].classIndex}}</div>
     <div id="stats">
-      Spellcasting Ability: TBD, Spell Save DC: TBD, Spell Attack Bonus: TBD
+      Spellcasting Ability: {{characterData.classes[0].spellcasterInfo.spellCastingAbility.toUpperCase()}},   
+      Spell Save DC: {{8 + returnSpellcastingModifier() + returnProficiency()}},    
+      Spell Attack Bonus: {{returnSpellcastingModifier() + returnProficiency()}}
     </div>
   </div>
   <div id="spells">

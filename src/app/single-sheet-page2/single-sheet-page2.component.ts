@@ -12,5 +12,34 @@ export class SingleSheetPage2Component implements OnInit {
   @Input() apiInfo: any;
   constructor() {}
 
-  ngOnInit(): void {}
+
+  returnProficiency() {
+    return Math.ceil(this.characterData.overallLevel / 4) + 1;
+  }
+
+  findModifier(abilityScore: number) {
+    return Math.floor(( abilityScore - 10) / 2);
+  }
+
+  returnSpellcastingModifier() {
+    let spellCastingAbility: string = this.characterData.classes[0].spellcasterInfo.spellCastingAbility;
+
+    switch(spellCastingAbility) {
+      case ('int'): {
+        return this.findModifier(this.characterData.abilityScores[3]);
+      }
+      case('wis'): {
+        return this.findModifier(this.characterData.abilityScores[4]);
+      }
+      case('cha'): {
+        return this.findModifier(this.characterData.abilityScores[5]);
+      }
+      default: {
+        return 0;
+      }
+    }
+  }
+
+  ngOnInit(): void {
+  }
 }
